@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Centos7 安装 k8s | Hexo</title>
+  <meta name="keywords" content=" Centos , K8S , 教程 ">
+  <meta name="description" content="Centos7 安装 k8s | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="使用Let’s Encrypt给网站添加SSL1.安装cerbotsudo apt install certbot python3-certbot-nginx  2.为nginx添加SSLsudo certbot --nginx  3.续订SSL(默认三个月)certbot renew">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Let&#39;s Encrypt给网站添加SSL">
+<meta property="og:url" content="https://gohoy.github.io/blog/2023/09/04/%E4%BD%BF%E7%94%A8Let's%20Encrypt%E7%BB%99%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0SSL/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="使用Let’s Encrypt给网站添加SSL1.安装cerbotsudo apt install certbot python3-certbot-nginx  2.为nginx添加SSLsudo certbot --nginx  3.续订SSL(默认三个月)certbot renew">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-09-04T10:49:32.454Z">
+<meta property="article:modified_time" content="2023-09-04T10:56:01.479Z">
+<meta property="article:author" content="Gohoy">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="ssl">
+<meta property="article:tag" content="https">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/blog/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/blog/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/blog/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/blog/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="/blog">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/blog/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/blog/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Gohoy</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/gohoy"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:2738430398@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2738430398&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(18)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="吉他谱">
+            
+            吉他谱
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="教程">
+            
+            教程
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="理论">
+            
+            理论
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="设计文档">
+            
+            设计文档
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="docker">
+            
+            docker
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Java">
+            
+            Java
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="K8S">
+            
+            K8S
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="18">
+<input type="hidden" id="yelog_site_word_count" value="24.5k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>八股文</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>负载均衡</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>概率论</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>吉他谱</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>教程</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面经</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>设计文档</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>四子ding</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>掷筛</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>arm64</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Centos</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>contianer</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>https</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>K8S</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Mydisk</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>NdS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>openEuler</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssl</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All 教程 "
+           href="/blog/2023/09/04/%E4%BD%BF%E7%94%A8Let's%20Encrypt%E7%BB%99%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0SSL/"
+           data-tag="教程,ssl,https"
+           data-author="" >
+            <span class="post-title" title="使用Let&#39;s Encrypt给网站添加SSL">使用Let&#39;s Encrypt给网站添加SSL</span>
+            <span class="post-date" title="2023-09-04 18:49:32">2023/09/04</span>
+        </a>
+        
+        
+        <a  class="All Java "
+           href="/blog/2023/08/30/%E9%9D%A2%E7%BB%8F/"
+           data-tag="Java,面经,八股文"
+           data-author="" >
+            <span class="post-title" title="Java面经记录">Java面经记录</span>
+            <span class="post-date" title="2023-08-30 14:50:59">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All K8S "
+           href="/blog/2023/08/30/k8s-web%E6%9C%80%E7%BB%88%E6%96%87%E6%A1%A3/"
+           data-tag="K8S"
+           data-author="" >
+            <span class="post-title" title="K8S-WEB最终文档">K8S-WEB最终文档</span>
+            <span class="post-date" title="2023-08-30 14:45:47">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All K8S "
+           href="/blog/2023/08/30/%E9%87%8D%E8%A3%85k8s%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%87%E6%A1%A3/"
+           data-tag="K8S,教程,openEuler,arm64"
+           data-author="" >
+            <span class="post-title" title="openEuler安装K8S文档">openEuler安装K8S文档</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 理论 "
+           href="/blog/2023/08/30/%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%88%B6%E4%B8%AD%E7%9A%84%E6%A6%82%E7%8E%87%E8%AE%BA/"
+           data-tag="概率论,掷筛,NdS"
+           data-author="" >
+            <span class="post-title" title="游戏掷筛">游戏掷筛</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E5%B0%8F%E5%B9%B8%E8%BF%90%E5%90%89%E4%BB%96/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="小幸运吉他谱">小幸运吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E6%9C%AA%E9%97%BB%E8%8A%B1%E5%90%8D/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="未闻花名吉他谱">未闻花名吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 设计文档 "
+           href="/blog/2023/08/30/%E5%9B%9B%E5%AD%90ding%20%E8%AE%BE%E8%AE%A1/"
+           data-tag="设计文档,四子ding"
+           data-author="" >
+            <span class="post-title" title="四子ding设计">四子ding设计</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E8%AF%B4%E5%A5%BD%E7%9A%84%E5%B9%B8%E7%A6%8F%E5%91%A2/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="说好的幸福呢吉他谱">说好的幸福呢吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E6%99%B4%E5%A4%A9/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="晴天吉他谱">晴天吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E5%85%B0%E4%BA%AD%E5%BA%8F%E5%90%89%E4%BB%96%E8%B0%B1/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="兰亭序吉他谱">兰亭序吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E8%8A%B1%E6%B5%B7%E5%90%89%E4%BB%96%E8%B0%B1/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="花海吉他谱">花海吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All docker "
+           href="/blog/2023/08/30/%E6%9E%84%E5%BB%BAopenEuler%E7%9A%84docker%E5%AE%B9%E5%99%A8/"
+           data-tag="教程,docker,contianer,openEuler"
+           data-author="" >
+            <span class="post-title" title="openEuler docker container构建">openEuler docker container构建</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E7%88%B1%E5%9C%A8%E8%A5%BF%E5%85%83%E5%89%8D/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="爱在西元前吉他谱">爱在西元前吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 设计文档 "
+           href="/blog/2023/08/30/Mydisk%E9%A1%B9%E7%9B%AE%E6%BA%90%E7%A0%81%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3/"
+           data-tag="设计文档,Mydisk"
+           data-author="" >
+            <span class="post-title" title="Mydisk项目说明">Mydisk项目说明</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/Lemon%E5%90%89%E4%BB%96%E8%B0%B1/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="Lemon吉他谱">Lemon吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All K8S "
+           href="/blog/2023/08/30/k8s%E5%AE%B9%E5%99%A8%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90/"
+           data-tag="K8S,负载均衡"
+           data-author="" >
+            <span class="post-title" title="K8S负载均衡方案">K8S负载均衡方案</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All K8S "
+           href="/blog/2023/08/30/CentOS%E5%AE%89%E8%A3%85K8S%E6%96%87%E6%A1%A3/"
+           data-tag="Centos,K8S,教程"
+           data-author="" >
+            <span class="post-title" title="Centos7 安装 k8s">Centos7 安装 k8s</span>
+            <span class="post-date" title="2023-08-30 14:25:32">2023/08/30</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-CentOS安装K8S文档" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Centos7 安装 k8s</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="K8S">K8S</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">Centos</a>
+            
+            <a class="color4">K8S</a>
+            
+            <a class="color3">教程</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2023-08-30 14:28:00'>2023-08-30 14:25</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:1.9k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Centos7-%E5%AE%89%E8%A3%85-k8s-%E7%8E%AF%E5%A2%83"><span class="toc-text">Centos7 安装 k8s 环境</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Centos7-安装-k8s-环境"><a href="#Centos7-安装-k8s-环境" class="headerlink" title="Centos7 安装 k8s 环境"></a>Centos7 安装 k8s 环境</h2><blockquote>
+<p>安装centos7虚拟机</p>
+</blockquote>
+<ul>
+<li><p>Vmware 下载 mini 包<a target="_blank" rel="noopener" href="http://mirrors.oit.uci.edu/centos/7.9.2009/isos/x86_64/">x86_64下载地址</a></p>
+</li>
+<li><p>硬件至少 2G 2核</p>
+</li>
+</ul>
+<blockquote>
+<p>初始配置虚拟机网络</p>
+</blockquote>
+<ul>
+<li><p>更改hostname</p>
+<ul>
+<li>echo ‘master’ &gt;&gt; &#x2F;etc&#x2F;hostname</li>
+</ul>
+</li>
+<li><p>更改静态ip</p>
+<ul>
+<li><p>打开 &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33  ，网卡名称有的使eth0 有的是ens33，使用 ip addr查看</p>
+</li>
+<li><p>将 BOOTPROTO&#x3D;dhcp 改为 static</p>
+</li>
+<li><p>将ONBOOT&#x3D;no 改为yes</p>
+</li>
+<li><p>末尾加上你的配置</p>
+<pre><code class="shell"># /etc/sysconfig/network-scripts/ifcfg-ens33
+IPADDR=192.168.111.201
+
+NETMASK=255.255.255.0
+
+GATEWAY=192.168.111.2
+
+DNS1=8.8.8.8
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>&#x2F;etc&#x2F;hosts 加上 ip ：hostname</p>
+<pre><code class="shell"># /etc/hosts
+192.168.111.200 master
+
+192.168.111.201 node1
+
+192.168.111.202 node2
+</code></pre>
+</li>
+<li><p>systemctl restart network </p>
+</li>
+<li><p>使配置生效，此时能ping通外网</p>
+</li>
+</ul>
+<blockquote>
+<p>使用vscode或其他应用连接虚拟机</p>
+</blockquote>
+<blockquote>
+<p>同步时间 补全命令</p>
+</blockquote>
+<ul>
+<li><pre><code class="shell">sudo yum -y install ntpdate
+sudo ntpdate ntp1.aliyun.com
+sudo systemctl status ntpdate
+sudo systemctl start ntpdate
+sudo systemctl status ntpdate
+sudo systemctl enable ntpdate
+</code></pre>
+</li>
+<li><pre><code class="shell">sudo yum -y install bash-completion
+source /etc/profile
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>关闭防火墙 或者 开启防火墙端口</p>
+</blockquote>
+<ul>
+<li><pre><code class="shell">sudo systemctl stop firewalld.service 
+sudo systemctl disable firewalld.service
+</code></pre>
+</li>
+<li><pre><code class="shell"># 控制面板
+firewall-cmd --zone=public --add-port=6443/tcp --permanent # Kubernetes API server    所有
+firewall-cmd --zone=public --add-port=2379/tcp --permanent # etcd server client API    kube-apiserver, etcd
+firewall-cmd --zone=public --add-port=2380/tcp --permanent # etcd server client API    kube-apiserver, etcd
+firewall-cmd --zone=public --add-port=10250/tcp --permanent # Kubelet API    自身, 控制面
+firewall-cmd --zone=public --add-port=10259/tcp --permanent # kube-scheduler    自身
+firewall-cmd --zone=public --add-port=10257/tcp --permanent # kube-controller-manager    自身
+firewall-cmd --zone=trusted --add-source=192.168.111.200 --permanent # 信任集群中各个节点的IP
+firewall-cmd --zone=trusted --add-source=192.168.111.201 --permanent # 信任集群中各个节点的IP
+firewall-cmd --zone=trusted --add-source=192.168.111.202 --permanent # 信任集群中各个节点的IP
+firewall-cmd --add-masquerade --permanent # 端口转发
+firewall-cmd --reload
+firewall-cmd --list-all
+firewall-cmd --list-all --zone=trusted
+
+# 工作节点
+firewall-cmd --zone=public --add-port=10250/tcp --permanent # Kubelet API    自身, 控制面
+firewall-cmd --zone=public --add-port=30000-32767/tcp --permanent # NodePort Services†    所有
+firewall-cmd --zone=trusted --add-source=192.168.111.200 --permanent # 信任集群中各个节点的IP
+firewall-cmd --zone=trusted --add-source=192.168.111.201 --permanent # 信任集群中各个节点的IP
+firewall-cmd --zone=trusted --add-source=192.168.111.202 --permanent # 信任集群中各个节点的IP
+firewall-cmd --add-masquerade --permanent # 端口转发
+firewall-cmd --reload
+firewall-cmd --list-all
+firewall-cmd --list-all --zone=trusted
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>关闭swap 和 selinux</p>
+</blockquote>
+<ul>
+<li><pre><code class="shell">free -h  //查看是否关闭
+sudo swapoff -a  //暂时关闭
+sudo sed -i &#39;s/.*swap.*/#&amp;/&#39; /etc/fstab //永久关闭
+free -h
+</code></pre>
+<pre><code class="shell">getenforce
+cat /etc/selinux/config
+sudo setenforce 0
+sudo sed -i &#39;s/^SELINUX=enforcing$/SELINUX=permissive/&#39; /etc/selinux/config
+cat /etc/selinux/config
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>安装docker 和 containerd，1.24.0版本开始，k8s使用containerd代替docker</p>
+</blockquote>
+<ul>
+<li><p>cgroup（control group）是 Linux 内核提供的一种机制，用于对进程进行资源限制、统计和控制。通过 cgroup，我们可以对一个或多个进程的 CPU、内存、IO、网络等资源进行限制，从而保证系统资源的合理分配，防止某些进程占用过多的资源导致系统崩溃或变慢。</p>
+</li>
+<li><pre><code class="shell"># https://docs.docker.com/engine/install/centos/
+sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo 
+# yum --showduplicates list docker-ce
+sudo yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo yum install -y containerd
+
+# 启动 docker 时，会启动 containerd
+# sudo systemctl status containerd.service
+sudo systemctl stop containerd.service
+
+# 设置containerd 的默认配置文件
+sudo cp /etc/containerd/config.toml /etc/containerd/config.toml.bak
+sudo containerd config default &gt; $HOME/config.toml
+sudo cp $HOME/config.toml /etc/containerd/config.toml
+
+# 对containerd 换源和设置cgroup的设置
+sudo sed -i &quot;s#registry.k8s.io/pause#registry.aliyuncs.com/k8sxio/pause#g&quot; /etc/containerd/config.toml
+# https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes/#containerd-systemd
+# 确保 /etc/containerd/config.toml 中的 disabled_plugins 内不存在 cri
+sudo sed -i &quot;s#SystemdCgroup = false#SystemdCgroup = true#g&quot; /etc/containerd/config.toml
+
+# containerd 忽略证书验证的配置
+#      [plugins.&quot;io.containerd.grpc.v1.cri&quot;.registry.configs]
+#        [plugins.&quot;io.containerd.grpc.v1.cri&quot;.registry.configs.&quot;192.168.0.12:8001&quot;.tls]
+#          insecure_skip_verify = true
+sudo systemctl enable --now containerd.service
+
+sudo systemctl start docker.service
+</code></pre>
+</li>
+</ul>
+<pre><code class="shell">sudo systemctl enable docker.service
+sudo systemctl enable docker.socket
+sudo systemctl list-unit-files | grep docker
+
+sudo mkdir -p /etc/docker
+
+# 对docker换源和cgroup设置
+cat&lt;&lt;EOF | sudo tee /etc/docker/daemon.json 
+ &#123;
+ &quot;registry-mirrors&quot;: [&quot;https://2u8f97e8.mirror.aliyuncs.com&quot;],
+ &quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;]
+ &#125;
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+sudo docker info
+
+sudo systemctl status docker.service
+sudo systemctl status containerd.service
+</code></pre>
+<blockquote>
+<p>安装k8s</p>
+</blockquote>
+<ul>
+<li>添加k8s 仓库</li>
+</ul>
+<pre><code class="shell">cat &lt;&lt;EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/
+# 是否开启本仓库
+enabled=1
+# 是否检查 gpg 签名文件
+gpgcheck=0
+# 是否检查 gpg 签名文件
+repo_gpgcheck=0
+gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+
+EOF
+</code></pre>
+<ul>
+<li>设置内核参数</li>
+</ul>
+<pre><code class="shell"># 设置所需的 sysctl 参数，参数在重新启动后保持不变
+cat &lt;&lt;EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-iptables  = 1 
+net.bridge.bridge-nf-call-ip6tables = 1  //这两条让网络连接走iptables（禁用可以不设置）
+net.ipv4.ip_forward  = 1  //是否允许将一个网络接口收到的数据包转发到另一个网络接口
+
+EOF
+
+# 应用 sysctl 参数而不重新启动
+sudo sysctl --system
+</code></pre>
+<ul>
+<li>安装1.26.2版本</li>
+</ul>
+<pre><code class="shell">sudo yum install -y kubelet-1.26.2-0 kubeadm-1.26.2-0 kubectl-1.26.2-0 --disableexcludes=kubernetes --nogpgcheck
+
+systemctl daemon-reload
+sudo systemctl restart kubelet
+sudo systemctl enable kubelet
+</code></pre>
+<p>以上内容需要在节点和master机器全部运行一次</p>
+<hr>
+<blockquote>
+<p>master上执行</p>
+</blockquote>
+<pre><code class="shell">kubeadm init --image-repository=registry.aliyuncs.com/google_containers
+# 指定集群的IP
+# kubeadm init --image-repository=registry.aliyuncs.com/google_containers --apiserver-advertise-address=192.168.80.60
+
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+# 或者在环境变量中添加：export KUBECONFIG=/etc/kubernetes/admin.conf
+# 添加完环境变量后，刷新环境变量：source /etc/profile
+
+kubectl cluster-info
+
+# 初始化失败后，可进行重置，重置命令：kubeadm reset -
+
+# 执行成功后，会出现类似下列内容：
+# kubeadm join 192.168.80.60:6443 --token f9lvrz.59mykzssqw6vjh32 \
+# --discovery-token-ca-cert-hash sha256:4e23156e2f71c5df52dfd2b9b198cce5db27c47707564684ea74986836900107     
+
+# 查看join命令 
+# kubeadm token create --print-join-command
+</code></pre>
+<p>如果init失败，查看kubelet的运行日志</p>
+<pre><code class="shell">journalctl -xefu kubelet
+</code></pre>
+<blockquote>
+<p>node上执行</p>
+</blockquote>
+<pre><code class="shell"># 运行的内容来自上方执行结果
+kubeadm join 192.168.80.60:6443 --token f9lvrz.59mykzssqw6vjh32 \
+--discovery-token-ca-cert-hash sha256:4e23156e2f71c5df52dfd2b9b198cce5db27c47707564684ea74986836900107 
+
+#
+# kubeadm token create --print-join-command
+
+# kubeadm join 192.168.80.60:6443 --token f9lvrz.59mykzssqw6vjh32 \
+# --discovery-token-unsafe-skip-ca-verification
+</code></pre>
+<blockquote>
+<p>此时node还是not ready  pod 也没有正常运行，需要在master配置网络</p>
+</blockquote>
+<pre><code class="shell">yum install -y wget
+wget --no-check-certificate https://projectcalico.docs.tigera.io/archive/v3.25/manifests/calico.yaml
+</code></pre>
+<pre><code class="shell"># 修改 calico.yaml 文件
+vim calico.yaml
+</code></pre>
+<pre><code class="shell"># 在 - name: CLUSTER_TYPE 下方添加如下内容
+- name: CLUSTER_TYPE
+  value: &quot;k8s,bgp&quot;
+  # 下方为新增内容
+- name: IP_AUTODETECTION_METHOD
+  value: &quot;interface=网卡名称&quot;
+
+
+# INTERFACE_NAME=ens33
+# sed -i &#39;/k8s,bgp/a \            - name: IP_AUTODETECTION_METHOD\n              value: &quot;interface=INTERFACE_NAME&quot;&#39; calico.yaml
+# sed -i &quot;s#INTERFACE_NAME#$INTERFACE_NAME#g&quot; calico.yaml
+</code></pre>
+<pre><code class="shell"># 配置网络
+kubectl apply -f calico.yaml
+</code></pre>
+<p>之后等待网络配置完成</p>
+<p>k8s搭建成功</p>
+<hr>
+<blockquote>
+<p>kubeadm 有问题访问<a target="_blank" rel="noopener" href="https://kubernetes.io/zh-cn/docs/setup/production-environment/tools/kubeadm/troubleshooting-kubeadm/">对 kubeadm 进行故障排查 | Kubernetes</a></p>
+</blockquote>
+<blockquote>
+<p>网络问题</p>
+</blockquote>
+<ul>
+<li><p>node加入master之后get nodes 失败</p>
+</li>
+<li><p><img src="http://gohoy.top/i/2023/08/11/rd09c0-1.png"></p>
+</li>
+<li><p>master 显示该node notready</p>
+</li>
+<li><p>pods 网络问题 sandbox create failed</p>
+<ul>
+<li><p><img src="http://gohoy.top/i/2023/08/11/rd0dze-1.png"></p>
+</li>
+<li><p><img src="http://gohoy.top/i/2023/08/11/rd0hum-1.png"></p>
+</li>
+</ul>
+</li>
+<li><p>主要问题：calico镜像pull缓慢或出错</p>
+<ul>
+<li><p><img src="http://gohoy.top/i/2023/08/11/rd0od9-1.png"></p>
+</li>
+<li><p><img src="http://gohoy.top/i/2023/08/11/rd0n9o-1.png"></p>
+</li>
+<li><p><img src="http://gohoy.top/i/2023/08/11/rd182i-1.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>等了非常久 calico pull成功</p>
+<p>最后将containerd 源从</p>
+<p><code>registry.cn-hangzhou.aliyuncs.com/google_containers/pause</code></p>
+<p>换成</p>
+<p><code>registry.aliyuncs.com/k8sxio/pause</code></p>
+<p>pull镜像可以成功了</p>
+<blockquote>
+<p>实践</p>
+</blockquote>
+<ul>
+<li><p>尝试搭建nginx</p>
+</li>
+<li><pre><code class="shell">cat &gt; nginx.yaml &lt;&lt; EOF
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.23.2
+        ports:
+        - containerPort: 80
+
+EOF
+
+cat nginx.yaml
+
+# 创建deployment
+kubectl apply -f nginx.yaml
+</code></pre>
+</li>
+<li></li>
+<li><p>pull 结束后</p>
+</li>
+<li><pre><code class="shell"># 控制面板：设置服务
+kubectl expose deployment nginx-deployment --type=NodePort --name=nginx-service
+# 或者
+# kubectl create service nodeport nginx-service --tcp=80:80 --node-port=32767 --selector=app=nginx
+</code></pre>
+</li>
+<li><pre><code class="shell"># 控制面板：查看pod,svc
+kubectl get pod,svc -o wide
+</code></pre>
+</li>
+<li><p><img src="http://gohoy.top/i/2023/08/11/rd1djq-1.png"></p>
+</li>
+<li><p><img src="http://gohoy.top/i/2023/08/11/rd1tb5-1.png"></p>
+</li>
+<li><p>停止pods</p>
+<ul>
+<li>删除deployment</li>
+</ul>
+</li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。也可以邮件至 2738430398@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2023- Gohoy
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/blog/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/blog/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+<div id="musicMouseDrag" style="position:fixed; z-index: 9999; bottom: 0; right: 0;">
+<div id="musicDragArea" style="position: absolute; top: 0; left: 0; width: 100%;height: 10px;cursor: move; z-index: 10;"></div>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=8700654240&auto=1&height=430"></iframe>
+</div>
+<!--以下代码是为了支持随时拖动音乐控件的位置，如没有需求，可去掉下面代码-->
+<script>
+var $DOC = $(document)
+$('#musicMouseDrag').on('mousedown', function (e) {
+// 阻止文本选中
+$DOC.bind("selectstart", function () {
+return false;
+});
+$('#musicDragArea').css('height', '100%');
+var $moveTarget = $('#musicMouseDrag');
+$moveTarget.css('border', '1px dashed grey')
+var div_x = e.pageX - $moveTarget.offset().left;
+var div_y = e.pageY - $moveTarget.offset().top;
+$DOC.on('mousemove', function (e) {
+var targetX = e.pageX - div_x;
+var targetY = e.pageY - div_y;
+targetX = targetX < 0 ? 0 : (targetX + $moveTarget.outerWidth() >= window.innerWidth) ? window.innerWidth - $moveTarget.outerWidth() : targetX;
+targetY = targetY < 0 ? 0 : (targetY + $moveTarget.outerHeight() >= window.innerHeight) ? window.innerHeight - $moveTarget.outerHeight() : targetY;
+$moveTarget.css({'left': targetX + 'px', 'top': targetY + 'px', 'bottom': 'inherit', 'right': 'inherit'})
+}).on('mouseup', function () {
+$DOC.unbind("selectstart");
+$DOC.off('mousemove')
+$DOC.off('mouseup')
+$moveTarget.css('border', 'none')
+$('#musicDragArea').css('height', '10px');
+})
+})
+</script>
+</html>
