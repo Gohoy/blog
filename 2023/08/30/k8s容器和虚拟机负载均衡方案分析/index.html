@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>K8S负载均衡方案 | Hexo</title>
+  <meta name="keywords" content=" K8S , 负载均衡 ">
+  <meta name="description" content="K8S负载均衡方案 | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="springboot查询数据库字段实践任务描述：在订单管理中增加购票信息界面、 查询条件：赛季名称、赛事名称、票种、姓名、身份证号、购买者、区域、座位、票类型 显示字段：赛季名称、赛事名称、票种、姓名、身份证号、购买者、区域、座位、二维码（限制显示长度20字符）、购票时间、票类型 可效仿订单管理页。 后端实现步骤：查看需要查询的表的字段 表名为t_business_member_ticket  字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot查询数据库字段实践">
+<meta property="og:url" content="https://gohoy.github.io/blog/2023/09/05/springboot%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%97%E6%AE%B5%E5%AE%9E%E8%B7%B5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="springboot查询数据库字段实践任务描述：在订单管理中增加购票信息界面、 查询条件：赛季名称、赛事名称、票种、姓名、身份证号、购买者、区域、座位、票类型 显示字段：赛季名称、赛事名称、票种、姓名、身份证号、购买者、区域、座位、二维码（限制显示长度20字符）、购票时间、票类型 可效仿订单管理页。 后端实现步骤：查看需要查询的表的字段 表名为t_business_member_ticket  字">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-09-05T11:23:59.427Z">
+<meta property="article:modified_time" content="2023-09-11T13:29:38.328Z">
+<meta property="article:author" content="Gohoy">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="springboot">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/blog/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/blog/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/blog/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/blog/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="/blog">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/blog/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/blog/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Gohoy</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/gohoy"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:2738430398@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2738430398&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(19)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="吉他谱">
+            
+            吉他谱
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="教程">
+            
+            教程
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="理论">
+            
+            理论
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="设计文档">
+            
+            设计文档
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="docker">
+            
+            docker
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Java">
+            
+            Java
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="K8S">
+            
+            K8S
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="19">
+<input type="hidden" id="yelog_site_word_count" value="26.5k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>八股文</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>负载均衡</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>概率论</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>吉他谱</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>教程</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面经</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>设计文档</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>四子ding</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>掷筛</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>arm64</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Centos</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>contianer</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>https</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>K8S</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Mydisk</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>NdS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>openEuler</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>springboot</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssl</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All Java "
+           href="/blog/2023/09/05/springboot%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%97%E6%AE%B5%E5%AE%9E%E8%B7%B5/"
+           data-tag="Java,springboot"
+           data-author="" >
+            <span class="post-title" title="springboot查询数据库字段实践">springboot查询数据库字段实践</span>
+            <span class="post-date" title="2023-09-05 19:23:59">2023/09/05</span>
+        </a>
+        
+        
+        <a  class="All 教程 "
+           href="/blog/2023/09/04/%E4%BD%BF%E7%94%A8Let's%20Encrypt%E7%BB%99%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0SSL/"
+           data-tag="教程,ssl,https"
+           data-author="" >
+            <span class="post-title" title="使用Let&#39;s Encrypt给网站添加SSL">使用Let&#39;s Encrypt给网站添加SSL</span>
+            <span class="post-date" title="2023-09-04 18:49:32">2023/09/04</span>
+        </a>
+        
+        
+        <a  class="All Java "
+           href="/blog/2023/08/30/%E9%9D%A2%E7%BB%8F/"
+           data-tag="Java,面经,八股文"
+           data-author="" >
+            <span class="post-title" title="Java面经记录">Java面经记录</span>
+            <span class="post-date" title="2023-08-30 14:50:59">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All K8S "
+           href="/blog/2023/08/30/k8s-web%E6%9C%80%E7%BB%88%E6%96%87%E6%A1%A3/"
+           data-tag="K8S"
+           data-author="" >
+            <span class="post-title" title="K8S-WEB最终文档">K8S-WEB最终文档</span>
+            <span class="post-date" title="2023-08-30 14:45:47">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All K8S "
+           href="/blog/2023/08/30/%E9%87%8D%E8%A3%85k8s%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%87%E6%A1%A3/"
+           data-tag="K8S,教程,openEuler,arm64"
+           data-author="" >
+            <span class="post-title" title="openEuler安装K8S文档">openEuler安装K8S文档</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 理论 "
+           href="/blog/2023/08/30/%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%88%B6%E4%B8%AD%E7%9A%84%E6%A6%82%E7%8E%87%E8%AE%BA/"
+           data-tag="概率论,掷筛,NdS"
+           data-author="" >
+            <span class="post-title" title="游戏掷筛">游戏掷筛</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E5%B0%8F%E5%B9%B8%E8%BF%90%E5%90%89%E4%BB%96/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="小幸运吉他谱">小幸运吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E6%9C%AA%E9%97%BB%E8%8A%B1%E5%90%8D/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="未闻花名吉他谱">未闻花名吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 设计文档 "
+           href="/blog/2023/08/30/%E5%9B%9B%E5%AD%90ding%20%E8%AE%BE%E8%AE%A1/"
+           data-tag="设计文档,四子ding"
+           data-author="" >
+            <span class="post-title" title="四子ding设计">四子ding设计</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E8%AF%B4%E5%A5%BD%E7%9A%84%E5%B9%B8%E7%A6%8F%E5%91%A2/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="说好的幸福呢吉他谱">说好的幸福呢吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E6%99%B4%E5%A4%A9/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="晴天吉他谱">晴天吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E5%85%B0%E4%BA%AD%E5%BA%8F%E5%90%89%E4%BB%96%E8%B0%B1/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="兰亭序吉他谱">兰亭序吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E8%8A%B1%E6%B5%B7%E5%90%89%E4%BB%96%E8%B0%B1/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="花海吉他谱">花海吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All docker "
+           href="/blog/2023/08/30/%E6%9E%84%E5%BB%BAopenEuler%E7%9A%84docker%E5%AE%B9%E5%99%A8/"
+           data-tag="教程,docker,contianer,openEuler"
+           data-author="" >
+            <span class="post-title" title="openEuler docker container构建">openEuler docker container构建</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E7%88%B1%E5%9C%A8%E8%A5%BF%E5%85%83%E5%89%8D/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="爱在西元前吉他谱">爱在西元前吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 设计文档 "
+           href="/blog/2023/08/30/Mydisk%E9%A1%B9%E7%9B%AE%E6%BA%90%E7%A0%81%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3/"
+           data-tag="设计文档,Mydisk"
+           data-author="" >
+            <span class="post-title" title="Mydisk项目说明">Mydisk项目说明</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/Lemon%E5%90%89%E4%BB%96%E8%B0%B1/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="Lemon吉他谱">Lemon吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All K8S "
+           href="/blog/2023/08/30/k8s%E5%AE%B9%E5%99%A8%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90/"
+           data-tag="K8S,负载均衡"
+           data-author="" >
+            <span class="post-title" title="K8S负载均衡方案">K8S负载均衡方案</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All K8S "
+           href="/blog/2023/08/30/CentOS%E5%AE%89%E8%A3%85K8S%E6%96%87%E6%A1%A3/"
+           data-tag="Centos,K8S,教程"
+           data-author="" >
+            <span class="post-title" title="Centos7 安装 k8s">Centos7 安装 k8s</span>
+            <span class="post-date" title="2023-08-30 14:25:32">2023/08/30</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-k8s容器和虚拟机负载均衡方案分析" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">K8S负载均衡方案</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="K8S">K8S</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">K8S</a>
+            
+            <a class="color5">负载均衡</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2023-09-11 21:33:00'>2023-08-30 14:28</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:736</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#k8s%E5%AE%B9%E5%99%A8%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90"><span class="toc-text">k8s容器和虚拟机负载均衡方案分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%96%B9%E6%A1%88"><span class="toc-text">负载均衡方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E8%AF%B4%E7%BB%93%E8%AE%BA%EF%BC%9A%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8k8s%E7%9A%84service"><span class="toc-text">先说结论：直接使用k8s的service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88k8s%E8%87%AA%E5%B8%A6%EF%BC%89"><span class="toc-text">内部负载均衡（k8s自带）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1-%EF%BC%88%E5%AE%B9%E5%99%A8%E7%BA%A7%E5%88%AB%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%89"><span class="toc-text">四层负载均衡 （容器级别的负载均衡）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%83%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88service-%E7%BA%A7%E5%88%AB%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%89"><span class="toc-text">七层负载均衡（service 级别的负载均衡）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ingress"><span class="toc-text">ingress</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88%E4%BD%BF%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BB%84%E4%BB%B6%EF%BC%89"><span class="toc-text">外部负载均衡（使用第三方组件）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96%E7%AD%96%E7%95%A5"><span class="toc-text">持久化策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%AF%BC%E5%87%BA%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4%E6%96%87%E4%BB%B6%EF%BC%8C%E5%9C%A8%E4%B8%8B%E6%AC%A1%E5%90%AF%E5%8A%A8%E6%97%B6%E6%89%A7%E8%A1%8C%E8%BF%99%E4%B8%AA%E6%96%87%E4%BB%B6%E3%80%82"><span class="toc-text">通过导出历史命令文件，在下次启动时执行这个文件。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E4%B8%A4%E7%A7%8D%E5%AE%B9%E5%99%A8%EF%BC%8C%E4%B8%80%E7%A7%8D%E6%94%AF%E6%8C%81%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8%EF%BC%8C%E4%B8%80%E7%A7%8D%E4%B8%8D%E6%94%AF%E6%8C%81%E3%80%82"><span class="toc-text">开放两种容器，一种支持持久化存储，一种不支持。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E4%B8%A4%E7%A7%8D%E5%AE%B9%E5%99%A8%EF%BC%8C%E4%B8%80%E7%A7%8D%E6%94%AF%E6%8C%81%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8%EF%BC%8C%E4%B8%80%E7%A7%8D%E6%94%AF%E6%8C%81%E5%AF%BC%E5%87%BA%E5%8E%86%E5%8F%B2%E6%96%87%E4%BB%B6%E3%80%82"><span class="toc-text">开放两种容器，一种支持持久化存储，一种支持导出历史文件。</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="k8s容器和虚拟机负载均衡方案分析"><a href="#k8s容器和虚拟机负载均衡方案分析" class="headerlink" title="k8s容器和虚拟机负载均衡方案分析"></a>k8s容器和虚拟机负载均衡方案分析</h1><h2 id="负载均衡方案"><a href="#负载均衡方案" class="headerlink" title="负载均衡方案"></a>负载均衡方案</h2><h3 id="先说结论：直接使用k8s的service"><a href="#先说结论：直接使用k8s的service" class="headerlink" title="先说结论：直接使用k8s的service"></a>先说结论：直接使用k8s的service</h3><p>原因：我们的项目较为轻量，并且实现的是容器级别的负载均衡，这点k8s默认支持的ipvs策略就实现很好。其他更多负载均衡策略着重于node级别或service级别。我们的项目并不需要。</p>
+<h3 id="内部负载均衡（k8s自带）"><a href="#内部负载均衡（k8s自带）" class="headerlink" title="内部负载均衡（k8s自带）"></a>内部负载均衡（k8s自带）</h3><p>k8s的内部服务发现是基于dns解析完成的</p>
+<p>默认解析到一个稳定虚拟 IP （Service），该虚拟 IP 再通过 kube_proxy 将流量均衡到后端 Pods 上。 （ Pod 的 IP 可能会随着 Pod 的重建而变动，但 Service 的 IP 是稳定的 ）</p>
+<h4 id="四层负载均衡-（容器级别的负载均衡）"><a href="#四层负载均衡-（容器级别的负载均衡）" class="headerlink" title="四层负载均衡 （容器级别的负载均衡）"></a>四层负载均衡 （容器级别的负载均衡）</h4><p>负载均衡器用 ip+port 接收请求，再直接转发到后端对应服务上；</p>
+<p>工作在传输层 ；</p>
+<p>客户端和服务器之间建立一次TCP连接，而负载均衡设备只是起到一个类似路由器的转发动作。</p>
+<p>基本原理都是：维护一个端口映射表，将对service请求按照策略分配给不同pod。</p>
+<p>官方提供三种模式：</p>
+<ul>
+<li><p>userspace模式：性能差，维护一个iptables映射表，在用户态查询，需要来回切换用户态和内核态，消耗大。</p>
+</li>
+<li><p>iptables模式：性能适中，将对于iptables映射表的查询全部放在内核态，减少了用户态和内核态切换的时间消耗，但是当添加大量的iptables rules的时候，性能依然会变差。</p>
+</li>
+<li><p>ipvs模式：性能好，维护一个哈希表作为映射。1.9版本之后的k8s默认使用该策略</p>
+</li>
+</ul>
+<h4 id="七层负载均衡（service-级别的负载均衡）"><a href="#七层负载均衡（service-级别的负载均衡）" class="headerlink" title="七层负载均衡（service 级别的负载均衡）"></a>七层负载均衡（service 级别的负载均衡）</h4><p>七层负载均衡需要建立两次 TCP 连接，<br>client 到 LB（loadBalancer），LB根据消息中的内容( 比如 URL 或者 cookie 中的信息 )来做出负载均衡的决定；<br>然后，建立 LB 到 server 的连接。</p>
+<img src="http://gohoy.top/i/2023/08/11/r0dihv-1.png" title="" alt="" width="307">
+
+<h4 id="ingress"><a href="#ingress" class="headerlink" title="ingress"></a>ingress</h4><img src="http://gohoy.top/i/2023/08/11/rcwyal-1.png" title="" alt="" width="337">
+
+<p>这是ingress的工作流程。通过不同域名来分配不同service</p>
+<h3 id="外部负载均衡（使用第三方组件）"><a href="#外部负载均衡（使用第三方组件）" class="headerlink" title="外部负载均衡（使用第三方组件）"></a>外部负载均衡（使用第三方组件）</h3><img src="http://gohoy.top/i/2023/08/11/rcx0i6-1.png" title="" alt="" width="390">
+
+<p>根据chatgpt的回答，有大量开源插件能够实现负载均衡。但是大多数专注于七层负载均衡（service级别）。</p>
+<p>HAProxy：很多大型网站都在使用的组件，很好支持七层和四层负载。可以说是免费LB的最优选择。但是对于我们的项目（负载较小）有些“杀鸡用牛刀”。</p>
+<h2 id="持久化策略"><a href="#持久化策略" class="headerlink" title="持久化策略"></a>持久化策略</h2><h3 id="通过导出历史命令文件，在下次启动时执行这个文件。"><a href="#通过导出历史命令文件，在下次启动时执行这个文件。" class="headerlink" title="通过导出历史命令文件，在下次启动时执行这个文件。"></a>通过导出历史命令文件，在下次启动时执行这个文件。</h3><p>想法：导出history文件，下次开启容器时执行。</p>
+<p>history可以加密后导出给用户，可以存储在主机。</p>
+<h3 id="开放两种容器，一种支持持久化存储，一种不支持。"><a href="#开放两种容器，一种支持持久化存储，一种不支持。" class="headerlink" title="开放两种容器，一种支持持久化存储，一种不支持。"></a>开放两种容器，一种支持持久化存储，一种不支持。</h3><h3 id="开放两种容器，一种支持持久化存储，一种支持导出历史文件。"><a href="#开放两种容器，一种支持持久化存储，一种支持导出历史文件。" class="headerlink" title="开放两种容器，一种支持持久化存储，一种支持导出历史文件。"></a>开放两种容器，一种支持持久化存储，一种支持导出历史文件。</h3>
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。也可以邮件至 2738430398@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2023- Gohoy
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/blog/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/blog/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+<div id="musicMouseDrag" style="position:fixed; z-index: 9999; bottom: 0; right: 0;">
+<div id="musicDragArea" style="position: absolute; top: 0; left: 0; width: 100%;height: 10px;cursor: move; z-index: 10;"></div>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=8700654240&auto=1&height=430"></iframe>
+</div>
+<!--以下代码是为了支持随时拖动音乐控件的位置，如没有需求，可去掉下面代码-->
+<script>
+var $DOC = $(document)
+$('#musicMouseDrag').on('mousedown', function (e) {
+// 阻止文本选中
+$DOC.bind("selectstart", function () {
+return false;
+});
+$('#musicDragArea').css('height', '100%');
+var $moveTarget = $('#musicMouseDrag');
+$moveTarget.css('border', '1px dashed grey')
+var div_x = e.pageX - $moveTarget.offset().left;
+var div_y = e.pageY - $moveTarget.offset().top;
+$DOC.on('mousemove', function (e) {
+var targetX = e.pageX - div_x;
+var targetY = e.pageY - div_y;
+targetX = targetX < 0 ? 0 : (targetX + $moveTarget.outerWidth() >= window.innerWidth) ? window.innerWidth - $moveTarget.outerWidth() : targetX;
+targetY = targetY < 0 ? 0 : (targetY + $moveTarget.outerHeight() >= window.innerHeight) ? window.innerHeight - $moveTarget.outerHeight() : targetY;
+$moveTarget.css({'left': targetX + 'px', 'top': targetY + 'px', 'bottom': 'inherit', 'right': 'inherit'})
+}).on('mouseup', function () {
+$DOC.unbind("selectstart");
+$DOC.off('mousemove')
+$DOC.off('mouseup')
+$moveTarget.css('border', 'none')
+$('#musicDragArea').css('height', '10px');
+})
+})
+</script>
+</html>

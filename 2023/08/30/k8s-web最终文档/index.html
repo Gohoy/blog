@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>K8S-WEB最终文档 | Hexo</title>
+  <meta name="keywords" content=" K8S ">
+  <meta name="description" content="K8S-WEB最终文档 | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="springboot查询数据库字段实践任务描述：在订单管理中增加购票信息界面、 查询条件：赛季名称、赛事名称、票种、姓名、身份证号、购买者、区域、座位、票类型 显示字段：赛季名称、赛事名称、票种、姓名、身份证号、购买者、区域、座位、二维码（限制显示长度20字符）、购票时间、票类型 可效仿订单管理页。 后端实现步骤：查看需要查询的表的字段 表名为t_business_member_ticket  字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot查询数据库字段实践">
+<meta property="og:url" content="https://gohoy.github.io/blog/2023/09/05/springboot%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%97%E6%AE%B5%E5%AE%9E%E8%B7%B5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="springboot查询数据库字段实践任务描述：在订单管理中增加购票信息界面、 查询条件：赛季名称、赛事名称、票种、姓名、身份证号、购买者、区域、座位、票类型 显示字段：赛季名称、赛事名称、票种、姓名、身份证号、购买者、区域、座位、二维码（限制显示长度20字符）、购票时间、票类型 可效仿订单管理页。 后端实现步骤：查看需要查询的表的字段 表名为t_business_member_ticket  字">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-09-05T11:23:59.427Z">
+<meta property="article:modified_time" content="2023-09-11T13:29:38.328Z">
+<meta property="article:author" content="Gohoy">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="springboot">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/blog/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/blog/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/blog/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/blog/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="/blog">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/blog/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/blog/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Gohoy</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/gohoy"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:2738430398@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2738430398&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(19)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="吉他谱">
+            
+            吉他谱
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="教程">
+            
+            教程
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="理论">
+            
+            理论
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="设计文档">
+            
+            设计文档
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="docker">
+            
+            docker
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Java">
+            
+            Java
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="K8S">
+            
+            K8S
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="19">
+<input type="hidden" id="yelog_site_word_count" value="26.5k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>八股文</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>负载均衡</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>概率论</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>吉他谱</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>教程</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面经</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>设计文档</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>四子ding</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>掷筛</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>arm64</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Centos</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>contianer</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>https</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>K8S</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Mydisk</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>NdS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>openEuler</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>springboot</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssl</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All Java "
+           href="/blog/2023/09/05/springboot%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%97%E6%AE%B5%E5%AE%9E%E8%B7%B5/"
+           data-tag="Java,springboot"
+           data-author="" >
+            <span class="post-title" title="springboot查询数据库字段实践">springboot查询数据库字段实践</span>
+            <span class="post-date" title="2023-09-05 19:23:59">2023/09/05</span>
+        </a>
+        
+        
+        <a  class="All 教程 "
+           href="/blog/2023/09/04/%E4%BD%BF%E7%94%A8Let's%20Encrypt%E7%BB%99%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0SSL/"
+           data-tag="教程,ssl,https"
+           data-author="" >
+            <span class="post-title" title="使用Let&#39;s Encrypt给网站添加SSL">使用Let&#39;s Encrypt给网站添加SSL</span>
+            <span class="post-date" title="2023-09-04 18:49:32">2023/09/04</span>
+        </a>
+        
+        
+        <a  class="All Java "
+           href="/blog/2023/08/30/%E9%9D%A2%E7%BB%8F/"
+           data-tag="Java,面经,八股文"
+           data-author="" >
+            <span class="post-title" title="Java面经记录">Java面经记录</span>
+            <span class="post-date" title="2023-08-30 14:50:59">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All K8S "
+           href="/blog/2023/08/30/k8s-web%E6%9C%80%E7%BB%88%E6%96%87%E6%A1%A3/"
+           data-tag="K8S"
+           data-author="" >
+            <span class="post-title" title="K8S-WEB最终文档">K8S-WEB最终文档</span>
+            <span class="post-date" title="2023-08-30 14:45:47">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All K8S "
+           href="/blog/2023/08/30/%E9%87%8D%E8%A3%85k8s%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%87%E6%A1%A3/"
+           data-tag="K8S,教程,openEuler,arm64"
+           data-author="" >
+            <span class="post-title" title="openEuler安装K8S文档">openEuler安装K8S文档</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 理论 "
+           href="/blog/2023/08/30/%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%88%B6%E4%B8%AD%E7%9A%84%E6%A6%82%E7%8E%87%E8%AE%BA/"
+           data-tag="概率论,掷筛,NdS"
+           data-author="" >
+            <span class="post-title" title="游戏掷筛">游戏掷筛</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E5%B0%8F%E5%B9%B8%E8%BF%90%E5%90%89%E4%BB%96/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="小幸运吉他谱">小幸运吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E6%9C%AA%E9%97%BB%E8%8A%B1%E5%90%8D/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="未闻花名吉他谱">未闻花名吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 设计文档 "
+           href="/blog/2023/08/30/%E5%9B%9B%E5%AD%90ding%20%E8%AE%BE%E8%AE%A1/"
+           data-tag="设计文档,四子ding"
+           data-author="" >
+            <span class="post-title" title="四子ding设计">四子ding设计</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E8%AF%B4%E5%A5%BD%E7%9A%84%E5%B9%B8%E7%A6%8F%E5%91%A2/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="说好的幸福呢吉他谱">说好的幸福呢吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E6%99%B4%E5%A4%A9/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="晴天吉他谱">晴天吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E5%85%B0%E4%BA%AD%E5%BA%8F%E5%90%89%E4%BB%96%E8%B0%B1/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="兰亭序吉他谱">兰亭序吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E8%8A%B1%E6%B5%B7%E5%90%89%E4%BB%96%E8%B0%B1/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="花海吉他谱">花海吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All docker "
+           href="/blog/2023/08/30/%E6%9E%84%E5%BB%BAopenEuler%E7%9A%84docker%E5%AE%B9%E5%99%A8/"
+           data-tag="教程,docker,contianer,openEuler"
+           data-author="" >
+            <span class="post-title" title="openEuler docker container构建">openEuler docker container构建</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/%E7%88%B1%E5%9C%A8%E8%A5%BF%E5%85%83%E5%89%8D/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="爱在西元前吉他谱">爱在西元前吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 设计文档 "
+           href="/blog/2023/08/30/Mydisk%E9%A1%B9%E7%9B%AE%E6%BA%90%E7%A0%81%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3/"
+           data-tag="设计文档,Mydisk"
+           data-author="" >
+            <span class="post-title" title="Mydisk项目说明">Mydisk项目说明</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All 吉他谱 "
+           href="/blog/2023/08/30/Lemon%E5%90%89%E4%BB%96%E8%B0%B1/"
+           data-tag="吉他谱"
+           data-author="" >
+            <span class="post-title" title="Lemon吉他谱">Lemon吉他谱</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All K8S "
+           href="/blog/2023/08/30/k8s%E5%AE%B9%E5%99%A8%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%96%B9%E6%A1%88%E5%88%86%E6%9E%90/"
+           data-tag="K8S,负载均衡"
+           data-author="" >
+            <span class="post-title" title="K8S负载均衡方案">K8S负载均衡方案</span>
+            <span class="post-date" title="2023-08-30 14:28:51">2023/08/30</span>
+        </a>
+        
+        
+        <a  class="All K8S "
+           href="/blog/2023/08/30/CentOS%E5%AE%89%E8%A3%85K8S%E6%96%87%E6%A1%A3/"
+           data-tag="Centos,K8S,教程"
+           data-author="" >
+            <span class="post-title" title="Centos7 安装 k8s">Centos7 安装 k8s</span>
+            <span class="post-date" title="2023-08-30 14:25:32">2023/08/30</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-k8s-web最终文档" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">K8S-WEB最终文档</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="K8S">K8S</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">K8S</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2023-09-11 21:36:49'>2023-08-30 14:45</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:7.8k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#K8S-WEB%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3"><span class="toc-text">K8S-WEB项目文档</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84%E5%89%8D%E7%BD%AE%E6%9C%AF%E8%AF%AD"><span class="toc-text">需要了解的前置术语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF"><span class="toc-text">后端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E4%BB%A3%E7%A0%81%E5%8C%85%E7%B1%BB%E5%9E%8B%E8%A7%A3%E8%AF%BB"><span class="toc-text">整体代码包类型解读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81%E7%9A%84api%E6%A1%86%E6%9E%B6"><span class="toc-text">后端代码的api框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8"><span class="toc-text">数据库表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8user%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E"><span class="toc-text">表user字段说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82%E7%9A%84%E9%80%BB%E8%BE%91"><span class="toc-text">处理请求的逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A6%82%E4%BD%95%E6%8A%8A%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E5%88%B0%E5%AF%B9%E5%BA%94%E7%9A%84controller%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="toc-text">tomcat服务器如何把请求转发到对应的controller方法？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#controller%E5%85%B7%E4%BD%93%E9%80%BB%E8%BE%91%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%B5%81%E7%A8%8B"><span class="toc-text">controller具体逻辑的实现流程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89%E8%BF%99%E4%B9%88%E5%A4%9A%E6%B5%81%E7%A8%8B%E5%91%A2%EF%BC%9F%E7%9B%B4%E6%8E%A5%E6%8A%8A%E5%9C%A8controller%E6%96%87%E4%BB%B6%E4%B8%AD%E8%B0%83%E7%94%A8UserDao%E5%AE%9E%E7%8E%B0%E6%9F%A5%E8%AF%A2%E5%8F%AF%E4%BB%A5%E5%90%97"><span class="toc-text">为什么要有这么多流程呢？直接把在controller文件中调用UserDao实现查询可以吗</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#controller%E6%96%87%E4%BB%B6%E4%B8%AD%E5%AE%9E%E7%8E%B0api"><span class="toc-text">controller文件中实现api</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E7%9A%84api%EF%BC%8C%E7%AE%80%E5%8D%95%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="toc-text">一般的api，简单的增删改查</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#AdminPodController%EF%BC%9A%E7%AE%A1%E7%90%86%E5%91%98Pod%E7%AE%A1%E7%90%86api"><span class="toc-text">AdminPodController：管理员Pod管理api</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#AdminUserController%EF%BC%9A%E7%AE%A1%E7%90%86%E5%91%98%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86api%EF%BC%9A"><span class="toc-text">AdminUserController：管理员用户管理api：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PodController%EF%BC%9A%E7%94%A8%E6%88%B7%E5%AF%B9pod%E7%9A%84%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82"><span class="toc-text">PodController：用户对pod的功能需求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#UserController%EF%BC%9A%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C%E5%92%8C%E5%85%B6%E4%BB%96%E5%AF%B9%E8%87%AA%E5%B7%B1%E4%BF%A1%E6%81%AF%E7%9A%84%E7%AE%A1%E7%90%86"><span class="toc-text">UserController：用户登录注册和其他对自己信息的管理</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%83%E4%B8%BA%E5%A4%8D%E6%9D%82%E7%9A%84api%E9%80%BB%E8%BE%91%E5%88%86%E6%9E%90"><span class="toc-text">较为复杂的api逻辑分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#PodController%EF%BC%9A%E7%94%A8%E6%88%B7%E5%AF%B9pod%E7%9A%84%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82-1"><span class="toc-text">PodController：用户对pod的功能需求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#UserController%EF%BC%9A%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C%E5%92%8C%E5%85%B6%E4%BB%96%E5%AF%B9%E8%87%AA%E5%B7%B1%E4%BF%A1%E6%81%AF%E7%9A%84%E7%AE%A1%E7%90%86-1"><span class="toc-text">UserController：用户登录注册和其他对自己信息的管理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kubevirt%E7%9B%B8%E5%85%B3api%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-text">kubevirt相关api实现的步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%B0%E9%80%9A%E4%BD%BF%E7%94%A8kubevirt%E8%BF%9B%E8%A1%8C%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%8C%E5%B9%B6%E9%80%89%E5%8F%96%E4%B8%80%E4%B8%AA%E6%9C%80%E7%BB%88%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-text">~~ 走通使用kubevirt进行创建虚拟机的过程，并选取一个最终实现的方案~~</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%86%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%95%9C%E5%83%8F%E4%BC%A0%E7%BB%99pvc%EF%BC%8C%E7%84%B6%E5%90%8E%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AApvc%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAvm%EF%BC%88%E5%B7%B2%E5%AE%8C%E6%88%90%EF%BC%89"><span class="toc-text">将虚拟机镜像传给pvc，然后使用这个pvc创建一个vm（已完成）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8Bdatavolume%E6%9D%A5%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-text">使用数据类型datavolume来创建虚拟机</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E8%BF%87kubevirt%E6%8F%90%E4%BE%9B%E7%9A%84api%EF%BC%8C%E5%AE%9E%E7%8E%B0%E8%BF%99%E4%B8%AA%E6%96%B9%E6%A1%88"><span class="toc-text">~~ 通过kubevirt提供的api，实现这个方案~~</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E8%A6%81%E5%AF%B9%E8%AF%B7%E6%B1%82%E8%BF%9B%E8%A1%8C%E9%89%B4%E6%9D%83%E9%85%8D%E7%BD%AE%EF%BC%88%E5%B7%B2%E5%AE%8C%E6%88%90%EF%BC%89"><span class="toc-text">~~ 首先要对请求进行鉴权配置（已完成）~~</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E5%B0%86pod%E9%85%8D%E7%BD%AE%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%BA%E8%AF%B7%E6%B1%82%E4%BD%93%E6%AD%A3%E5%B8%B8%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">~~ 验证将pod配置序列化为请求体正常发送请求的方法~~</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kubevirt%E6%9C%80%E7%BB%88%E6%96%B9%E6%A1%88"><span class="toc-text">kubevirt最终方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF"><span class="toc-text">前端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E5%8C%85"><span class="toc-text">前端代码包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E6%96%87%E4%BB%B6%E7%9A%84%E6%9E%B6%E6%9E%84"><span class="toc-text">前端文件的架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="toc-text">框架的使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NPM"><span class="toc-text">NPM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue"><span class="toc-text">Vue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VueRouter"><span class="toc-text">VueRouter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#axios"><span class="toc-text">axios</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ElementPlus"><span class="toc-text">ElementPlus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven"><span class="toc-text">Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringBoot"><span class="toc-text">SpringBoot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatisPlus"><span class="toc-text">MyBatisPlus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL"><span class="toc-text">MySQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringCloudKubernetes"><span class="toc-text">SpringCloudKubernetes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JWT"><span class="toc-text">JWT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lombok"><span class="toc-text">Lombok</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Swagger"><span class="toc-text">Swagger</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Interceptor"><span class="toc-text">Interceptor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HttpClient%EF%BC%88%E5%BD%93%E5%89%8D%E9%A1%B9%E7%9B%AE%E5%BC%83%E7%94%A8%EF%BC%89"><span class="toc-text">HttpClient（当前项目弃用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx"><span class="toc-text">Nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker"><span class="toc-text">docker</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2"><span class="toc-text">部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%93%8D%E6%AD%A5%E9%AA%A4"><span class="toc-text">实操步骤</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="K8S-WEB项目文档"><a href="#K8S-WEB项目文档" class="headerlink" title="K8S-WEB项目文档"></a>K8S-WEB项目文档</h1><h2 id="需要了解的前置术语"><a href="#需要了解的前置术语" class="headerlink" title="需要了解的前置术语"></a>需要了解的前置术语</h2><ul>
+<li>前端：进行数据渲染和展示的部分。通常使用HTML CSS JavaScript实现</li>
+<li>后端：对数据进行增删改查，提供服务的部分</li>
+<li>VUE：前端框架，将HTML CSS JavaScript 整合到一个页面，便于开发</li>
+<li>VueRouter：Vue的组件，用来快速配置页面跳转</li>
+<li>Axios：Vue的组件，用来发起和配置Http请求。</li>
+<li>NPM：包管理工具，用来管理Vue项目的依赖包</li>
+<li>ElementPlus：Vue3的组件库，用来快速开发，美化页面。</li>
+<li>tomcat：web服务器，监听端口。SpringBoot使用tomcat来开启服务。</li>
+<li>SpringBoot：后端框架，用来快速开发服务端</li>
+<li>Maven：包管理工具，用来管理后端项目</li>
+<li>MyBatisPlus：用来快速开发服务端对数据库增删改查操作的框架</li>
+<li>MySQL：数据库</li>
+<li>SpringCloud：SpringBoot的微服务生态，包含多种框架</li>
+<li>SpringCloudKubernetes：SpringCloud的k8s组件。由官方维护</li>
+<li>JWT：JavaWebToken，是SpringBoot的组件，用来进行鉴权</li>
+<li>Lombok：是SpringBoot的组件，用来一键设置类的get，set方法</li>
+<li>HttpClient：是SpringBoot的组件，用来发起http请求。</li>
+<li>Swagger：是SpringBoot组件，用来统一api。</li>
+<li>token：用来鉴权的序列</li>
+<li>Cookie：是浏览器中暂时存储数据的一个数据结构。项目中在这里存储token和username</li>
+<li>Interceptor：拦截器，在后端处理请求前拦截请求，并进行操作</li>
+<li>Nginx：用来分发http请求，将请求根据端口分配到不同资源</li>
+<li>Docker</li>
+<li>Kubernetes</li>
+<li>Kubevirt</li>
+</ul>
+<h2 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h2><h3 id="整体代码包类型解读"><a href="#整体代码包类型解读" class="headerlink" title="整体代码包类型解读"></a>整体代码包类型解读</h3><img src="http://gohoy.top/i/2023/08/04/p6aqbg-1.png" alt="image-20230804152221174" style="zoom:80%;" />
+
+<p><strong>可以很粗略的认为：所有其他的类都是为controller文件服务的</strong></p>
+<ul>
+<li><code>com.example.home.gohoy.k8s_backend</code>：此目录下的是所有代码<ul>
+<li>assets：静态文件</li>
+<li>config：配置文件</li>
+<li>controller：核心提供服务的文件，这里一般只调用service接口实现需求</li>
+<li>dao：数据库交互的核心文件，这里都实现了MyBatisPlus</li>
+<li>dto：用于前后端传输的类</li>
+<li>entities：实体类（实体对象）</li>
+<li>service：业务实现层</li>
+<li>utils：工具类</li>
+<li>K8sWebMainApplication.class：springBoot的启动类，整个项目由此进入</li>
+</ul>
+</li>
+<li>resource：存放springBoot配置文件<ul>
+<li>application.yml：spring boot配置文件。</li>
+<li>k8s-user.sql：sql表文件，与项目逻辑无关。</li>
+</ul>
+</li>
+<li>pom.xml：图中没有展示，这个文件是maven管理工具的配置文件，使用maven来控制依赖版本</li>
+</ul>
+<h3 id="后端代码的api框架"><a href="#后端代码的api框架" class="headerlink" title="后端代码的api框架"></a>后端代码的api框架</h3><img src="http://gohoy.top/i/2023/08/01/qoznsh-1.png" alt="系统结构功能图"  />
+
+<p>分别对应了代码的controller部分</p>
+<p><img src="http://gohoy.top/i/2023/08/04/r3vqkm-1.png" alt="image-20230804163908243"></p>
+<h3 id="数据库表"><a href="#数据库表" class="headerlink" title="数据库表"></a>数据库表</h3><p>数据库名称为：k8s</p>
+<p>只有一张表：users，文件见resource&#x2F;k8s-users.mysql</p>
+<h4 id="表user字段说明"><a href="#表user字段说明" class="headerlink" title="表user字段说明"></a>表user字段说明</h4><table>
+<thead>
+<tr>
+<th>ColumName</th>
+<th>id</th>
+<th>username</th>
+<th>password</th>
+<th>ctr_occupied</th>
+<th>ctr_name</th>
+<th>ctr_max</th>
+<th>vm_occupied</th>
+<th>vm_name</th>
+<th>vm_max</th>
+<th>is_admin</th>
+<th>token</th>
+<th>last_login</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>describe</td>
+<td>主键</td>
+<td>用户名，不可重复</td>
+<td>密码</td>
+<td>已经申请的container数量</td>
+<td>已经申请的container的名称</td>
+<td>最多可以申请的container数量</td>
+<td>已经申请的虚拟机的数量</td>
+<td>已经申请的虚拟机的名称</td>
+<td>最多可以申请的虚拟机的数量</td>
+<td>是否是管理员</td>
+<td>用于验证身份的token</td>
+<td>上次登录时间</td>
+</tr>
+<tr>
+<td>notNull</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>yes</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>default</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>null</td>
+<td>1</td>
+<td>0</td>
+<td>null</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+<td>null</td>
+</tr>
+<tr>
+<td>autoIncrease</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="处理请求的逻辑"><a href="#处理请求的逻辑" class="headerlink" title="处理请求的逻辑"></a>处理请求的逻辑</h3><img src="http://gohoy.top/i/2023/08/04/r5tcvh-1.png" alt="image-20230804152329594" style="zoom: 67%;" />
+
+<h4 id="tomcat服务器如何把请求转发到对应的controller方法？"><a href="#tomcat服务器如何把请求转发到对应的controller方法？" class="headerlink" title="tomcat服务器如何把请求转发到对应的controller方法？"></a>tomcat服务器如何把请求转发到对应的controller方法？</h4><p>接下来以用户登录方法为例</p>
+<p>我们假设后端服务器的BASE_URL是<a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a></p>
+<ul>
+<li><p>前端使用POST请求访问了<a target="_blank" rel="noopener" href="http://localhost:8080/user/login%EF%BC%8C%E5%B9%B6%E4%B8%94%E6%90%BA%E5%B8%A6%E4%BA%86%E7%94%A8%E6%88%B7%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF">http://localhost:8080/user/login，并且携带了用户的基本信息</a></p>
+</li>
+<li><p>tomcat检测到请求，将请求转发给Springboot框架</p>
+</li>
+<li><p>SpringBoot框架通过你的注解找到对应这个url对应的方法</p>
+<ul>
+<li><p>这个方法位于controller&#x2F;user&#x2F;UserController.class下</p>
+</li>
+<li><p>UserController.class这个文件需要注解</p>
+<ul>
+<li><img src="http://gohoy.top/i/2023/08/04/r5tald-1.png" alt="image-20230804152933250" style="zoom: 67%;" />
+</li>
+<li><p><code>@CrossOrigin(&quot;*&quot;)</code></p>
+<p>允许跨域访问到这个方法</p>
+</li>
+<li><p><code>@ApiResponses</code></p>
+<p>插件Swagger的注解，用来整合所有api的信息，对于这个服务，可以在<a target="_blank" rel="noopener" href="http://localhost:8080/swagger-ui.html%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E6%B3%A8%E5%86%8C%E7%9A%84api%EF%BC%8C%E5%B9%B6%E6%B5%8B%E8%AF%95">http://localhost:8080/swagger-ui.html查看所有注册的api，并测试</a></p>
+</li>
+<li><p><code>@RestController()</code></p>
+<p>这个注解将这个类作为Restful风格的controller注册到SpringBoot框架中，</p>
+</li>
+<li><p><code>@RequestMapping(&quot;/user/&quot;)</code></p>
+<p>这个注解表示这个类接收url为<a target="_blank" rel="noopener" href="http://localhost:8080/user/%E7%9A%84%E4%BB%BB%E6%84%8F%E6%96%B9%E6%B3%95%E8%AF%B7%E6%B1%82">http://localhost:8080/user/的任意方法请求</a></p>
+</li>
+</ul>
+</li>
+<li><p>然后查看login的方法</p>
+<ul>
+<li><img src="http://gohoy.top/i/2023/08/04/r5t8ma-1.png" alt="image-20230804153323097" style="zoom:80%;" />
+</li>
+<li><p><code>@PostMapping(&quot;/login&quot;)</code></p>
+<p>表示这个方法处理<a target="_blank" rel="noopener" href="http://localhost:8080/user/login%E7%9A%84%E8%AF%B7%E6%B1%82">http://localhost:8080/user/login的请求</a></p>
+</li>
+<li><p><code>@ApiResponse(description = &quot;用户登录&quot;)</code></p>
+<p>注册这个方法到swagger管理页面中，这个api的描述为“用户登录”</p>
+</li>
+<li><p><code>@RequestBody User user</code></p>
+<p>这是需要传入这个函数的参数，对应前端携带的用户信息。并把这个用户信息生成一个User类的对象</p>
+</li>
+<li><p>接下来就是对user对象进行操作。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="controller具体逻辑的实现流程"><a href="#controller具体逻辑的实现流程" class="headerlink" title="controller具体逻辑的实现流程"></a>controller具体逻辑的实现流程</h4><p>以根据用户名获取用户数据这个api为例</p>
+<p><img src="http://gohoy.top/i/2023/08/04/r6hzsn-1.png" alt="image-20230804164347717"></p>
+<ul>
+<li>它的返回值是CommonResult，这是我自定义的类（utils&#x2F;CommonResult.class），用于规范像前端返回的数据格式。</li>
+<li>调用了UserService的getUserByName方法<ul>
+<li><strong><img src="http://gohoy.top/i/2023/08/04/r7oqsr-1.png" alt="image-20230804164546919"></strong></li>
+<li>UserService这里只定义了一个接口，没有进行实现</li>
+</ul>
+</li>
+<li>UserServiceImpl.class文件实现了UserService接口的方法<ul>
+<li><img src="http://gohoy.top/i/2023/08/04/r8urkd-1.png" style="zoom:67%;" /></li>
+</ul>
+</li>
+<li>UserServiceImpl中又调用了UserDao中的方法来从数据库查询用户<ul>
+<li><img src="http://gohoy.top/i/2023/08/04/r9dp3f-1.png"></li>
+<li>这里面什么都没写，因为它继承了BaseMapper类，BaseMapper是MyBatisPlus框架实现的类，其中已经有最基本的对数据库进行增删改查的方法。</li>
+</ul>
+</li>
+</ul>
+<h5 id="为什么要有这么多流程呢？直接把在controller文件中调用UserDao实现查询可以吗"><a href="#为什么要有这么多流程呢？直接把在controller文件中调用UserDao实现查询可以吗" class="headerlink" title="为什么要有这么多流程呢？直接把在controller文件中调用UserDao实现查询可以吗"></a>为什么要有这么多流程呢？直接把在controller文件中调用UserDao实现查询可以吗</h5><p>分出controller service dao三层是后端开发的规范，在比较复杂的后端逻辑时可以理清思路，便于实现。</p>
+<p>所以简单的业务逻辑是可以直接在controller实现的。</p>
+<h3 id="controller文件中实现api"><a href="#controller文件中实现api" class="headerlink" title="controller文件中实现api"></a>controller文件中实现api</h3><h4 id="一般的api，简单的增删改查"><a href="#一般的api，简单的增删改查" class="headerlink" title="一般的api，简单的增删改查"></a>一般的api，简单的增删改查</h4><h5 id="AdminPodController：管理员Pod管理api"><a href="#AdminPodController：管理员Pod管理api" class="headerlink" title="AdminPodController：管理员Pod管理api"></a><code>AdminPodController</code>：管理员Pod管理api</h5><ul>
+<li><code>/getAllPods/&#123;type&#125;)</code>：获取所有pod信息<ul>
+<li>使用kubernetesClient获取所有pod，将pod进行筛选，除去系统pod</li>
+<li>将剩下的pod每一个都构建成PodInfo的对象，返回List<PodInfo></li>
+</ul>
+</li>
+<li><code>/setCtrDefaultResource/</code>：设置默认的pod资源，需要传入PodResourceDTO对象<ul>
+<li>这个api实现的方法是：将podResourceDTO对象的属性存放在k8s集群中的configMap中。</li>
+</ul>
+</li>
+<li><code>/setVMDefaultResource/</code>：与<code>/setCtrDefaultResource/</code>同理</li>
+<li><code>/getDefaultConfig/&#123;type&#125;</code>：根据字符串type获取不同的configMap</li>
+</ul>
+<h5 id="AdminUserController：管理员用户管理api："><a href="#AdminUserController：管理员用户管理api：" class="headerlink" title="AdminUserController：管理员用户管理api："></a><code>AdminUserController</code>：管理员用户管理api：</h5><ul>
+<li><code>/getUserByName/&#123;username&#125;</code>：通过用户名从数据库查询该用户的信息</li>
+<li><code>/getUsersByPage/&#123;pageNum&#125;/&#123;pageSize&#125;</code>：分页获取全部用户，使用了MyBatisPlus内置的分页方法。</li>
+<li><code>/updateUser</code>：更新用户信息</li>
+<li><code>/deleteUser/&#123;id&#125;</code>：通过id删除用户</li>
+</ul>
+<h5 id="PodController：用户对pod的功能需求"><a href="#PodController：用户对pod的功能需求" class="headerlink" title="PodController：用户对pod的功能需求"></a><code>PodController</code>：用户对pod的功能需求</h5><ul>
+<li><code>/selectPodByUserName/&#123;username&#125;</code>：通过用户名查询该用户所拥有的pod。因为pod创建的时候的名称都是username-type-job-random的形式，这里通过把所有的pod导出，遍历筛选的方法获得目标。</li>
+<li><code>/deletePod/&#123;podName&#125;</code>：通过pod名称来删除pod</li>
+</ul>
+<h5 id="UserController：用户登录注册和其他对自己信息的管理"><a href="#UserController：用户登录注册和其他对自己信息的管理" class="headerlink" title="UserController：用户登录注册和其他对自己信息的管理"></a><code>UserController</code>：用户登录注册和其他对自己信息的管理</h5><ul>
+<li><code>/register</code>：传入用户名，密码，只要数据库中没有这个用户就进行插入。</li>
+<li><code>/getUserDTO/&#123;username&#125;</code>：通过用户名，获取除了密码以外的所有信息。</li>
+<li><code>/getIndex</code>：前端主页显示的内容，通过此处获取index.md进行展示</li>
+</ul>
+<h4 id="较为复杂的api逻辑分析"><a href="#较为复杂的api逻辑分析" class="headerlink" title="较为复杂的api逻辑分析"></a>较为复杂的api逻辑分析</h4><h5 id="PodController：用户对pod的功能需求-1"><a href="#PodController：用户对pod的功能需求-1" class="headerlink" title="PodController：用户对pod的功能需求"></a><code>PodController</code>：用户对pod的功能需求</h5><ul>
+<li><code>/createCtr/&#123;username&#125;</code>：用户开启一个pod<ul>
+<li>使用username获取用户信息，判断用户是否还有可用的pod数量。</li>
+<li>从configmap中获取该类型pod的资源数量</li>
+<li>按照资源限制依次创建PV，PVC，Service，Job。PV和PVC用来持久化用户信息，Service用来暴露pod的ssh端口，Job用来控制pod的属性（比如存活时间等）</li>
+<li>创建成功之后将clusterIp，sshPort，rootPassword返回。</li>
+</ul>
+</li>
+<li><code>/createVm/&#123;username&#125;</code>：TODO</li>
+</ul>
+<h5 id="UserController：用户登录注册和其他对自己信息的管理-1"><a href="#UserController：用户登录注册和其他对自己信息的管理-1" class="headerlink" title="UserController：用户登录注册和其他对自己信息的管理"></a><code>UserController</code>：用户登录注册和其他对自己信息的管理</h5><ul>
+<li><code>/login</code>：用户登录，传入username和password<ul>
+<li>首先验证用户名密码是否正确</li>
+<li>然后按照用户的username，isAdmin属性来使用jwt生成一个token。过期时间默认一周</li>
+<li>然后纠正用户可用的pod数量，因为当pod的job自然结束后，没有钩子函数能够通知我们去修改用户可用pod数量。所以这里在登录的时候进行扫描纠正。</li>
+<li>返回给前端token，前端在访问其他api的时候都需要在cookie中携带username和token</li>
+</ul>
+</li>
+</ul>
+<h3 id="kubevirt相关api实现的步骤"><a href="#kubevirt相关api实现的步骤" class="headerlink" title="kubevirt相关api实现的步骤"></a>kubevirt相关api实现的步骤</h3><h4 id="走通使用kubevirt进行创建虚拟机的过程，并选取一个最终实现的方案"><a href="#走通使用kubevirt进行创建虚拟机的过程，并选取一个最终实现的方案" class="headerlink" title="~~ 走通使用kubevirt进行创建虚拟机的过程，并选取一个最终实现的方案~~"></a>~~ 走通使用kubevirt进行创建虚拟机的过程，并选取一个最终实现的方案~~</h4><h5 id="将虚拟机镜像传给pvc，然后使用这个pvc创建一个vm（已完成）"><a href="#将虚拟机镜像传给pvc，然后使用这个pvc创建一个vm（已完成）" class="headerlink" title="将虚拟机镜像传给pvc，然后使用这个pvc创建一个vm（已完成）"></a><del>将虚拟机镜像传给pvc，然后使用这个pvc创建一个vm（已完成）</del></h5><h5 id="使用数据类型datavolume来创建虚拟机"><a href="#使用数据类型datavolume来创建虚拟机" class="headerlink" title="使用数据类型datavolume来创建虚拟机"></a><del>使用数据类型datavolume来创建虚拟机</del></h5><p><del>优势：可以通过一个模板来clone虚拟机。通过快照来保存虚拟机的数据</del></p>
+<p><del>但是从来没有用过这种方法。可行性待验证</del></p>
+<h4 id="通过kubevirt提供的api，实现这个方案"><a href="#通过kubevirt提供的api，实现这个方案" class="headerlink" title="~~ 通过kubevirt提供的api，实现这个方案~~"></a>~~ 通过kubevirt提供的api，实现这个方案~~</h4><h5 id="首先要对请求进行鉴权配置（已完成）"><a href="#首先要对请求进行鉴权配置（已完成）" class="headerlink" title="~~ 首先要对请求进行鉴权配置（已完成）~~"></a>~~ 首先要对请求进行鉴权配置（已完成）~~</h5><p><del>k8s默认api需要进行证书验证。所以如果直接访问api地址会被拦截。</del></p>
+<p><del>我仿照kubernetesClient进行了证书验证的操作。此项已完成</del></p>
+<h5 id="验证将pod配置序列化为请求体正常发送请求的方法"><a href="#验证将pod配置序列化为请求体正常发送请求的方法" class="headerlink" title="~~ 验证将pod配置序列化为请求体正常发送请求的方法~~"></a>~~ 验证将pod配置序列化为请求体正常发送请求的方法~~</h5><p><del>因为在api中，pod的配置全部都被放在请求体中，而Java存储这些配置的方法是生成一个类。</del></p>
+<p><del>这里需要去验证如何把类中的数据正确传递给k8s</del></p>
+<h4 id="kubevirt最终方案"><a href="#kubevirt最终方案" class="headerlink" title="kubevirt最终方案"></a>kubevirt最终方案</h4><p>使用脚本监听文件修改，通过监听文件修改来执行kubectl命令来进行虚拟机操作（当前使用的方案）</p>
+<pre><code class="sh">#!/bin/bash
+
+# 目标目录
+
+target_directory=&quot;/data/upload_pvc_commands&quot;
+
+# 启动监听
+
+inotifywait -m -e create -e moved_to &quot;$target_directory&quot; |
+    while read path action file; do
+        if [[ &quot;$file&quot; == *.vm ]]; then
+            vm_name=&quot;$&#123;file%.vm&#125;&quot;
+            echo $vm_name
+            IMAGE_PATH=&quot;/home/gohoy/iso/ubuntu-20.04.qcow2&quot;
+            PV_NAME=&quot;$vm_name-pv&quot;
+            PVC_NAME=&quot;$vm_name-pvc&quot;
+            PVC_SIZE=&quot;45Gi&quot;
+            UPLOADPROXY_URL=$(kubectl -n cdi get svc -l cdi.kubevirt.io=cdi-uploadproxy | awk &#39;/cdi-uploadproxy/ &#123;print $3&#125;&#39;)
+            WAIT_SECS=&quot;240&quot;
+            echo &quot;upload images to $PVC_NAME&quot;
+            sed -e &quot;4s/pv/$PV_NAME/; 14s/pv/$PV_NAME/; 19s/pv/$PV_NAME/; 29s/pv/$PV_NAME/&quot; /data/upload_pvc_commands/pv.yaml &gt;/data/upload_pvc_commands/tmppv.yaml
+            kubectl apply -f /data/upload_pvc_commands/tmppv.yaml
+            # sed -e &quot;4s/pvc/$PVC_NAME/; 11s/45Gi/$PVC_SIZE/ &quot; /data/upload_pvc_commands/pvc.yaml &gt;/data/upload_pvc_commands/tmppvc.yaml
+            chmod -R 777 /data/*
+            virtctl image-upload --image-path=&quot;$IMAGE_PATH&quot; --pvc-name=&quot;$PVC_NAME&quot; \
+                --pvc-size=&quot;$PVC_SIZE&quot; --uploadproxy-url=&quot;$UPLOADPROXY_URL&quot; \
+                --insecure --wait-secs=&quot;$WAIT_SECS&quot;
+
+             chmod -R 777 /data/*
+             virtctl image-upload --image-path=&quot;$IMAGE_PATH&quot; --pvc-name=&quot;$PVC_NAME&quot; \
+                --pvc-size=&quot;$PVC_SIZE&quot; --uploadproxy-url=&quot;$UPLOADPROXY_URL&quot; \
+                --insecure --wait-secs=&quot;$WAIT_SECS&quot;
+
+            echo &quot;upload images done&quot;
+            sed -e &quot;4s/vm/$vm_name/; 11s/vm/$vm_name/; 33s/pvc/$vm_name-pvc/&quot; /data/upload_pvc_commands/vm.yaml &gt;/data/upload_pvc_commands/tmpvm.yaml
+
+            kubectl apply -f /data/upload_pvc_commands/tmpvm.yaml
+            rm -f /data/upload_pvc_commands/$vm_name.vm
+
+        elif [[ &quot;$file&quot; == *.delete ]]; then
+            vm_name=&quot;$&#123;file%.delete&#125;&quot;
+            echo &quot;Deleting VM: $vm_name&quot;
+            kubectl delete vm &quot;$vm_name&quot;
+            kubectl delete pvc &quot;$vm_name-pvc&quot;
+            kubectl delete pv &quot;$vm_name-pv&quot;
+
+            rm -f &quot;$target_directory/$vm_name.delete&quot;
+
+        fi
+
+    done
+</code></pre>
+<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="前端代码包"><a href="#前端代码包" class="headerlink" title="前端代码包"></a>前端代码包</h3><p><img src="http://gohoy.top/i/2023/08/14/qm6mnh-1.png" alt="image-20230814160921521"></p>
+<ul>
+<li>node_modules：所有前端组件的目录。由npm管理</li>
+<li>public：放一些公共文件，比如网站的头像，index.html</li>
+<li>src：主要代码的存放处<ul>
+<li>assets：静态资源</li>
+<li>components：组件，需要重复使用的部分</li>
+<li>router：路由，管理页面的跳转</li>
+<li>views：主要的页面存放处</li>
+<li>App.vue：整个项目的入口</li>
+<li>main.js：整个项目的配置文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="前端文件的架构"><a href="#前端文件的架构" class="headerlink" title="前端文件的架构"></a>前端文件的架构</h3><img src="http://gohoy.top/i/2023/08/14/qqtpor-1.png" alt="image-20230814161708391" style="zoom:67%;" />
+
+<p>页面的入口是App.vue</p>
+<p>App.vue中的<code>   &lt;router-view&gt;&lt;/router-view&gt;</code>是这个页面被渲染的地方。</p>
+<h2 id="框架的使用说明"><a href="#框架的使用说明" class="headerlink" title="框架的使用说明"></a>框架的使用说明</h2><h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><p>NodeJs提供的包管理工具</p>
+<p>npm install <packageName> 安装某个包</p>
+<p>npm install 按照npm的配置文件package.json来安装所有依赖</p>
+<p>在前端项目中，需要Node注意版本。</p>
+<p>npm run <option> 将项目运行，一般会有 serve 和build 选项。前者用于开发。后者将项目打包，用于部署</p>
+<h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><p>vue ui：开启一个webCli来进行vue项目管理</p>
+<p>vue init <packageName> 创建一个vue项目（可以在web页面进行）</p>
+<h3 id="VueRouter"><a href="#VueRouter" class="headerlink" title="VueRouter"></a>VueRouter</h3><pre><code class="sh">npm install vue-router
+//在创建vue项目的时候可以选择直接安装
+</code></pre>
+<p>用于页面跳转，整合在整个vue项目中。</p>
+<pre><code class="js">//   router/index.js示例
+import &#123; createRouter, createWebHashHistory &#125; from &#39;vue-router&#39;
+import IndexView from &#39;@/views/indexView.vue&#39;
+const routes = [
+  &#123;
+    path: &#39;/index&#39;,
+    name: &#39;home&#39;,
+    component: IndexView
+  &#125;
+]
+
+const router = createRouter(&#123;
+  history: createWebHashHistory(),
+  routes
+&#125;)
+
+export default router
+</code></pre>
+<pre><code class="js">// main.js中需要配置如下
+import &#123; createApp &#125; from &#39;vue&#39;
+import App from &#39;./App.vue&#39;
+import router from &#39;./router&#39;
+
+const app = createApp(App);
+app.use(router).mount(&#39;#app&#39;)
+</code></pre>
+<p>这样之后，就可以访问项目地址&#x2F;index进入页面IndexView</p>
+<h3 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h3><pre><code class="sh">npm insatll axios
+</code></pre>
+<p>用于发送http请求</p>
+<pre><code class="js">import &#123; createApp &#125; from &#39;vue&#39;
+import App from &#39;./App.vue&#39;
+import router from &#39;./router&#39;
+import axios from &#39;axios&#39;
+axios.defaults.baseURL = &quot;http://localhost:8080/&quot;
+//设置基本路径，在之后的请求中不需要重复输入这段url
+axios.interceptors.request.use((config) =&gt; &#123;
+    const token = Cookies.get(&#39;token&#39;);
+    const username = Cookies.get(&#39;username&#39;);
+    if (token) &#123;
+        config.headers[&#39;Authorization&#39;] = token;
+    &#125;
+
+    if (username) &#123;
+        config.headers[&#39;X-Username&#39;] = username;
+    &#125;
+
+    config.headers[&#39;Referrer-Policy&#39;] = &#39;no-referrer&#39;
+    return config;
+&#125;);
+//这个interceptor用来解决跨域问题
+const app = createApp(App);
+app.config.globalProperties.$axios = axios
+app.config.globalProperties.$http = axios
+// 将axios的别名设置为$axios或者$http
+app.use(router).mount(&#39;#app&#39;)
+</code></pre>
+<p>示例使用</p>
+<pre><code class="js">        async handleLogin() &#123;
+            const response = await this.$axios.post(&#39;/user/login&#39;, this.userData).then(response =&gt; &#123;
+                if (response.data.code == &quot;200&quot;) &#123;
+                    Cookies.set(&#39;token&#39;, response.data.data);
+                    Cookies.set(&#39;username&#39;, this.userData.username);
+                    ElMessage.info(response.data.message)
+                    location.reload();
+                &#125; else &#123;
+                    ElMessage.error(response.data.message)
+                &#125;
+            &#125;)
+
+        &#125;,
+</code></pre>
+<p>这里使用post请求访问<a target="_blank" rel="noopener" href="http://localhost:8080/user/login%EF%BC%8C%E5%B9%B6%E5%9C%A8requestBody%E4%B8%AD%E6%90%BA%E5%B8%A6%E4%BA%86%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E4%BF%A1%E6%81%AF%E3%80%82%E5%B9%B6%E5%B0%86%E5%BE%97%E5%88%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC%E6%94%BE%E5%9C%A8response%E4%B8%AD%E3%80%82%E4%B9%8B%E5%90%8E%E8%BF%9B%E8%A1%8C%E6%93%8D%E4%BD%9C">http://localhost:8080/user/login，并在requestBody中携带了用户登录信息。并将得到的返回值放在response中。之后进行操作</a></p>
+<h3 id="ElementPlus"><a href="#ElementPlus" class="headerlink" title="ElementPlus"></a>ElementPlus</h3><p><a target="_blank" rel="noopener" href="https://element-plus.org/zh-CN/guide/quickstart.html#%E7%94%A8%E6%B3%95">查看官方使用文档</a></p>
+<h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><p>包配置文件在项目根目录的pom.xml中</p>
+<p>基本示例</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;3.1.2&lt;/version&gt;
+        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+    &lt;/parent&gt;
+    &lt;groupId&gt;com.example&lt;/groupId&gt;
+    &lt;artifactId&gt;home-gohoy-k8s_backend&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+    &lt;name&gt;demo&lt;/name&gt;
+    &lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
+    &lt;properties&gt;
+        &lt;java.version&gt;17&lt;/java.version&gt;
+    &lt;/properties&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-cloud-starter-kubernetes-fabric8-all&lt;/artifactId&gt;
+            &lt;version&gt;3.0.3&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+
+&lt;/project&gt;
+</code></pre>
+<p>主要需要添加依赖的是dependency标签。</p>
+<p>修改完成后，使用mvn install 进行安装依赖</p>
+<p>mvn package 按照build标签把项目进行打包，用于部署</p>
+<p>配置文件：一般是根目录的.m2&#x2F;setting.xml</p>
+<p>maven换源：</p>
+<pre><code class="xml">    &lt;mirror&gt;
+          &lt;id&gt;nexus-aliyun&lt;/id&gt;
+          &lt;name&gt;Nexus aliyun&lt;/name&gt;
+        &lt;mirrorOf&gt;external:*&lt;/mirrorOf&gt;
+          &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;
+      &lt;/mirror&gt;
+</code></pre>
+<p>在mirrors标签中加入这些即可</p>
+<h3 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h3><p>Maven包设置：</p>
+<pre><code class="xml">    &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+            &lt;version&gt;3.1.2&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
+            &lt;version&gt;3.1.0&lt;/version&gt;
+            &lt;scope&gt;compile&lt;/scope&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>配置：</p>
+<pre><code class="yaml">spring:
+  application:
+    name:k8s-web
+server:
+  port: 8080
+</code></pre>
+<p>主启动类的格式：</p>
+<pre><code class="java">@SpringBootApplication
+public class K8sWebMainApplication &#123;
+    public static void main(String[] args) &#123;
+        SpringApplication.run(K8sWebMainApplication.class, args);
+    &#125;
+&#125;
+</code></pre>
+<p>这些是最基本的，且不变的。</p>
+<p>可能会需要其他配置。在类名前加上不同的注解。</p>
+<p>运行这个类，SpringBoot就会在指定端口开启一个tomcat服务器用来接收http请求。（默认8080）</p>
+<p>配置文件默认在项目根目录&#x2F;resources&#x2F;application.yaml（或者application.application）</p>
+<h3 id="MyBatisPlus"><a href="#MyBatisPlus" class="headerlink" title="MyBatisPlus"></a>MyBatisPlus</h3><p>Maven包引用</p>
+<pre><code class="xml">    &lt;dependency&gt;
+            &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;
+            &lt;version&gt;3.5.3.1&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>用来简化SpringBoot和数据库的操作</p>
+<p>配置：</p>
+<pre><code class="yaml"># applicaiton.yaml
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+</code></pre>
+<p>这里配置了mapper的路径，让SpringBoot能够找到Mybatis的系列配置，但是基础的crud用不到这些mapper文件</p>
+<p>基础使用：</p>
+<pre><code class="java">// dao文件需要继承BaseMapper&lt;entity&gt;，里面实现的基础的crud
+@Table(name = &quot;users&quot;)
+public interface UserDao extends BaseMapper&lt;User&gt; &#123;
+&#125;
+</code></pre>
+<pre><code class="java">// service文件需要继承Iservice&lt;entity&gt;，里面定义了基本的crud接口
+public interface UserService extends IService&lt;User&gt; &#123;
+&#125;
+</code></pre>
+<pre><code class="java">// 在serviceImpl文件中继承 ServiceImpl&lt;Dao文件 , entity&gt; ，里面实现了Iservice&lt;entity&gt;的接口
+@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserDao , User&gt; implements UserService &#123;
+&#125;
+</code></pre>
+<h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><p>这里准备使用docker来启动</p>
+<p><code>docker run --name mysql  --restart=always -p 3306:3306 \ -e &quot;MYSQL_ROOT_PASSWORD=040424&quot; mysql </code></p>
+<p>修改远程连接：<code>update user set host=&#39;*&#39; where user=&#39;root&#39;&amp;&amp; host=&#39;localhost&#39;; flush privileges;</code></p>
+<p>然后使用可视化工具比如MySQLWorkBrench来进行表的设计和操作。</p>
+<p>Maven包配置</p>
+<pre><code class="xml">&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;version&gt;8.0.33&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>SpringBoot配置</p>
+<pre><code class="yam">spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/k8s?user=root&amp;password=040424&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+</code></pre>
+<p>这里主要要配置url。</p>
+<p>在这里配置之后，MyBatisPlus的curd操作就能够找到数据源</p>
+<h3 id="SpringCloudKubernetes"><a href="#SpringCloudKubernetes" class="headerlink" title="SpringCloudKubernetes"></a>SpringCloudKubernetes</h3><p>Maven 配置</p>
+<pre><code class="xml">        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-cloud-starter-kubernetes-fabric8-all&lt;/artifactId&gt;
+            &lt;version&gt;3.0.3&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>SpringBoot 配置</p>
+<pre><code class="yaml">spring:
+  cloud:
+    kubernetes:
+      discovery:
+        enabled: true
+</code></pre>
+<p>基本使用：首先要把k8s的配置文件默认在&#x2F;etc&#x2F;kubernetes&#x2F;admin.conf  复制到用户根目录的 .kube&#x2F;config</p>
+<p>然后开始编码：</p>
+<pre><code class="java">package com.example.home.gohoy.k8s_backend.config;
+
+import io.fabric8.kubernetes.client.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class KubernetesConfig &#123;
+
+    @Bean
+    public KubernetesClient kubernetesClient() &#123;
+        Config config = new ConfigBuilder().withMasterUrl(&quot;https://192.168.111.140:6443&quot;).build();
+        return new KubernetesClientBuilder().withConfig(config).build();
+    &#125;
+&#125;
+</code></pre>
+<p>这段代码将kubernetesClient注入到SpringBoot容器中，生成一个实例。</p>
+<p>然后使用的时候直接调用它提供的api</p>
+<pre><code class="java">   config = new Namespace();
+   ObjectMeta metadata = new ObjectMeta();
+   metadata.setName(&quot;default&quot;);
+   config.setMetadata(metadata);
+   kubernetesClient.resource(config).createOrReplace();
+</code></pre>
+<p>这段代码使用kubernetesClient创建了一个namespace config</p>
+<h3 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h3><p>用来生成token，来进行鉴权</p>
+<p>Maven配置</p>
+<pre><code class="xml">        &lt;dependency&gt;
+            &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+            &lt;artifactId&gt;jjwt-api&lt;/artifactId&gt;
+            &lt;version&gt;0.11.5&lt;/version&gt; &lt;!-- Replace with the latest version --&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+            &lt;artifactId&gt;jjwt-impl&lt;/artifactId&gt;
+            &lt;version&gt;0.11.5&lt;/version&gt; &lt;!-- Replace with the latest version --&gt;
+            &lt;scope&gt;runtime&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+            &lt;artifactId&gt;jjwt-jackson&lt;/artifactId&gt;
+            &lt;version&gt;0.11.5&lt;/version&gt; &lt;!-- Replace with the latest version --&gt;
+            &lt;scope&gt;runtime&lt;/scope&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>自定义一个JWTUtil.java</p>
+<pre><code class="java">package com.example.home.gohoy.k8s_backend.utils;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
+import java.security.Key;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+public class JWTUtils &#123;
+    private static final String SECRET_KEY = &quot;TheFurthestDistanceInTheWorldIsNotBetweenLifeAndDeathButWhenIStandInFrontOfYouYetYouDonNotKnowThatILoveYou&quot;;
+    // 生成JWT令牌
+    public static String generateToken(String username,byte isAdmin, long expirationMillis) &#123;
+        Date now = new Date();
+        Date expiration = new Date(now.getTime() + expirationMillis);
+        Map&lt;String, Object&gt; claims = new HashMap&lt;&gt;();
+        // 在claims中添加用户信息或其他声明
+        claims.put(&quot;username&quot;, username);
+        claims.put(&quot;isAdmin&quot;,isAdmin);
+        // 可以添加更多的声明，比如用户角色等
+        byte[] apiKeySecretBytes = SECRET_KEY.getBytes(StandardCharsets.UTF_8);
+        Key signingKey = new SecretKeySpec(apiKeySecretBytes, SignatureAlgorithm.HS256.getJcaName());
+        return Jwts.builder()
+                .setClaims(claims)
+                .setIssuedAt(now)
+                .setExpiration(expiration)
+                .signWith(signingKey)
+                .compact();
+    &#125;
+    // 验证JWT令牌，如果验证失败将抛出异常，否则返回声明（claims）
+    public static Claims verifyToken(String token) &#123;
+        byte[] apiKeySecretBytes = SECRET_KEY.getBytes(StandardCharsets.UTF_8);
+        Key signingKey = new SecretKeySpec(apiKeySecretBytes, SignatureAlgorithm.HS256.getJcaName());
+        return Jwts.parserBuilder()
+                .setSigningKey(signingKey)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+    &#125;
+&#125;
+</code></pre>
+<p>提供两个方法</p>
+<ul>
+<li>generateToken：使用用户的username和isAdmin字段和过期时间和自定义的Sercert_Key来混淆生成一个token</li>
+<li>verifyToken：将token进行解码，并返回</li>
+</ul>
+<p>基本使用：</p>
+<p>在登录成功后生成一个token，在接收到前端的请求时，使用token进行鉴权。</p>
+<h3 id="Lombok"><a href="#Lombok" class="headerlink" title="Lombok"></a>Lombok</h3><p>用来快速生成类的get set方法，快速标记链式编程等</p>
+<p>Maven配置：</p>
+<pre><code class="xml">        &lt;dependency&gt;
+            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+            &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+            &lt;version&gt;1.18.26&lt;/version&gt;
+            &lt;scope&gt;compile&lt;/scope&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>基本使用：</p>
+<pre><code class="java">package com.example.home.gohoy.k8s_backend.entities;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.example.home.gohoy.k8s_backend.dto.UserDTO;
+import jakarta.persistence.*;
+import lombok.Data;
+import java.sql.Timestamp;
+import java.util.Objects;
+@Data
+@Entity
+@TableName(&quot;users&quot;)
+@Table(name = &quot;users&quot;, schema = &quot;k8s&quot;)
+public class User  extends UserDTO&#123;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = &quot;id&quot;)
+    private int id;
+    @Basic
+    @Column(name = &quot;password&quot;)
+    private String password;
+&#125;
+</code></pre>
+<p>直接注解@Data</p>
+<p>自动为下面的属性id 和password生成get set方法</p>
+<h3 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h3><p>Maven配置</p>
+<pre><code class="xm">        &lt;dependency&gt;
+            &lt;groupId&gt;org.springdoc&lt;/groupId&gt;
+            &lt;artifactId&gt;springdoc-openapi-starter-webmvc-ui&lt;/artifactId&gt;
+            &lt;version&gt;2.0.4&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>基本使用：</p>
+<pre><code class="java">package com.example.home.gohoy.k8s_backend.controller.admin;
+
+import com.example.home.gohoy.k8s_backend.dao.UserDao;
+import com.example.home.gohoy.k8s_backend.dto.UserDTO;
+import com.example.home.gohoy.k8s_backend.entities.User;
+import com.example.home.gohoy.k8s_backend.service.user.UserService;
+import com.example.home.gohoy.k8s_backend.utils.CommonResult;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@CrossOrigin(&quot;*&quot;)
+@ApiResponse
+@RequestMapping(&quot;/admin/&quot;)
+public class AdminUserController &#123;
+    @Resource
+    private UserService userService;
+    @Resource
+    private UserDao userDao;
+    @GetMapping(&quot;/getUserByName/&#123;username&#125;&quot;)
+    @ApiResponse(description = &quot;通过参数userName获取user数据&quot;)
+    private CommonResult getUserByName(@PathVariable(&quot;username&quot;) String userName)&#123;
+  &#125;
+    @GetMapping(&quot;/getUsersByPage/&#123;pageNum&#125;/&#123;pageSize&#125;&quot;)
+    @ApiResponse(description = &quot;分页获取所有用户&quot;)
+    private CommonResult getUsers(@PathVariable(&quot;pageNum&quot;) int pageNum,@PathVariable(&quot;pageSize&quot;)int pageSize)&#123;
+    &#125;
+    @PostMapping(&quot;/updateUser&quot;)
+    @ApiResponse(description = &quot;更新用户信息&quot;)
+    public CommonResult updateUser(@RequestBody User user )&#123;
+
+    &#125;
+&#125;
+</code></pre>
+<p>@ApiResponses：标记这个类是定义了很多api</p>
+<p>@ApiResponse（description&#x3D;”这里是api的描述”）：标记这个方法是一个api</p>
+<p>然后在项目运行的url，例如：localhost:8080&#x2F;swagger-ui.html可以查看这些api，并且可以进行测试</p>
+<h3 id="Interceptor"><a href="#Interceptor" class="headerlink" title="Interceptor"></a>Interceptor</h3><p>Maven配置</p>
+<pre><code class="xml">&lt;!--		servlet--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+            &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
+            &lt;version&gt;4.0.1&lt;/version&gt; &lt;!-- Replace with the appropriate version --&gt;
+            &lt;scope&gt;provided&lt;/scope&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>Interceptor主要实现接口HandlerInterceptor的方法preHandle</p>
+<p>这个方法是在controller处理请求前执行的。</p>
+<pre><code class="java">package com.example.home.gohoy.k8s_backend.utils.interceptors;
+
+import com.example.home.gohoy.k8s_backend.utils.JWTUtils;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.HandlerInterceptor;
+import javax.servlet.http.HttpServletResponse;
+@Component
+public class AdminInterceptor implements HandlerInterceptor &#123;
+
+    @Override
+    public boolean preHandle(jakarta.servlet.http.HttpServletRequest request, jakarta.servlet.http.HttpServletResponse response, Object handler) throws Exception &#123;
+        if(request.getMethod().equals(&quot;OPTIONS&quot;))&#123;
+            return true;
+        &#125;
+        System.out.println(&quot;AdminInterceptor&quot;);
+        // 从请求头部获取 Authorization Cookie
+        String token = request.getHeader(&quot;Authorization&quot;);
+
+        if  (JWTUtils.verifyToken(token).get(&quot;isAdmin&quot;).equals(1))&#123;
+            return true;
+        &#125;else &#123;
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            return false;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>这段代码的逻辑，就在拦截请求，通过token来获取用户的username，然后从数据库查询是否存在admin权限。</p>
+<p>拦截器SpringBoot注入文件</p>
+<pre><code class="java">package com.example.home.gohoy.k8s_backend.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class InterceptorConfig implements WebMvcConfigurer &#123;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) &#123;
+        registry.addInterceptor(new AdminInterceptor())
+                .addPathPatterns(&quot;/admin/**&quot;);
+        registry.addInterceptor(new LoginInterceptor())
+                .addPathPatterns(&quot;/**&quot;)
+                .excludePathPatterns(&quot;/user/login&quot;, &quot;/user/register&quot;, &quot;/swagger-ui.html&quot;, &quot;/swagger-ui/**&quot;,
+                        &quot;/webjars/swagger-ui/**&quot;, &quot;/v3/api-docs/**&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>这里exludePathPatterns是排除的路径，防止登录注册和swagger页面不能进入。</p>
+<h3 id="HttpClient（当前项目弃用）"><a href="#HttpClient（当前项目弃用）" class="headerlink" title="HttpClient（当前项目弃用）"></a>HttpClient（当前项目弃用）</h3><p>用来发送http请求。</p>
+<p>使用的原因：Kubevirt的Api没有整合好的Java包，需要自己进行http请求</p>
+<p>Maven配置：</p>
+<pre><code class="xml">        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;
+            &lt;artifactId&gt;httpclient&lt;/artifactId&gt;
+            &lt;version&gt;4.5.14&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>进行kubevirt编程：</p>
+<p>1.鉴权：（是从kubernetesClient调试的来的）</p>
+<pre><code class="java">package com.example.home.gohoy.k8s_backend.utils;
+
+import com.example.home.gohoy.k8s_backend.entities.kubevirt.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.fabric8.kubernetes.client.KubernetesClientException;
+import jakarta.validation.constraints.NotNull;
+import okhttp3.*;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import org.springframework.stereotype.Component;
+
+import javax.net.ssl.*;
+import java.io.*;
+import java.security.*;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.RSAPrivateCrtKeySpec;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.stream.Collectors;
+
+@Component
+public class KubevirtUtil &#123;
+
+
+    private final String clientCertResource = &quot;&quot;;
+    private String caCertResource = &quot;&quot;;
+private TrustManager[] trustManagers;
+
+    public SSLContext preLoad() throws Exception &#123;
+//        System.out.println(caCertResource);
+//        System.out.println(clientCertResource);
+        String clientKeyResource = &quot;&quot;;
+//        System.out.println(clientKeyResource);
+        InputStream caCert = createInputStreamFromBase64EncodedString(caCertResource);
+        InputStream clientCert = createInputStreamFromBase64EncodedString(clientCertResource);
+        InputStream clientKey = createInputStreamFromBase64EncodedString(clientKeyResource);
+        TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+        KeyStore trustStore = KeyStore.getInstance(&quot;pkcs12&quot;);
+        char[] trustStorePassphrase = &quot;changeit&quot;.toCharArray();
+        trustStore.load(null);
+        while (caCert.available() &gt; 0) &#123;
+            CertificateFactory certFactory = CertificateFactory.getInstance(&quot;X509&quot;);
+            X509Certificate cert = (X509Certificate) certFactory.generateCertificate(caCert);
+            String alias = cert.getSubjectX500Principal().getName() + &quot;_&quot; + cert.getSerialNumber().toString(16);
+            trustStore.setCertificateEntry(alias, cert);
+        &#125;
+        tmf.init(trustStore);
+         trustManagers = tmf.getTrustManagers();
+      // clientKey clientCrt
+        CertificateFactory certFactory = CertificateFactory.getInstance(&quot;X509&quot;);
+        Collection&lt;? extends Certificate&gt; certificates = certFactory.generateCertificates(clientCert);
+        PrivateKey privateKey ;
+        byte[] keyBytes = decodePem(clientKey);
+        KeyFactory keyFactory = KeyFactory.getInstance(&quot;RSA&quot;);
+        try &#123;
+            // First let&#39;s try PKCS8
+            privateKey = keyFactory.generatePrivate(new PKCS8EncodedKeySpec(keyBytes));
+        &#125; catch (InvalidKeySpecException e) &#123;
+            // Otherwise try PKCS8
+            RSAPrivateCrtKeySpec keySpec = PKCS1Util.decodePKCS1(keyBytes);
+            privateKey= keyFactory.generatePrivate(keySpec);
+        &#125;
+        KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+        keyStore.load(null);
+        String alias = certificates.stream().map(cert-&gt;((X509Certificate)cert).getIssuerX500Principal().getName()).collect(Collectors.joining(&quot;_&quot;));
+        keyStore.setKeyEntry(alias, privateKey, trustStorePassphrase, certificates.toArray(new Certificate[0]));
+        KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+        kmf.init(keyStore, trustStorePassphrase);
+        KeyManager[] keyManagers = kmf.getKeyManagers();
+
+        //sslContext
+        SSLContext sslContext ;
+        try &#123;
+             sslContext = SSLContext.getInstance(&quot;TLSv1.2&quot;);
+            sslContext.init(keyManagers, trustManagers, new SecureRandom());
+        &#125; catch (KeyManagementException | NoSuchAlgorithmException e) &#123;
+            throw KubernetesClientException.launderThrowable(e);
+        &#125;
+        return sslContext;
+    &#125;
+
+    public String sendHttpRequest(@NotNull String method,@NotNull String path, Headers headers, RequestBody requestBody) throws Exception &#123;
+        SSLContext sslContext = preLoad();
+
+        OkHttpClient httpClient = new OkHttpClient.Builder()
+                .sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustManagers[0])
+                .hostnameVerifier((hostname, session) -&gt; true)
+                .build();
+
+        HttpUrl url = HttpUrl.parse(&quot;https://192.168.111.140:6443&quot; + path);
+        Request.Builder requestBuilder = new Request.Builder()
+                .url(url)
+                .method(method, requestBody);
+        System.out.println(url);
+
+        if (headers != null) &#123;
+            requestBuilder.headers(headers);
+        &#125;
+
+        Request request = requestBuilder.build();
+
+        try (Response response = httpClient.newCall(request).execute()) &#123;
+            ResponseBody responseBody = response.body();
+            if (responseBody != null) &#123;
+                String result = responseBody.string();
+                System.out.println(result);
+                return result;
+            &#125;
+        &#125; catch (IOException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+        return null;
+    &#125;
+
+
+
+    private static ByteArrayInputStream createInputStreamFromBase64EncodedString(String data) &#123;
+        byte[] bytes;
+        try &#123;
+            bytes = Base64.getDecoder().decode(data);
+        &#125; catch (IllegalArgumentException illegalArgumentException) &#123;
+            bytes = data.getBytes();
+        &#125;
+
+        return new ByteArrayInputStream(bytes);
+    &#125;
+
+    private static byte[] decodePem(InputStream keyInputStream) throws IOException &#123;
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(keyInputStream))) &#123;
+            String line;
+            while ((line = reader.readLine()) != null) &#123;
+                if (line.contains(&quot;-----BEGIN &quot;)) &#123;
+                    return readBytes(reader, line.trim().replace(&quot;BEGIN&quot;, &quot;END&quot;));
+                &#125;
+            &#125;
+            throw new IOException(&quot;PEM is invalid: no begin marker&quot;);
+        &#125;
+    &#125;
+    private static byte[] readBytes(BufferedReader reader, String endMarker) throws IOException &#123;
+        String line;
+        StringBuilder buf = new StringBuilder();
+
+        while ((line = reader.readLine()) != null) &#123;
+            if (line.contains(endMarker)) &#123;
+                return Base64.getDecoder().decode(buf.toString());
+            &#125;
+            buf.append(line.trim());
+        &#125;
+        throw new IOException(&quot;PEM is invalid : No end marker&quot;);
+    &#125;
+
+
+
+    public String getRequestBody() throws JsonProcessingException &#123;
+        HashMap&lt;String, String&gt; labels = new HashMap&lt;&gt;();
+        labels.put(&quot;slt&quot;, &quot;vm-test-1&quot;);
+
+        ArrayList&lt;Disk&gt; disks = new ArrayList&lt;&gt;();
+        disks.add(new Disk().setName(&quot;containerinit&quot;).setBootOrder(1)
+                .setDisk(new DiskTarget().setBus(&quot;virtio&quot;))
+        );
+        ArrayList&lt;Interface&gt; interfaces = new ArrayList&lt;&gt;();
+        interfaces.add(new Interface().setName(&quot;default&quot;).setMasquerade(&quot;&#123;&#125;&quot;));
+
+        ArrayList&lt;Network&gt; networks = new ArrayList&lt;&gt;();
+        networks.add(new Network().setName(&quot;default&quot;).setPod(new PodNetwork()));
+
+        ArrayList&lt;Volume&gt; volumes = new ArrayList&lt;&gt;();
+        volumes.add(new Volume()
+                .setName(&quot;containerinit&quot;)
+                .setPersistentVolumeClaim(
+                        new PersistentVolumeClaimVolumeSource()
+                                .setClaimName(&quot;euler-test-1&quot;)
+                )
+        );
+
+        VirtualMachine virtualMachine = new VirtualMachine();
+        virtualMachine.setApiVersion(&quot;kubevirt.io/v1&quot;)
+                .setKind(&quot;VirtualMachine&quot;)
+                .setMetadata(new ObjectMeta().setName(&quot;vm-test-1&quot;))
+                .setSpec(new VirtualMachineSpec().setRunning(true)
+                        .setTemplate(new VirtualMachineInstanceTemplateSpec()
+                                .setMetadata(new ObjectMeta()
+                                        .setNamespace(&quot;default&quot;)
+                                        .setLabels(labels)
+                                ).setSpec(
+                                        new VirtualMachineInstanceSpec()
+                                                .setDomain(
+                                                        new DomainSpec().setDevices(new Devices()
+                                                                .setAutoattachGraphicsDevice(true)
+                                                                .setDisks(disks)
+                                                                .setInterfaces(interfaces)
+                                                        ).setResources(new ResourceRequirements()
+                                                                .setRequests(new Requests()
+                                                                        .setCpu(&quot;2&quot;)
+                                                                        .setMemory(&quot;1G&quot;)
+                                                                )
+                                                        )
+                                                ).setNetworks(networks)
+                                                .setVolumes(volumes)
+                                )
+                        )
+                );
+        ObjectMapper objectMapper = new ObjectMapper();
+        String requestBody = objectMapper.writeValueAsString(virtualMachine);
+        System.out.println(requestBody);
+        return  requestBody;
+    &#125;
+
+    public String sendHttpRequest(String method, String path) throws Exception &#123;
+        return sendHttpRequest(method,path,null,null);
+    &#125;
+&#125;
+</code></pre>
+<p>这里的密钥是从k8s的config中复制得到</p>
+<p>鉴权操作主要是进行了证书的配置。</p>
+<p>2.调用kubevirt Api（弃用）</p>
+<p>遇到的困难：缺少一个完整kubevirt环境进行测试。</p>
+<p>3.实现kubevirt的方案：使用脚本监听文件修改来执行sh命令。</p>
+<h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><p>在部署的环境使用，可以查看<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/nginx-setup-intro.html">这篇教程</a></p>
+<h3 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h3><p>Docker用于作为k8s的container runtime</p>
+<p>以及最终项目的打包部署</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>可以参考一些文章。<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_52030824/article/details/127982206">vue+springboot docker部署</a></p>
+<p>基本步骤：</p>
+<p>前端vue 使用npm run build，得到打包后的文件dist，将这个文件放在docker内部nginx的指定目录下。</p>
+<p>后端springboot需要使用maven打包成jar包。打包过程参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sanjay/p/11828081.html">教程</a></p>
+<p>得到这些包之后，编写dockerfile 文件，将这些容器整合运行。</p>
+<ul>
+<li>打包得到前端和后端的最终文件</li>
+<li>docker Java17环境<ul>
+<li>将jar包放入这个镜像，使用Java -jar xxx.jar来运行后台包</li>
+</ul>
+</li>
+<li>docker MySQL8.0.32环境<ul>
+<li>将数据库文件写入容器中</li>
+</ul>
+</li>
+<li>docker Nginx环境<ul>
+<li>将前端打包文件放入此容器，然后编写nginx配置文件。</li>
+</ul>
+</li>
+</ul>
+<h3 id="实操步骤"><a href="#实操步骤" class="headerlink" title="实操步骤"></a>实操步骤</h3><ol>
+<li><p>后端配置好端口后使用maven的package命令打包，得到jar包</p>
+<ol>
+<li>修改端口，MySQL的url：把localhost修改成服务器ip</li>
+</ol>
+</li>
+<li><p>前端配置好端口后，使用npm build得到dist文件夹</p>
+<ol>
+<li>修改端口和后端的base_url：把base_url修改成服务器ip</li>
+</ol>
+</li>
+<li><p>然后docker拉取镜像openjdk:17  mysql:8.0.32  nginx:latest</p>
+</li>
+<li><p>然后写dockerfile文件，将jar包引入为镜像</p>
+<ol>
+<li><pre><code class="dockerfile"># 使用合适的 JDK 17 基础镜像
+FROM openjdk:17
+
+# 复制 jar 包到容器
+COPY home-gohoy-k8s_backend-0.0.1-SNAPSHOT.jar k8s_web.jar
+
+# 运行 jar 包
+CMD [&quot;java&quot;, &quot;-jar&quot;, &quot;/k8s_web.jar&quot;]
+
+# 暴露端口
+EXPOSE 8088
+</code></pre>
+</li>
+<li><p><code>docker build -t k8s-web-server:1.0 .</code></p>
+</li>
+<li><p>使用docker compose 配置项目需要的镜像的环境</p>
+<ol>
+<li><pre><code class="yaml">version: &quot;3&quot;
+services:
+  k8s-web:
+    image: k8s-web-server:1.0
+    ports:
+      - &quot;8088:8088&quot;
+    volumes:
+      - /data/upload_pvc_commands/:/data/upload_pvc_commands/
+      - /root/.kube/:/root/.kube/
+      - /home/gohoy/k8s_web_docker/assets/:/data/assets/
+  mysql:
+    image: mysql:8.0.32
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: &#39;040424&#39;
+      MYSQL_ALLOW_EMPTY_PASSWORD: &#39;no&#39;
+      MYSQL_DATABASE: &#39;k8s&#39;
+    ports:
+       - &quot;3306:3306&quot;
+    networks:
+      - k8s_web_network
+
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - &quot;80:80&quot;
+    volumes:
+      - /home/gohoy/k8s_web_docker/nginx/html:/usr/share/nginx/html
+      - /home/gohoy/k8s_web_docker/nginx/logs:/var/log/nginx
+      - /home/gohoy/k8s_web_docker/nginx/conf:/etc/nginx
+    networks:
+      - k8s_web_network
+
+# 创建自定义网络
+networks:
+   k8s_web_network:
+</code></pre>
+</li>
+<li><p>docker-compose up -d启动环境</p>
+</li>
+</ol>
+</li>
+<li><p>配置nginx</p>
+<ol>
+<li><p>在&#x2F;home&#x2F;gohoy&#x2F;k8s_web_docker&#x2F;nginx&#x2F;conf下配置nginx 的配置文件，nginx.conf 和 mime.types 是从容器里面copy出来的默认配置，如何在conf.d中放入 k8s_web.conf文件</p>
+</li>
+<li><pre><code class="conf">server &#123;
+    listen 80;
+    location / &#123;
+        root /usr/share/nginx/html/dist; # 根据您的目录配置
+        index index.html;
+    &#125;
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+&#125;
+</code></pre>
+</li>
+<li><p>把前端vue打包好的dist文件放在&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html&#x2F;下面</p>
+</li>
+</ol>
+</li>
+<li><p>配置MySQL</p>
+<ol>
+<li>直接在自己电脑使用MySQL work branch（或者同类工具如navicat）连接</li>
+<li>刷入sql脚本文件</li>
+</ol>
+</li>
+<li><p>启动主机上 <code>/home/gohoy/k8s_web_docker/watch_and_execute.sh</code>，这个脚本来监听&#x2F;data&#x2F;upload_pvc_commands&#x2F;文件夹，通过监听文件修改来执行kubevirt相关的命令</p>
+<ol>
+<li><pre><code class="sh">#!/bin/bash
+
+# 目标目录
+
+target_directory=&quot;/data/upload_pvc_commands&quot;
+
+# 启动监听
+
+inotifywait -m -e create -e moved_to &quot;$target_directory&quot; |
+    while read path action file; do
+        if [[ &quot;$file&quot; == *.vm ]]; then
+            vm_name=&quot;$&#123;file%.vm&#125;&quot;
+            echo $vm_name
+            IMAGE_PATH=&quot;/home/gohoy/iso/ubuntu-20.04.qcow2&quot;
+            PV_NAME=&quot;$vm_name-pv&quot;
+            PVC_NAME=&quot;$vm_name-pvc&quot;
+            PVC_SIZE=&quot;45Gi&quot;
+            UPLOADPROXY_URL=$(kubectl -n cdi get svc -l cdi.kubevirt.io=cdi-uploadproxy | awk &#39;/cdi-uploadproxy/ &#123;print $3&#125;&#39;)
+            WAIT_SECS=&quot;240&quot;
+            echo &quot;upload images to $PVC_NAME&quot;
+            sed -e &quot;4s/pv/$PV_NAME/; 14s/pv/$PV_NAME/; 19s/pv/$PV_NAME/; 29s/pv/$PV_NAME/&quot; /data/upload_pvc_commands/pv.yaml &gt;/data/upload_pvc_commands/tmppv.yaml
+            kubectl apply -f /data/upload_pvc_commands/tmppv.yaml
+            # sed -e &quot;4s/pvc/$PVC_NAME/; 11s/45Gi/$PVC_SIZE/ &quot; /data/upload_pvc_commands/pvc.yaml &gt;/data/upload_pvc_commands/tmppvc.yaml
+            chmod -R 777 /data/*
+            virtctl image-upload --image-path=&quot;$IMAGE_PATH&quot; --pvc-name=&quot;$PVC_NAME&quot; \
+                --pvc-size=&quot;$PVC_SIZE&quot; --uploadproxy-url=&quot;$UPLOADPROXY_URL&quot; \
+                --insecure --wait-secs=&quot;$WAIT_SECS&quot;
+
+             chmod -R 777 /data/*
+             virtctl image-upload --image-path=&quot;$IMAGE_PATH&quot; --pvc-name=&quot;$PVC_NAME&quot; \
+                --pvc-size=&quot;$PVC_SIZE&quot; --uploadproxy-url=&quot;$UPLOADPROXY_URL&quot; \
+                --insecure --wait-secs=&quot;$WAIT_SECS&quot;
+
+            echo &quot;upload images done&quot;
+            sed -e &quot;4s/vm/$vm_name/; 11s/vm/$vm_name/; 33s/pvc/$vm_name-pvc/&quot; /data/upload_pvc_commands/vm.yaml &gt;/data/upload_pvc_commands/tmpvm.yaml
+
+            kubectl apply -f /data/upload_pvc_commands/tmpvm.yaml
+            rm -f /data/upload_pvc_commands/$vm_name.vm
+
+        elif [[ &quot;$file&quot; == *.delete ]]; then
+            vm_name=&quot;$&#123;file%.delete&#125;&quot;
+            echo &quot;Deleting VM: $vm_name&quot;
+            kubectl delete vm &quot;$vm_name&quot;
+            kubectl delete pvc &quot;$vm_name-pvc&quot;
+            kubectl delete pv &quot;$vm_name-pv&quot;
+
+            rm -f &quot;$target_directory/$vm_name.delete&quot;
+
+        fi
+
+    done
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。也可以邮件至 2738430398@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2023- Gohoy
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/blog/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/blog/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+<div id="musicMouseDrag" style="position:fixed; z-index: 9999; bottom: 0; right: 0;">
+<div id="musicDragArea" style="position: absolute; top: 0; left: 0; width: 100%;height: 10px;cursor: move; z-index: 10;"></div>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=8700654240&auto=1&height=430"></iframe>
+</div>
+<!--以下代码是为了支持随时拖动音乐控件的位置，如没有需求，可去掉下面代码-->
+<script>
+var $DOC = $(document)
+$('#musicMouseDrag').on('mousedown', function (e) {
+// 阻止文本选中
+$DOC.bind("selectstart", function () {
+return false;
+});
+$('#musicDragArea').css('height', '100%');
+var $moveTarget = $('#musicMouseDrag');
+$moveTarget.css('border', '1px dashed grey')
+var div_x = e.pageX - $moveTarget.offset().left;
+var div_y = e.pageY - $moveTarget.offset().top;
+$DOC.on('mousemove', function (e) {
+var targetX = e.pageX - div_x;
+var targetY = e.pageY - div_y;
+targetX = targetX < 0 ? 0 : (targetX + $moveTarget.outerWidth() >= window.innerWidth) ? window.innerWidth - $moveTarget.outerWidth() : targetX;
+targetY = targetY < 0 ? 0 : (targetY + $moveTarget.outerHeight() >= window.innerHeight) ? window.innerHeight - $moveTarget.outerHeight() : targetY;
+$moveTarget.css({'left': targetX + 'px', 'top': targetY + 'px', 'bottom': 'inherit', 'right': 'inherit'})
+}).on('mouseup', function () {
+$DOC.unbind("selectstart");
+$DOC.off('mousemove')
+$DOC.off('mouseup')
+$moveTarget.css('border', 'none')
+$('#musicDragArea').css('height', '10px');
+})
+})
+</script>
+</html>
