@@ -6,21 +6,20 @@
   <meta name="keywords" content=" 概率论 , 掷筛 , NdS ">
   <meta name="description" content="游戏掷筛 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1. 背景因为使用obsidian的furigana插件来手动配置日语的假名太麻烦，我就想使用templater插件进行简化，但是还是几乎手动，提升很小，我就决定在网上找提供相关功能的接口，整合进来 2. 逆向接口我发现marumaru这个网站提供的功能正好是我想要的。网页比较简单，很简单就能获取到api浪费我很多时间的问题：header中必须包含的内容不全，导致返回的内容一直为空，也没有报错最终">
+<meta name="description" content="1. 背景杨老师希望我接受这个项目，并且能全部理解并加以开发和修改我自己也可以通过学习这个项目来增长自己的能力。 2. 项目介绍项目是标准的企业级spring cloud项目，包含多个服务，代码量大。 3. 服务学习3.1. auth：认证服务3.1.1. aspect包其中进行切片编程，简而言之：当你调用distributeResources2Role的时候会自动异步调用refreshRoleR">
 <meta property="og:type" content="article">
-<meta property="og:title" content="obsidian 配置日语注音">
-<meta property="og:url" content="https://gohoy.github.io/blog/2023/09/24/obsidian%20%E9%85%8D%E7%BD%AE%E6%97%A5%E8%AF%AD%E6%B3%A8%E9%9F%B3/index.html">
+<meta property="og:title" content="课外运动系统结构学习">
+<meta property="og:url" content="https://gohoy.github.io/blog/2023/09/27/%E8%AF%BE%E5%A4%96%E8%BF%90%E5%8A%A8%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1. 背景因为使用obsidian的furigana插件来手动配置日语的假名太麻烦，我就想使用templater插件进行简化，但是还是几乎手动，提升很小，我就决定在网上找提供相关功能的接口，整合进来 2. 逆向接口我发现marumaru这个网站提供的功能正好是我想要的。网页比较简单，很简单就能获取到api浪费我很多时间的问题：header中必须包含的内容不全，导致返回的内容一直为空，也没有报错最终">
+<meta property="og:description" content="1. 背景杨老师希望我接受这个项目，并且能全部理解并加以开发和修改我自己也可以通过学习这个项目来增长自己的能力。 2. 项目介绍项目是标准的企业级spring cloud项目，包含多个服务，代码量大。 3. 服务学习3.1. auth：认证服务3.1.1. aspect包其中进行切片编程，简而言之：当你调用distributeResources2Role的时候会自动异步调用refreshRoleR">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://gohoy.top/i/2023/09/24/ijo1qc-1.webp">
-<meta property="article:published_time" content="2023-09-24T02:18:35.195Z">
-<meta property="article:modified_time" content="2023-09-24T03:32:42.003Z">
+<meta property="article:published_time" content="2023-09-27T15:24:53.670Z">
+<meta property="article:modified_time" content="2023-10-07T07:49:11.271Z">
 <meta property="article:author" content="Gohoy">
-<meta property="article:tag" content="教程">
-<meta property="article:tag" content="obsidian">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="springboot">
+<meta property="article:tag" content="项目学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gohoy.top/i/2023/09/24/ijo1qc-1.webp">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -119,7 +118,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(22)</small>
+                <small>(26)</small>
             
         </div>
     </li>
@@ -176,7 +175,7 @@
         <div data-rel="日语">
             
             日语
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -221,7 +220,7 @@
         <div data-rel="Java">
             
             Java
-            <small>(3)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -256,8 +255,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="22">
-<input type="hidden" id="yelog_site_word_count" value="34.5k">
+<input type="hidden" id="yelog_site_posts_number" value="26">
+<input type="hidden" id="yelog_site_word_count" value="38.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -305,6 +304,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>动态规划</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>负载均衡</a>
             </li>
         
@@ -325,6 +328,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>牛客</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>千恋万花</a>
             </li>
         
@@ -342,6 +349,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>项目学习</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -397,6 +408,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SabbatOfTheWitch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>springboot</a>
             </li>
         
@@ -410,6 +425,42 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All Java "
+           href="/blog/2023/09/27/%E8%AF%BE%E5%A4%96%E8%BF%90%E5%8A%A8%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0/"
+           data-tag="Java,springboot,项目学习"
+           data-author="" >
+            <span class="post-title" title="课外运动系统结构学习">课外运动系统结构学习</span>
+            <span class="post-date" title="2023-09-27 23:24:53">2023/09/27</span>
+        </a>
+        
+        
+        <a  class="All Java "
+           href="/blog/2023/09/27/%E7%89%9B%E5%AE%A2101%E9%A2%98/"
+           data-tag="算法,数据结构,牛客"
+           data-author="" >
+            <span class="post-title" title="牛客101题">牛客101题</span>
+            <span class="post-date" title="2023-09-27 23:24:48">2023/09/27</span>
+        </a>
+        
+        
+        <a  class="All Java "
+           href="/blog/2023/09/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"
+           data-tag="Java,算法,动态规划"
+           data-author="" >
+            <span class="post-title" title="动态规划">动态规划</span>
+            <span class="post-date" title="2023-09-25 22:37:05">2023/09/25</span>
+        </a>
+        
+        
+        <a  class="All 日语 "
+           href="/blog/2023/09/25/sabbat%20of%20the%20witch/"
+           data-tag="SabbatOfTheWitch"
+           data-author="" >
+            <span class="post-title" title="Sabbat of the Witch">Sabbat of the Witch</span>
+            <span class="post-date" title="2023-09-25 14:09:35">2023/09/25</span>
+        </a>
         
         
         <a  class="All 日语 "
@@ -432,7 +483,7 @@
         
         <a  class="All Java "
            href="/blog/2023/09/19/%E7%AE%97%E6%B3%95/"
-           data-tag="Java,算法,leetcode,数据结构"
+           data-tag="Java,算法,数据结构,leetcode"
            data-author="" >
             <span class="post-title" title="leetcode刷题">leetcode刷题</span>
             <span class="post-date" title="2023-09-19 16:42:04">2023/09/19</span>
@@ -658,7 +709,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-09-23 23:36:28'>2023-08-30 14:28</time>
+            Created At : <time class="date" title='Updated At: 2023-09-25 23:24:59'>2023-08-30 14:28</time>
         
     </div>
     <div class="article-meta">
@@ -693,7 +744,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%88%B6%E4%B8%AD%E7%9A%84%E6%A6%82%E7%8E%87%E8%AE%BA"><span class="toc-text">游戏机制中的概率论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dota2%E4%B8%AD%E6%9A%B4%E5%87%BB%E7%8E%87%E7%9A%84%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%80%A7"><span class="toc-text">dota2中暴击率的伪随机性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E4%B8%ADNdS%E6%8E%B7%E9%AA%B0%E6%9C%BA%E5%88%B6"><span class="toc-text">游戏中NdS掷骰机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%B8%B8%E6%88%8F%E6%9C%BA%E5%88%B6%E4%B8%AD%E7%9A%84%E6%A6%82%E7%8E%87%E8%AE%BA"><span class="toc-text">1. 游戏机制中的概率论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%91%98%E8%A6%81"><span class="toc-text">1.1. 摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%89%8D%E8%A8%80"><span class="toc-text">1.2. 前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-dota2%E4%B8%AD%E6%9A%B4%E5%87%BB%E7%8E%87%E7%9A%84%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%80%A7"><span class="toc-text">1.2.1. dota2中暴击率的伪随机性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E6%B8%B8%E6%88%8F%E4%B8%ADNdS%E6%8E%B7%E9%AA%B0%E6%9C%BA%E5%88%B6"><span class="toc-text">1.2.2. 游戏中NdS掷骰机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%80%BB%E7%BB%93"><span class="toc-text">1.3. 总结</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -709,7 +760,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="游戏机制中的概率论"><a href="#游戏机制中的概率论" class="headerlink" title="游戏机制中的概率论"></a>游戏机制中的概率论</h2><h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><ul>
+        <h2 id="1-游戏机制中的概率论"><a href="#1-游戏机制中的概率论" class="headerlink" title="1. 游戏机制中的概率论"></a>1. 游戏机制中的概率论</h2><h3 id="1-1-摘要"><a href="#1-1-摘要" class="headerlink" title="1.1. 摘要"></a>1.1. 摘要</h3><ul>
 <li><p><strong>前言</strong></p>
 </li>
 <li><p><strong>dota2中暴击率的伪随机性</strong></p>
@@ -733,9 +784,9 @@
 <li><p><strong>总结</strong></p>
 </li>
 </ul>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在互联网上，充斥着各种抽奖活动：拼多多的一分钱抽奖，微信抽奖，游戏抽奖等等。但是我们能感受到的是：游戏中中奖的概率似乎要高于微信或者拼多多等抽奖的概率。（因为我从未在游戏以外活动中抽到过奖励）。也考虑到游戏如果也和生活中的抽奖那样抽奖都是独立事件，那么运气影响的部分过高，竞技性就会降低，难以留住像我这样的“非酋玩家”。所以游戏中的概率一定不是真随机。</p>
+<h3 id="1-2-前言"><a href="#1-2-前言" class="headerlink" title="1.2. 前言"></a>1.2. 前言</h3><p>在互联网上，充斥着各种抽奖活动：拼多多的一分钱抽奖，微信抽奖，游戏抽奖等等。但是我们能感受到的是：游戏中中奖的概率似乎要高于微信或者拼多多等抽奖的概率。（因为我从未在游戏以外活动中抽到过奖励）。也考虑到游戏如果也和生活中的抽奖那样抽奖都是独立事件，那么运气影响的部分过高，竞技性就会降低，难以留住像我这样的“非酋玩家”。所以游戏中的概率一定不是真随机。</p>
 <p>下面就是我通过搜索资料了解到的一些游戏中的概率模型机制。   </p>
-<h4 id="dota2中暴击率的伪随机性"><a href="#dota2中暴击率的伪随机性" class="headerlink" title="dota2中暴击率的伪随机性"></a>dota2中暴击率的伪随机性</h4><p>                                 表1 在裸出一个水晶剑（30暴击率）情况下的20次暴击图表</p>
+<h4 id="1-2-1-dota2中暴击率的伪随机性"><a href="#1-2-1-dota2中暴击率的伪随机性" class="headerlink" title="1.2.1. dota2中暴击率的伪随机性"></a>1.2.1. dota2中暴击率的伪随机性</h4><p>                                 表1 在裸出一个水晶剑（30暴击率）情况下的20次暴击图表</p>
 <img title="" src="https://gohoy.top/i/2023/09/04/vn14tu-1.png" alt="" width="825">
 
 <p>暴击率的平均值为0.28与30较为接近。</p>
@@ -835,7 +886,7 @@ C(0.95) = 0.947368421052631578947368421`
 之前连续6次未触发,之后平均需要2.4924次攻击才能触发暴击/眩晕
 之前连续7次未触发,之后平均需要2.1826次攻击才能触发暴击/眩晕
 </code></pre>
-<h4 id="游戏中NdS掷骰机制"><a href="#游戏中NdS掷骰机制" class="headerlink" title="游戏中NdS掷骰机制"></a><a target="_blank" rel="noopener" href="http://www.redblobgames.com/articles/probability/damage-rolls.html">游戏中NdS掷骰机制</a></h4><p><img src="https://gohoy.top/i/2023/09/04/vn2dmq-1.png"></p>
+<h4 id="1-2-2-游戏中NdS掷骰机制"><a href="#1-2-2-游戏中NdS掷骰机制" class="headerlink" title="1.2.2. 游戏中NdS掷骰机制"></a>1.2.2. <a target="_blank" rel="noopener" href="http://www.redblobgames.com/articles/probability/damage-rolls.html">游戏中NdS掷骰机制</a></h4><p><img src="https://gohoy.top/i/2023/09/04/vn2dmq-1.png"></p>
 <p><strong>NdS</strong>表示投掷S面的骰子N次，累加结果。比如1d12表示投掷一个12面骰子一次，3d4表示投掷一个4面骰子3次。</p>
 <p><strong>机制1</strong>：可以通过此机制使概率出现更平稳（2d12）或者更看运气（12d2）来满足不同需要。</p>
 <p><img src="https://gohoy.top/i/2023/09/04/vn2k35-1.png"></p>
@@ -869,7 +920,7 @@ C(0.95) = 0.947368421052631578947368421`
 <p><img src="https://gohoy.top/i/2023/09/04/vn5n9h-1.png"></p>
 <p>图3.1.1                                                           1d12偏大</p>
 <p><img src="https://gohoy.top/i/2023/09/04/vn5sr5-1.png"></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上的概率模型可以用在很多场景：比如随机奖励，抽卡机制，暴击机制等。</p>
+<h3 id="1-3-总结"><a href="#1-3-总结" class="headerlink" title="1.3. 总结"></a>1.3. 总结</h3><p>以上的概率模型可以用在很多场景：比如随机奖励，抽卡机制，暴击机制等。</p>
 <p>游戏一般都会对玩家的抽奖概率做保护机制，因此出现了“大保底””小保底“之类的名词。通过给玩家一个目标来激励玩家的抽奖消费策略。</p>
 <p>同时也警示我们，不要轻信网络上的抽奖活动或者中奖信息，防止被骗。</p>
 <p>另外：计算机在软件层面只能产生假随机。只有在硬件层面，通过量子力学或者噪声等方法才可能实现真正的真随机。</p>

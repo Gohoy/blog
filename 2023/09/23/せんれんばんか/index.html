@@ -6,21 +6,20 @@
   <meta name="keywords" content=" 千恋万花 ">
   <meta name="description" content="千恋万花学日语笔记 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1. 背景因为使用obsidian的furigana插件来手动配置日语的假名太麻烦，我就想使用templater插件进行简化，但是还是几乎手动，提升很小，我就决定在网上找提供相关功能的接口，整合进来 2. 逆向接口我发现marumaru这个网站提供的功能正好是我想要的。网页比较简单，很简单就能获取到api浪费我很多时间的问题：header中必须包含的内容不全，导致返回的内容一直为空，也没有报错最终">
+<meta name="description" content="1. 背景杨老师希望我接受这个项目，并且能全部理解并加以开发和修改我自己也可以通过学习这个项目来增长自己的能力。 2. 项目介绍项目是标准的企业级spring cloud项目，包含多个服务，代码量大。 3. 服务学习3.1. auth：认证服务3.1.1. aspect包其中进行切片编程，简而言之：当你调用distributeResources2Role的时候会自动异步调用refreshRoleR">
 <meta property="og:type" content="article">
-<meta property="og:title" content="obsidian 配置日语注音">
-<meta property="og:url" content="https://gohoy.github.io/blog/2023/09/24/obsidian%20%E9%85%8D%E7%BD%AE%E6%97%A5%E8%AF%AD%E6%B3%A8%E9%9F%B3/index.html">
+<meta property="og:title" content="课外运动系统结构学习">
+<meta property="og:url" content="https://gohoy.github.io/blog/2023/09/27/%E8%AF%BE%E5%A4%96%E8%BF%90%E5%8A%A8%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1. 背景因为使用obsidian的furigana插件来手动配置日语的假名太麻烦，我就想使用templater插件进行简化，但是还是几乎手动，提升很小，我就决定在网上找提供相关功能的接口，整合进来 2. 逆向接口我发现marumaru这个网站提供的功能正好是我想要的。网页比较简单，很简单就能获取到api浪费我很多时间的问题：header中必须包含的内容不全，导致返回的内容一直为空，也没有报错最终">
+<meta property="og:description" content="1. 背景杨老师希望我接受这个项目，并且能全部理解并加以开发和修改我自己也可以通过学习这个项目来增长自己的能力。 2. 项目介绍项目是标准的企业级spring cloud项目，包含多个服务，代码量大。 3. 服务学习3.1. auth：认证服务3.1.1. aspect包其中进行切片编程，简而言之：当你调用distributeResources2Role的时候会自动异步调用refreshRoleR">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://gohoy.top/i/2023/09/24/ijo1qc-1.webp">
-<meta property="article:published_time" content="2023-09-24T02:18:35.195Z">
-<meta property="article:modified_time" content="2023-09-24T03:32:42.003Z">
+<meta property="article:published_time" content="2023-09-27T15:24:53.670Z">
+<meta property="article:modified_time" content="2023-10-07T07:49:11.271Z">
 <meta property="article:author" content="Gohoy">
-<meta property="article:tag" content="教程">
-<meta property="article:tag" content="obsidian">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="springboot">
+<meta property="article:tag" content="项目学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gohoy.top/i/2023/09/24/ijo1qc-1.webp">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -119,7 +118,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(22)</small>
+                <small>(26)</small>
             
         </div>
     </li>
@@ -176,7 +175,7 @@
         <div data-rel="日语">
             
             日语
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -221,7 +220,7 @@
         <div data-rel="Java">
             
             Java
-            <small>(3)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -256,8 +255,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="22">
-<input type="hidden" id="yelog_site_word_count" value="34.5k">
+<input type="hidden" id="yelog_site_posts_number" value="26">
+<input type="hidden" id="yelog_site_word_count" value="38.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -305,6 +304,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>动态规划</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>负载均衡</a>
             </li>
         
@@ -325,6 +328,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>牛客</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>千恋万花</a>
             </li>
         
@@ -342,6 +349,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>项目学习</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -397,6 +408,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SabbatOfTheWitch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>springboot</a>
             </li>
         
@@ -410,6 +425,42 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All Java "
+           href="/blog/2023/09/27/%E8%AF%BE%E5%A4%96%E8%BF%90%E5%8A%A8%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0/"
+           data-tag="Java,springboot,项目学习"
+           data-author="" >
+            <span class="post-title" title="课外运动系统结构学习">课外运动系统结构学习</span>
+            <span class="post-date" title="2023-09-27 23:24:53">2023/09/27</span>
+        </a>
+        
+        
+        <a  class="All Java "
+           href="/blog/2023/09/27/%E7%89%9B%E5%AE%A2101%E9%A2%98/"
+           data-tag="算法,数据结构,牛客"
+           data-author="" >
+            <span class="post-title" title="牛客101题">牛客101题</span>
+            <span class="post-date" title="2023-09-27 23:24:48">2023/09/27</span>
+        </a>
+        
+        
+        <a  class="All Java "
+           href="/blog/2023/09/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"
+           data-tag="Java,算法,动态规划"
+           data-author="" >
+            <span class="post-title" title="动态规划">动态规划</span>
+            <span class="post-date" title="2023-09-25 22:37:05">2023/09/25</span>
+        </a>
+        
+        
+        <a  class="All 日语 "
+           href="/blog/2023/09/25/sabbat%20of%20the%20witch/"
+           data-tag="SabbatOfTheWitch"
+           data-author="" >
+            <span class="post-title" title="Sabbat of the Witch">Sabbat of the Witch</span>
+            <span class="post-date" title="2023-09-25 14:09:35">2023/09/25</span>
+        </a>
         
         
         <a  class="All 日语 "
@@ -432,7 +483,7 @@
         
         <a  class="All Java "
            href="/blog/2023/09/19/%E7%AE%97%E6%B3%95/"
-           data-tag="Java,算法,leetcode,数据结构"
+           data-tag="Java,算法,数据结构,leetcode"
            data-author="" >
             <span class="post-title" title="leetcode刷题">leetcode刷题</span>
             <span class="post-date" title="2023-09-19 16:42:04">2023/09/19</span>
@@ -654,12 +705,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-09-24 14:37:38'>2023-09-23 00:39</time>
+            Created At : <time class="date" title='Updated At: 2023-09-25 23:23:37'>2023-09-23 00:39</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:850</span>
+        <span>Count:1.5k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -705,137 +756,318 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><ruby>千<rt>せん</rt></ruby><ruby>恋<rt>れん</rt></ruby><ruby>万<rt>ばん</rt></ruby><ruby>花<rt>か</rt></ruby></p>
-<p>お <ruby>客<rt>きゃく</rt></ruby> さん　 （尊敬的）客人</p>
-<p><strong>なんですか</strong>　什么事，怎么了？</p>
-<div><ruby><rb>飛</rb><rt>と</rt></ruby>ぶ<ruby><rb>起</rb><rt>お</rt></ruby>きた<ruby><rb>俺</rb><rt>おれ</rt></ruby>は、<ruby><rb>前</rb><rt>まえ</rt></ruby>に<ruby><rb>座</rb><rt>ざ</rt></ruby>つている<ruby><rb>運転</rb><rt>うんてん</rt></ruby><ruby><rb>手</rb><rt>しゅ</rt></ruby>に<ruby><rb>返事</rb><rt>へんじ</rt></ruby>をする</div>
-
-<p>飛（と）ぶ　飞</p>
-<p>起（お）きる　起来，立起来</p>
-<p>俺（おれ）　我，俺，咱，男性对同辈或晚辈自称</p>
-<p>前（まえ）に　前方</p>
-<p>座（ざ）　座位，地位</p>
-<p>運（うん）転（てん）　开，驾驶，运转</p>
-<p>運転手　驾驶员</p>
-<p>返（へん）事（じ）　答应，回答，回话</p>
-<div>そろそろ<ruby><rb>着</rb><rt>つ</rt></ruby>きますけど、どこでとめますか</div>　就快要到了，要到哪里下车呢
-
-<p>そろそろ　就要，快要，慢慢地</p>
-<p>着（つ）き：着（つ）く　抵达</p>
-<p>けど　<ruby><rt>けど</rt></ruby>但是</p>
-<p>どこ　何处</p>
-<p>止（と）める　停止</p>
-<p><strong>そうでしたね</strong>　确实（表示同意对方的话语）</p>
-<div><ruby><rb>電車</rb><rt>でんしゃ</rt></ruby>を<ruby><rb>降</rb><rt>お</rt></ruby>りて、<ruby><rb>駅前</rb><rt>えきまえ</rt></ruby>でタクシー<ruby><rb>捕</rb><rt>つか</rt></ruby>まえたものの、いつの<ruby><rb>間</rb><rt>ま</rt></ruby>にかうたたねしていたらしい</div>
-
-<p>電（でん）車（しゃ）　火车</p>
-<p>降（お）りる　下车</p>
-<p>駅（えき）前（まえ）　车站旁边</p>
-<p>タクシー　taxi</p>
-<p>捕（つか）まえる　抓到</p>
-<p>ものの　还不到，还没有，仅仅，用不了</p>
-<p>いつの間（あいだ、ま）にか　不知不觉　</p>
-<p>うたたね　打盹</p>
-<p>ちしい　助词，表示猜测</p>
-<div>まだ<ruby><rb>大雑把</rb><rt>おおざっぱ</rt></ruby>な<ruby><rb>目的</rb><rt>もくてき</rt></ruby><ruby><rb>地</rb><rt>ち</rt></ruby>しか<ruby><rb>伝</rb><rt>つた</rt></ruby>えていなかつたのを<ruby><rb>思</rb><rt>おも</rt></ruby>いでした</div>
-
-<p>まだ　还，仍</p>
-<p>大（おお）雑（ざつ）把（ぱ）　大概，粗略</p>
-<p>目（もく）的（てき）地（ち）　目的地</p>
-<p>しか　只，仅仅</p>
-<p>伝（でん）える　转告</p>
-<p>思いで　回忆起</p>
-<p><strong>志那都荘まで行つて欲しいんですけど</strong></p>
-<p>荘（そう）：　旅馆</p>
-<p>まで：　直到…为止</p>
-<p>つ：　直到</p>
-<p>欲（ほ）しい：　想要，希望，愿意</p>
-<p>けど：　但是</p>
-<p><strong>アタシはここいらに詳しくないんです</strong></p>
-<p>アタシ：　私</p>
-<p>ここ：　这里</p>
-<p>いら：　等等，诸如此类，等级</p>
-<p>詳（くわ）しく：　详细，精通，熟悉</p>
-<p>ないんです：　否定</p>
-<p><strong>ですからね…奥まで行くのは勘弁してもらえませんか</strong>   所以，能不能饶了我，不要在向里面走了</p>
-<p>ですからね：　所以，因此</p>
-<p>奥：　里头，内部，尽头</p>
-<p>勘（かん）弁（べん）：　饶恕</p>
-<p>勘弁して：　饶了我吧</p>
-<p><strong>サービスの悪い運転手だ</strong></p>
-<p>サービス：　 service</p>
-<p>悪（わる）い：　不好</p>
-<p><strong>それが顔に出ていたのか、運転手が愛想笑いを浮かべながら言葉を続ける</strong></p>
-<p>顔（かお）：　表情，脸色，脸</p>
-<p>愛（あい）想（そ）笑（わら）い：　讨好的笑，谄笑</p>
-<p>浮かべ：　出现</p>
-<p>ながら：　一边，一边</p>
-<p>言（こと）葉（ば）：　语言，话语</p>
-<p>続（つづ）ける：　继续，连续</p>
-<p><strong>本当にすみませんえ</strong></p>
-<p><strong>…わかりました。じゃあ、ここでいいです</strong></p>
-<p><strong>ありがとうございます</strong></p>
-<p><strong>タクシーが止まり、俺は精算を済ませて、タクシーを降りる</strong></p>
-<p>止（と）まり：　停下</p>
-<p>精（せい）算（さん）：　细算，补交</p>
-<p>済（す）ませて：　完，结束</p>
-<p>降りる：　下</p>
-<p><strong>わざわざイヌシキの土地に祭りを見に行きるなんて、不心得者が増えたもんだよ、</strong></p>
-<p>わざわざ：　特地</p>
-<p>イヌシキ：	游戏内专用的，犬式，表示不祥之地吧</p>
-<p>土（と）地（ち）：　地方，土地</p>
-<p>祭（まつ）り：　祭祀，祭日</p>
-<p>見（み）に：　看</p>
-<p>不（ふ）：　没有</p>
-<p>心（こころ）得（え）：    经验，知识，心得，体会</p>
-<p>者（もの）：　…的人</p>
-<p>増（ふ）える：　增加</p>
-<p><strong>降り間際に聞こえてきた呟き</strong></p>
-<p>間（ま）際（ぎわ）：　正要…的时候，快要…以前</p>
-<p>聞（き）こえる：　听得见，能听到，闻名</p>
-<p>呟（つぶや）き：　嘟哝，嘟囔</p>
-<p><strong>無視して、そのまま外に出た</strong></p>
-<p>無（む）視（し）：　无视</p>
-<p>した：　接着，之后</p>
-<p>そのまま：　就这样</p>
-<p>外（そと）：　外面</p>
-<p><strong>まだ距離があるけど…ま、いっか。久しぶりだし歩こう</strong></p>
-<p>距（きょ）離（り）：　距离</p>
-<p>ある：　有，持有，存在</p>
-<p>いっか：　算了</p>
-<p>久しぶり：　久违，好久</p>
-<p><strong>息を吐き、両手を腰に当てて、大きく背をのけ反らせる</strong></p>
-<p>息（いき）：　喘气，呼吸</p>
-<p>吐（は）き：　吐出</p>
-<p>腰（こし）</p>
-<p>両（りょう）手（て）</p>
-<p>当（あ）てる：　贴上，放上，打，碰，撞</p>
-<p>のけ反（ぞ）らせる：　使背向后伸展</p>
-<p><strong>ずっと座っていたせいか、腰の辺りでポキポキと骨が鳴った</strong></p>
-<p>せい：　的缘故</p>
-<p>か：　或者</p>
-<p>辺（あた）り：　周围，大约</p>
-<p>ポキポキ：　拟声词，嘎巴嘎巴</p>
-<p>骨（ほね）</p>
-<p>鳴（な）る：　（非生物）鸣，响</p>
-<p><strong>つかれた</strong> 累了</p>
-<p><strong>家を出て、電車を乗り継ぎ約２時間</strong></p>
-<p>家（いえ）</p>
-<p>乗（の）り継（つ）ぎ：接着乘坐</p>
-<p>約（やく）</p>
-<p>時（じ）間（かｎ）</p>
-<p><strong>そしてタクシーを使って約30分</strong></p>
-<p>そして：　然后</p>
-<p>使う：　使用</p>
-<p><strong>青々とた木々ばかりの面白味のない風景の峠道を抜け、ようやく辿り着いた穂織の町</strong></p>
-<p>木々（きぎ）：　树木</p>
-<p>面（おも）白（しろ）味（み）：　愉快的</p>
-<p>風（ふう）景（けい）：　风景</p>
-<p>峠（とうげ）道（みち）：　盘山公路</p>
-<p>抜け：　穿过，溜走</p>
-<p>ようやく：　渐渐的</p>
-<p>辿（たど）り着（つ）く：　挣扎地走到</p>
-<p>穂（みのる）織（おり）の町（まち）：　穗织镇</p>
+        <ul>
+<li><ruby>千<rt>せん</rt></ruby><ruby>恋<rt>れん</rt></ruby><ruby>万<rt>ばん</rt></ruby><ruby>花<rt>か</rt></ruby></li>
+<li>お<ruby>客<rt>きゃく</rt></ruby>さん　 </li>
+<li>なんですか　</li>
+<li><ruby><rb>飛</rb><rt>と</rt></ruby>ぶ<ruby><rb>起</rb><rt>お</rt></ruby>きた<ruby><rb>俺</rb><rt>おれ</rt></ruby>は、<ruby><rb>前</rb><rt>まえ</rt></ruby>に<ruby><rb>座</rb><rt>ざ</rt></ruby>つている<ruby><rb>運転</rb><rt>うんてん</rt></ruby><ruby><rb>手</rb><rt>しゅ</rt></ruby>に<ruby><rb>返事</rb><rt>へんじ</rt></ruby>をする<ul>
+<li>飛ぶ　飞</li>
+<li>起きる　起来，立起来</li>
+<li>俺　我，俺，咱，男性对同辈或晚辈自称</li>
+<li>前（まえ）に　前方</li>
+<li>座（ざ）　座位，地位</li>
+<li>運（うん）転（てん）　开，驾驶，运转</li>
+<li>運転手　驾驶员</li>
+<li>返（へん）事（じ）　答应，回答，回话</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>そろそろ<ruby><rb>着</rb><rt>つ</rt></ruby>きますけど、どこでとめますか就快要到了，要到哪里下车呢<ul>
+<li>そろそろ　就要，快要，慢慢地</li>
+<li>着（つ）き：着（つ）く　抵达</li>
+<li>けど　但是</li>
+<li>どこ　何处</li>
+<li>止（と）める　停止</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>そうでしたね　确实（表示同意对方的话语）</li>
+<li><ruby><rb>電車</rb><rt>でんしゃ</rt></ruby>を<ruby><rb>降</rb><rt>お</rt></ruby>りて、<ruby><rb>駅前</rb><rt>えきまえ</rt></ruby>でタクシー<ruby><rb>捕</rb><rt>つか</rt></ruby>まえたものの、いつの<ruby><rb>間</rb><rt>ま</rt></ruby>にかうたたねしていたらしい<ul>
+<li>電車　火车</li>
+<li>降りる　下车</li>
+<li>駅前　车站旁边</li>
+<li>タクシー　taxi</li>
+<li>捕まえる　抓到</li>
+<li>ものの　还不到，还没有，仅仅，用不了</li>
+<li>いつの間にか　不知不觉　</li>
+<li>うたたね　打盹</li>
+<li>ちしい　助词，表示猜测</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>まだ<ruby><rb>大雑把</rb><rt>おおざっぱ</rt></ruby>な<ruby><rb>目的</rb><rt>もくてき</rt></ruby><ruby><rb>地</rb><rt>ち</rt></ruby>しか<ruby><rb>伝</rb><rt>つた</rt></ruby>えていなかつたのを<ruby><rb>思</rb><rt>おも</rt></ruby>いでした<ul>
+<li>まだ　还，仍</li>
+<li>大（おお）雑（ざつ）把（ぱ）　大概，粗略</li>
+<li>目（もく）的（てき）地（ち）　目的地</li>
+<li>しか　只，仅仅</li>
+<li>伝（でん）える　转告</li>
+<li>思いで　回忆起</li>
+</ul>
+</li>
+<li><ruby><rb>志那</rb><rt>しな</rt></ruby><ruby><rb>都</rb><rt>と</rt></ruby><ruby><rb>荘</rb><rt>しょう</rt></ruby>まで<ruby><rb>行</rb><rt>くだり</rt></ruby>つて<ruby><rb>欲</rb><rt>ほ</rt></ruby>しいんですけど<ul>
+<li>荘：　旅馆</li>
+<li>まで：　直到…为止</li>
+<li>つ：　直到</li>
+<li>欲しい：　想要，希望，愿意</li>
+<li>けど：　但是</li>
+</ul>
+</li>
+<li>アタシはここいらに<ruby><rb>詳</rb><rt>くわ</rt></ruby>しくないんです<ul>
+<li>アタシ：　私</li>
+<li>ここ：　这里</li>
+<li>いら：　等等，诸如此类，等级</li>
+<li>詳しく：　详细，精通，熟悉</li>
+<li>ないんです：　否定</li>
+</ul>
+</li>
+<li>ですからね…<ruby><rb>奥</rb><rt>おく</rt></ruby>まで<ruby><rb>行</rb><rt>い</rt></ruby>くのは<ruby><rb>勘弁</rb><rt>かんべん</rt></ruby>してもらえませんか  所以，能不能饶了我，不要在向里面走了<ul>
+<li>ですからね：　所以，因此</li>
+<li>奥：　里头，内部，尽头</li>
+<li>勘弁：　饶恕</li>
+<li>勘弁して：　饶了我吧</li>
+</ul>
+</li>
+<li>サービスの<ruby><rb>悪</rb><rt>あく</rt></ruby>い<ruby><rb>運転</rb><rt>うんてん</rt></ruby><ruby><rb>手</rb><rt>しゅ</rt></ruby>だ<ul>
+<li>サービス：　 service</li>
+<li>悪い：　不好</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>それが<ruby><rb>顔</rb><rt>かお</rt></ruby>に<ruby><rb>出</rb><rt>で</rt></ruby>ていたのか、<ruby><rb>運転</rb><rt>うんてん</rt></ruby><ruby><rb>手</rb><rt>しゅ</rt></ruby>が<ruby><rb>愛想笑</rb><rt>あいそわら</rt></ruby>いを<ruby><rb>浮</rb><rt>う</rt></ruby>かべながら<ruby><rb>言葉</rb><rt>ことば</rt></ruby>を<ruby><rb>続</rb><rt>つづ</rt></ruby>ける<ul>
+<li>顔（かお）：　表情，脸色，脸</li>
+<li>愛（あい）想（そ）笑（わら）い：　讨好的笑，谄笑</li>
+<li>浮かべ：　出现</li>
+<li>ながら：　一边，一边</li>
+<li>言（こと）葉（ば）：　语言，话语</li>
+<li>続（つづ）ける：　继续，连续</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><ruby><rb>本当</rb><rt>ほんとう</rt></ruby>にすみませんえ</li>
+<li>…わかりました。じゃあ、ここでいいです</li>
+<li>ありがとうございます</li>
+<li>タクシーが<ruby><rb>止</rb><rt>と</rt></ruby>まり、<ruby><rb>俺</rb><rt>おれ</rt></ruby>は<ruby><rb>精算</rb><rt>せいさん</rt></ruby>を<ruby><rb>済</rb><rt>す</rt></ruby>ませて、タクシーを<ruby><rb>降</rb><rt>お</rt></ruby>りる<ul>
+<li>止（と）まり：　停下</li>
+<li>精（せい）算（さん）：　细算，补交</li>
+<li>済（す）ませて：　完，结束</li>
+<li>降りる：　下</li>
+</ul>
+</li>
+<li>わざわざイヌシキの<ruby><rb>土地</rb><rt>とち</rt></ruby>に<ruby><rb>祭</rb><rt>まつ</rt></ruby>りを<ruby><rb>見</rb><rt>み</rt></ruby>に<ruby><rb>行</rb><rt>い</rt></ruby>きるなんて、<ruby><rb>不心得</rb><rt>ふこころえ</rt></ruby><ruby><rb>者</rb><rt>しゃ</rt></ruby>が<ruby><rb>増</rb><rt>ふ</rt></ruby>えたもんだよ<ul>
+<li>わざわざ：　特地</li>
+<li>イヌシキ：	游戏内专用的，犬式，表示不祥之地吧</li>
+<li>土（と）地（ち）：　地方，土地</li>
+<li>祭（まつ）り：　祭祀，祭日</li>
+<li>見（み）に：　看</li>
+<li>不（ふ）：　没有</li>
+<li>心（こころ）得（え）：    经验，知识，心得，体会</li>
+<li>者（もの）：　…的人</li>
+<li>増（ふ）える：　增加</li>
+</ul>
+</li>
+<li><ruby><rb>降</rb><rt>お</rt></ruby>り<ruby><rb>間際</rb><rt>まぎわ</rt></ruby>に<ruby><rb>聞</rb><rt>き</rt></ruby>こえてきた<ruby><rb>呟</rb><rt>つぶや</rt></ruby>き<ul>
+<li>間（ま）際（ぎわ）：　正要…的时候，快要…以前</li>
+<li>聞（き）こえる：　听得见，能听到，闻名</li>
+<li>呟（つぶや）き：　嘟哝，嘟囔</li>
+</ul>
+</li>
+<li><ruby><rb>無視</rb><rt>むし</rt></ruby>して、そのまま<ruby><rb>外</rb><rt>そと</rt></ruby>に<ruby><rb>出</rb><rt>で</rt></ruby>た<ul>
+<li>無（む）視（し）：　无视</li>
+<li>した：　接着，之后</li>
+<li>そのまま：　就这样</li>
+<li>外（そと）：　外面</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>まだ<ruby><rb>距離</rb><rt>きょり</rt></ruby>があるけど…ま、いっか。<ruby><rb>久</rb><rt>ひさ</rt></ruby>しぶりだし<ruby><rb>歩</rb><rt>ほ</rt></ruby>こう<ul>
+<li>距（きょ）離（り）：　距离</li>
+<li>ある：　有，持有，存在</li>
+<li>いっか：　算了</li>
+<li>久しぶり：　久违，好久</li>
+</ul>
+</li>
+<li><ruby><rb>息</rb><rt>いき</rt></ruby>を<ruby><rb>吐</rb><rt>は</rt></ruby>き、<ruby><rb>両手</rb><rt>りょうて</rt></ruby>を<ruby><rb>腰</rb><rt>こし</rt></ruby>に<ruby><rb>当</rb><rt>あ</rt></ruby>てて、<ruby><rb>大</rb><rt>おお</rt></ruby>きく<ruby><rb>背</rb><rt>せ</rt></ruby>をのけ<ruby><rb>反</rb><rt>ぞ</rt></ruby>らせる<ul>
+<li>息（いき）：　喘气，呼吸</li>
+<li>吐（は）き：　吐出</li>
+<li>腰（こし）</li>
+<li>両（りょう）手（て）</li>
+<li>当（あ）てる：　贴上，放上，打，碰，撞</li>
+<li>のけ反（ぞ）らせる：　使背向后伸展</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>ずっと<ruby><rb>座</rb><rt>すわ</rt></ruby>っていたせいか、<ruby><rb>腰</rb><rt>こし</rt></ruby>の<ruby><rb>辺</rb><rt>あた</rt></ruby>りでポキポキと<ruby><rb>骨</rb><rt>ほね</rt></ruby>が<ruby><rb>鳴</rb><rt>な</rt></ruby>った<ul>
+<li>せい：　的缘故</li>
+<li>か：　或者</li>
+<li>辺（あた）り：　周围，大约</li>
+<li>ポキポキ：　拟声词，嘎巴嘎巴</li>
+<li>骨（ほね）</li>
+<li>鳴（な）る：　（非生物）鸣，响</li>
+</ul>
+</li>
+<li>つかれた 累了</li>
+<li><ruby><rb>家</rb><rt>いえ</rt></ruby>を<ruby><rb>出</rb><rt>で</rt></ruby>て、<ruby><rb>電車</rb><rt>でんしゃ</rt></ruby>を<ruby><rb>乗</rb><rt>の</rt></ruby>り<ruby><rb>継</rb><rt>つ</rt></ruby>ぎ<ruby><rb>約</rb><rt>やく</rt></ruby><ruby><rb>２</rb><rt>に</rt></ruby><ruby><rb>時間</rb><rt>じかん</rt></ruby><ul>
+<li>家（いえ）</li>
+<li>乗（の）り継（つ）ぎ：接着乘坐</li>
+<li>約（やく）</li>
+<li>時（じ）間（かｎ）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>そしてタクシーを<ruby><rb>使</rb><rt>つか</rt></ruby>って<ruby><rb>約</rb><rt>やく</rt></ruby>30<ruby><rb>分</rb><rt>ふん</rt></ruby><ul>
+<li>そして：　然后</li>
+<li>使う：　使用</li>
+</ul>
+</li>
+<li><ruby><rb>青々</rb><rt>あおあお</rt></ruby>とた<ruby><rb>木々</rb><rt>きぎ</rt></ruby>ばかりの<ruby><rb>面白味</rb><rt>おもしろみ</rt></ruby>のない<ruby><rb>風景</rb><rt>ふうけい</rt></ruby>の<ruby><rb>峠</rb><rt>とうげ</rt></ruby><ruby><rb>道</rb><rt>どう</rt></ruby>を<ruby><rb>抜</rb><rt>ぬ</rt></ruby>け、ようやく<ruby><rb>辿</rb><rt>たど</rt></ruby>り<ruby><rb>着</rb><rt>き</rt></ruby>いた<ruby><rb>穂</rb><rt>ほ</rt></ruby><ruby><rb>織</rb><rt>お</rt></ruby>の<ruby><rb>町</rb><rt>まち</rt></ruby><ul>
+<li>木々（きぎ）：　树木</li>
+<li>面（おも）白（しろ）味（み）：　愉快的</li>
+<li>風（ふう）景（けい）：　风景</li>
+<li>峠（とうげ）道（みち）：　盘山公路</li>
+<li>抜け：　穿过，溜走</li>
+<li>ようやく：　渐渐的</li>
+<li>辿（たど）り着（つ）く：　挣扎地走到</li>
+<li>穂（みのる）織（おり）の町（まち）：　穗织镇</li>
+</ul>
+</li>
+<li><ruby><rb>相変</rb><rt>あいか</rt></ruby>わらず<ruby><rb>不便</rb><rt>ふべん</rt></ruby>だな、ここは<ul>
+<li>相変わらず：还是老样子</li>
+<li>不便：不方便</li>
+</ul>
+</li>
+<li><ruby><rb>電車</rb><rt>でんしゃ</rt></ruby>も<ruby><rb>走</rb><rt>はし</rt></ruby>っておらず、<ruby><rb>公共機関</rb><rt>こうきょうきかん</rt></ruby>といえば<ruby><rb>路線バス</rb><rt>ろせんばす</rt></ruby>が<ruby><rb>一</rb><rt>いち</rt></ruby><ruby><rb>時間</rb><rt>じかん</rt></ruby>に<ruby><rb>一</rb><rt>いち</rt></ruby><ruby><rb>本</rb><rt>ほん</rt></ruby><ul>
+<li>あら：在，长期存在</li>
+<li>ず：助词，没有，无</li>
+<li>ば：助词，…的话</li>
+<li>路線：交通线，路线</li>
+<li>バス：bus</li>
+</ul>
+</li>
+<li>バスだと<ruby><rb>一</rb><rt>いち</rt></ruby><ruby><rb>時間</rb><rt>じかん</rt></ruby><ruby><rb>弱</rb><rt>じゃく</rt></ruby>になってしまう<ruby><rb>上</rb><rt>うえ</rt></ruby>に、<ruby><rb>早朝</rb><rt>そうちょう</rt></ruby>や<ruby><rb>日</rb><rt>ひ</rt></ruby>が<ruby><rb>暮</rb><rt>く</rt></ruby>れる<ruby><rb>頃</rb><rt>ころ</rt></ruby>になると<ruby><rb>走</rb><rt>はし</rt></ruby>っていない<ul>
+<li>たと：表示假设</li>
+<li>弱：稍微，不到</li>
+<li>上に：上句例子中第二个要点</li>
+<li>日が暮れる頃：当日落的时候</li>
+</ul>
+</li>
+<li><ruby><rb>他</rb><rt>た</rt></ruby>にここを<ruby><rb>訪</rb><rt>おとず</rt></ruby>れるためには、<ruby><rb>自分</rb><rt>じぶん</rt></ruby>たちで<ruby><rb>車</rb><rt>くるま</rt></ruby>を<ruby><rb>用意</rb><rt>ようい</rt></ruby>しなければならない<ul>
+<li>他：别的地方</li>
+<li>訪れる：拜访</li>
+<li>ためには：表示目的</li>
+<li>自分たちで：自己，亲自</li>
+<li>用意：准备</li>
+<li>しなければならない：表示必须</li>
+</ul>
+</li>
+<li><ruby><rb>徒歩</rb><rt>とほ</rt></ruby>で<ruby><rb>移動</rb><rt>いどう</rt></ruby>できる<ruby><rb>範囲</rb><rt>はんい</rt></ruby>は<ruby><rb>大</rb><rt>だい</rt></ruby><ruby><rb>自然</rb><rt>しぜん</rt></ruby>ばかりという、<ruby><rb>山間</rb><rt>さんかん</rt></ruby>にある<ruby><rb>田舎</rb><rt>いなか</rt></ruby><ul>
+<li>できる：能够</li>
+<li>範囲：范围</li>
+<li>ばかりという：表示主要</li>
+<li>田舎：农村</li>
+</ul>
+</li>
+<li>のはずだが、その<ruby><rb>悪条件</rb><rt>あくじょうけん</rt></ruby>のわりには<ruby><rb>中々</rb><rt>なかなか</rt></ruby><ruby><rb>賑</rb><rt>にぎ</rt></ruby>わいがある<ruby><rb>町</rb><rt>まち</rt></ruby>だ<ul>
+<li>のはずだが：表示虽然预计不会如此</li>
+<li>のわりには：表示尽管如此</li>
+<li>中々：相当</li>
+<li>賑わいがある：繁荣</li>
+</ul>
+</li>
+<li><ruby><rb>理由</rb><rt>りゆう</rt></ruby>の<ruby><rb>一</rb><rt>ひと</rt></ruby>つは、この<ruby><rb>街</rb><rt>まち</rt></ruby><ruby><rb>並</rb><rt>な</rt></ruby>み<ul>
+<li>のーつ：之一</li>
+<li>街並み：街景</li>
+</ul>
+</li>
+<li><ruby><rb>小京都</rb><rt>しょうきょうと</rt></ruby>とも<ruby><rb>呼</rb><rt>よ</rt></ruby>ばれる、<ruby><rb>整備</rb><rt>せいび</rt></ruby>された<ruby><rb>街</rb><rt>まち</rt></ruby><ruby><rb>並</rb><rt>な</rt></ruby>みは、いい<ruby><rb>意味</rb><rt>いみ</rt></ruby>で「<ruby><rb>和</rb><rt>わ</rt></ruby>」の<ruby><rb>雰囲気</rb><rt>ふんいき</rt></ruby>を<ruby><rb>色濃</rb><rt>いろこ</rt></ruby>く<ruby><rb>残</rb><rt>のこ</rt></ruby>している<ul>
+<li>呼ばれる：被称作</li>
+<li>整備された：整洁，整修</li>
+<li>いい意味で：在积极的意义上</li>
+<li>「和」：表示和风</li>
+<li>雰囲気：气氛</li>
+<li>色濃く：浓厚的</li>
+<li>残している：被留下来</li>
+</ul>
+</li>
+<li>あの<ruby><rb>面白味</rb><rt>おもしろみ</rt></ruby>のなに<ruby><rb>山</rb><rt>やま</rt></ruby>の<ruby><rb>風景</rb><rt>ふうけい</rt></ruby>からは<ruby><rb>想像</rb><rt>そうぞう</rt></ruby>できない、<ruby><rb>綺麗</rb><rt>きれい</rt></ruby>な<ruby><rb>街</rb><rt>まち</rt></ruby><ruby><rb>並</rb><rt>な</rt></ruby>みとなっている<ul>
+<li>となっている：成为，呈现出</li>
+</ul>
+</li>
+<li>そしてなにより、<ruby><rb>穗</rb><rt>みのる</rt></ruby><ruby><rb>織</rb><rt>お</rt></ruby>の<ruby><rb>町</rb><rt>まち</rt></ruby>は<ruby><rb>温泉</rb><rt>おんせん</rt></ruby>が<ruby><rb>知</rb><rt>し</rt></ruby>られている。その<ruby><rb>主</rb><rt>おも</rt></ruby>な<ruby><rb>理由</rb><rt>りゆう</rt></ruby>は<ruby><rb>効能</rb><rt>こうのう</rt></ruby>だ<ul>
+<li>そしてなにより：而且最重要的是</li>
+<li>知られている：众所周知</li>
+</ul>
+</li>
+<li>どんな<ruby><rb>病気</rb><rt>びょうき</rt></ruby>でも<ruby><rb>治</rb><rt>なお</rt></ruby>るし、<ruby><rb>入浴</rb><rt>にゅうよく</rt></ruby>すれば<ruby><rb>肌</rb><rt>はだ</rt></ruby>もシルシル、<ruby><rb>信</rb><rt>しん</rt></ruby>じられないほ<ruby><rb>様々</rb><rt>さまざま</rt></ruby>な<ruby><rb>効能</rb><rt>こうのう</rt></ruby>がある<ruby><rb>万能薬</rb><rt>ばんのうやく</rt></ruby>、とまで<ruby><rb>言</rb><rt>い</rt></ruby>われることがある<ul>
+<li>どんな病気でも：不管什么病</li>
+<li>し：助词表示列举关系</li>
+<li>すれば：如果</li>
+<li>シルシル：表示光滑</li>
+<li>信じられないほど：难以置信的</li>
+<li>様々な：各种各样的</li>
+<li>とまで：表示强烈的评价</li>
+<li>言われる：被动，被人说</li>
+<li>ことがある：表示经验或存在，被认为是某种状态是有时发生的。</li>
+</ul>
+</li>
+<li>なので<ruby><rb>療養</rb><rt>りょうよう</rt></ruby>・<ruby><rb>湯治</rb><rt>とうじ</rt></ruby>に<ruby><rb>来</rb><rt>く</rt></ruby>る<ruby><rb>人</rb><rt>じん</rt></ruby>が<ruby><rb>昔</rb><rt>むかし</rt></ruby>から<ruby><rb>結構</rb><rt>けっこう</rt></ruby>いる<ruby><rb>温泉</rb><rt>おんせん</rt></ruby><ruby><rb>地</rb><rt>ち</rt></ruby>だ<ul>
+<li>なので： 因此</li>
+<li>療養・湯治：进行疗养和泡温泉疗伤</li>
+<li>昔から：古时候</li>
+<li>結構：足够，充分，漂亮，相当</li>
+</ul>
+</li>
+<li><ruby><rb>近年</rb><rt>きんねん</rt></ruby>ではロコミやネットで<ruby><rb>噂</rb><rt>うわさ</rt></ruby>が<ruby><rb>広</rb><rt>ひろ</rt></ruby>まり、<ruby><rb>外国人観光客</rb><rt>がいこくじんかんこうきゃく</rt></ruby>も<ruby><rb>増</rb><rt>ふ</rt></ruby>えたらしく、<ruby><rb>今</rb><rt>いま</rt></ruby>も<ruby><rb>日本語</rb><rt>にほんご</rt></ruby><ruby><rb>以外</rb><rt>いがい</rt></ruby>の<ruby><rb>会話</rb><rt>かいわ</rt></ruby>がたくさん<ruby><rb>聞</rb><rt>き</rt></ruby>こえる。<ul>
+<li>ロコミ：地方性的传言</li>
+<li>ネット：net</li>
+<li>噂：言论</li>
+<li>広まり：扩大，传播，蔓延</li>
+<li>らしく：表示推测，判断</li>
+<li>今も：现今</li>
+<li>たくさん：许多</li>
+</ul>
+</li>
+<li><ruby><rb>行</rb><rt>い</rt></ruby>くか</li>
+<li><ruby><rb>観光</rb><rt>かんこう</rt></ruby>に<ruby><rb>来</rb><rt>き</rt></ruby>たわけじゃないんだから、<ruby><rb>立</rb><rt>た</rt></ruby>ち<ruby><rb>尽</rb><rt>つ</rt></ruby>くしてても<ruby><rb>仕方</rb><rt>しかた</rt></ruby>ない<ul>
+<li>わけ：当然</li>
+<li>だから：因此</li>
+<li>立ち尽くして：始终站着</li>
+<li>仕方ない：不是办法</li>
+</ul>
+</li>
+<li><ruby><rb>人違</rb><rt>ひとちが</rt></ruby>いならごめんなさい。もしかして<ul>
+<li>人違い：认错人</li>
+<li>なら：如果</li>
+<li>もしか：难道是</li>
+</ul>
+</li>
+<li>やっぱりよかった、<ruby><rb>人違</rb><rt>ひとちが</rt></ruby>いじゃなくって<ul>
+<li>やっぱり：果然</li>
+<li>じゃなくって：表示否定转折</li>
+</ul>
+</li>
+<li>やーやー、<ruby><rb>随分</rb><rt>ずいぶん</rt></ruby>とお<ruby><rb>久</rb><rt>ひさ</rt></ruby>しぶりだね<ul>
+<li>随分：相当，非常</li>
+<li>久しぶり：好久不见</li>
+</ul>
+</li>
+<li><ruby><rb>明</rb><rt>あか</rt></ruby>るい<ruby><rb>笑顔</rb><rt>えがお</rt></ruby>を<ruby><rb>浮</rb><rt>う</rt></ruby>かべながら<ruby><rb>手</rb><rt>て</rt></ruby>を<ruby><rb>振</rb><rt>ふ</rt></ruby>るっているこの<ruby><rb>人</rb><rt>ひと</rt></ruby>は、<ruby><rb>馬庭</rb><rt>まにわ</rt></ruby><ruby><rb>蘆花</rb><rt>ろか</rt></ruby></li>
+<li><ruby><rb>確</rb><rt>たし</rt></ruby>か……<ruby><rb>俺</rb><rt>おれ</rt></ruby>より<ruby><rb>２</rb><rt>に</rt></ruby>、<ruby><rb>３</rb><rt>さん</rt></ruby><ruby><rb>歳</rb><rt>さい</rt></ruby><ruby><rb>年上</rb><rt>としうえ</rt></ruby>だった<ruby><rb>気</rb><rt>き</rt></ruby>がする<ul>
+<li>確か：确实，记得</li>
+<li>より：比，相较于</li>
+<li>気がする：心里感觉</li>
+</ul>
+</li>
+<li>の<ruby><rb>翻訳</rb><rt>ほんやく</rt></ruby></li>
+<li></li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。也可以邮件至 2738430398@qq.com </span>

@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>花海吉他谱 | Hexo</title>
-  <meta name="keywords" content=" 吉他谱 ">
-  <meta name="description" content="花海吉他谱 | Hexo">
+  <title>牛客101题 | Hexo</title>
+  <meta name="keywords" content=" 算法 , 数据结构 , 牛客 ">
+  <meta name="description" content="牛客101题 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="1. 背景杨老师希望我接受这个项目，并且能全部理解并加以开发和修改我自己也可以通过学习这个项目来增长自己的能力。 2. 项目介绍项目是标准的企业级spring cloud项目，包含多个服务，代码量大。 3. 服务学习3.1. auth：认证服务3.1.1. aspect包其中进行切片编程，简而言之：当你调用distributeResources2Role的时候会自动异步调用refreshRoleR">
 <meta property="og:type" content="article">
@@ -678,9 +678,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-花海吉他谱" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-牛客101题" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">花海吉他谱</h1>
+        <h1 class="article-title">牛客101题</h1>
     
     <div class="article-meta">
         
@@ -690,7 +690,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="吉他谱">吉他谱</a>
+            <a  data-rel="Java">Java</a>
             
         </span>
         
@@ -698,19 +698,23 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color4">吉他谱</a>
+            <a class="color3">算法</a>
+            
+            <a class="color5">数据结构</a>
+            
+            <a class="color3">牛客</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-09-24 11:02:27'>2023-08-30 14:28</time>
+            Created At : <time class="date" title='Updated At: 2023-10-01 15:28:03'>2023-09-27 23:24</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:0</span>
+        <span>Count:490</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -740,7 +744,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%93%BE%E8%A1%A8"><span class="toc-text">1. 链表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BA%8C%E5%88%86%E6%8E%92%E5%BA%8F-%E6%9F%A5%E6%89%BE"><span class="toc-text">2. 二分排序&#x2F;查找</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -756,28 +760,73 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <img src="http://gohoy.top/i/2023/08/30/nu8ayl-1.png" title="" alt="" width="1082">
-
-<p><img src="http://gohoy.top/i/2023/08/11/sgwwmc-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sgze26-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sgzotk-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sh8mdv-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sh8ys6-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sh98rx-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sh9n7v-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sha8lv-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sharvk-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shb4us-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shbf15-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shbwf3-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shcfc7-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shcrz4-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shd14n-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shdyaf-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/she52r-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shein0-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shf1u6-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shf6hr-1.png"></p>
+        <h2 id="1-链表"><a href="#1-链表" class="headerlink" title="1. 链表"></a>1. 链表</h2><ul>
+<li>反转链表：用头插法就可以。</li>
+<li>反转局部链表：如图所示，反转2 3 4 的操作。<br>![[牛客101题 2023-09-27 23.32.49.excalidraw]]</li>
+</ul>
+<ul>
+<li>链表中每k个一组反转：调用反转局部链表</li>
+<li>合并两个有序链表：按大小顺序将节点添加到一个新的节点上。</li>
+<li>合并k个有序链表：<ul>
+<li>调用合并两个有序链表：超时</li>
+<li>二分法后调用合并两个有序链表</li>
+</ul>
+</li>
+<li>判断链表是否有环：快慢指针，当慢指针和快指针想等的时候，说明有环</li>
+<li>链表中环的起始节点：<ul>
+<li>获取环的长度length，然后从首节点遍历，节点n和节点n+length想等的话n节点是环的起始节点</li>
+<li>数学关系：<ul>
+<li>![[牛客101题 2023-09-28 00.00.40.excalidraw]]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-二分排序-查找"><a href="#2-二分排序-查找" class="headerlink" title="2. 二分排序&#x2F;查找"></a>2. 二分排序&#x2F;查找</h2><ul>
+<li>数组中的逆序对：<ul>
+<li>暴力：时间空间都差</li>
+<li>二分归并：</li>
+</ul>
+<pre><code class="java">public class Solution &#123;
+public int mod = 1000000007;
+public int mergeSort(int left, int right, int [] data, int [] temp)&#123;
+    //停止划分
+    if(left &gt;= right)    
+        return 0;
+    //取中间
+    int mid = (left + right) / 2; 
+    //左右划分合并
+    int res = mergeSort(left, mid, data, temp) + mergeSort(mid + 1, right, data, temp); 
+    //防止溢出
+    res %= mod;  
+    int i = left, j = mid + 1;
+    for(int k = left; k &lt;= right; k++)
+        temp[k] = data[k];
+    for(int k = left; k &lt;= right; k++)&#123;
+    // 左边遍历完毕，把右边的全部放在总数组
+        if(i == mid + 1)
+            data[k] = temp[j++];
+    // 右边数组遍历完毕或者 左边数组元素比右边小，那么就直接按顺序放在总数组
+        else if(j == right + 1 || temp[i] &lt;= temp[j])
+            data[k] = temp[i++];
+    //左边比右边大，那么这个元素temp[i]到mid-1之间的元素都比右边数组这个元素大，逆序对个数就增加增加mid-1+i个
+        else&#123; 
+            data[k] = temp[j++];
+            // 统计逆序对
+            res += mid - i + 1; 
+        &#125;
+    &#125;
+    return res % mod;
+&#125;
+public int InversePairs(int [] array) &#123;
+    int n = array.length;
+    int[] res = new int[n];
+    return mergeSort(0, n - 1, array, res);
+&#125;
+&#125;
+</code></pre>
+</li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。也可以邮件至 2738430398@qq.com </span>

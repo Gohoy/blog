@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>花海吉他谱 | Hexo</title>
-  <meta name="keywords" content=" 吉他谱 ">
-  <meta name="description" content="花海吉他谱 | Hexo">
+  <title>动态规划 | Hexo</title>
+  <meta name="keywords" content=" Java , 算法 , 动态规划 ">
+  <meta name="description" content="动态规划 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="1. 背景杨老师希望我接受这个项目，并且能全部理解并加以开发和修改我自己也可以通过学习这个项目来增长自己的能力。 2. 项目介绍项目是标准的企业级spring cloud项目，包含多个服务，代码量大。 3. 服务学习3.1. auth：认证服务3.1.1. aspect包其中进行切片编程，简而言之：当你调用distributeResources2Role的时候会自动异步调用refreshRoleR">
 <meta property="og:type" content="article">
@@ -678,9 +678,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-花海吉他谱" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-动态规划" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">花海吉他谱</h1>
+        <h1 class="article-title">动态规划</h1>
     
     <div class="article-meta">
         
@@ -690,7 +690,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="吉他谱">吉他谱</a>
+            <a  data-rel="Java">Java</a>
             
         </span>
         
@@ -698,19 +698,23 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color4">吉他谱</a>
+            <a class="color5">Java</a>
+            
+            <a class="color3">算法</a>
+            
+            <a class="color5">动态规划</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-09-24 11:02:27'>2023-08-30 14:28</time>
+            Created At : <time class="date" title='Updated At: 2023-09-25 23:16:46'>2023-09-25 22:37</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:0</span>
+        <span>Count:306</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -740,7 +744,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%93%AA%E4%BA%9B-%E9%97%AE%E9%A2%98%E5%8F%AF%E4%BB%A5%E7%94%A8%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">1. 哪些 问题可以用动态规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E6%9E%84%EF%BC%9A%E5%8E%9F%E9%97%AE%E9%A2%98%E7%9A%84%E6%9C%80%E4%BC%98%E8%A7%A3%E5%8C%85%E5%90%AB%E5%AD%90%E9%97%AE%E9%A2%98%E7%9A%84%E6%9C%80%E4%BC%98%E8%A7%A3%E5%AD%90%E9%97%AE%E9%A2%98%E9%87%8D%E5%8F%A0%EF%BC%9A%E4%BE%8B%E5%A6%82%EF%BC%9A%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%EF%BC%88%E9%9D%9E%E5%BF%85%E9%A1%BB%EF%BC%89%E6%97%A0%E5%90%8E%E6%95%88%E6%80%A7%EF%BC%9A%E6%AF%94%E5%A6%82F-4-%E4%B8%8D%E4%BC%9A%E7%94%A8%E5%88%B0F-6-%E7%9A%84%E5%80%BC%E3%80%82-2-%E5%B8%B8%E7%94%A8%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E6%A8%A1%E6%9D%BF%E6%9C%89%E5%93%AA%E4%BA%9B-2-1-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%EF%BC%9A-2-1-1-01%E8%83%8C%E5%8C%85-2-1-2-%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85-2-1-3-%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85-2-2-%E7%BA%BF%E6%80%A7DP-2-2-1-%E8%B6%85%E7%BA%A7%E6%A5%BC%E6%A2%AF%EF%BC%9AM%E7%BA%A7%E5%8F%B0%E9%98%B6%EF%BC%8C%E4%B8%80%E6%AC%A1%E8%B5%B01%E6%88%962%E7%BA%A7%EF%BC%8C%E7%94%B1%E5%A4%9A%E5%B0%91%E4%B8%8D%E5%90%8C%E8%B5%B0%E6%B3%95dp-1-0dp-2-1dp-3-2%E6%B1%82%E8%A7%A3%E6%96%B9%E6%B3%95%EF%BC%9A-%E9%80%92%E5%BD%92-%E8%AE%B0%E5%BF%86%E5%8C%96%E9%80%92%E5%BD%92%EF%BC%88%E5%B0%86%E7%BB%93%E6%9E%9C%E5%AD%98%E5%9C%A8%E6%95%B0%E7%BB%84%E9%87%8C%E9%9D%A2%EF%BC%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%8C%E7%9B%B4%E6%8E%A5%E5%B0%86%E7%BB%93%E6%9E%9C%E5%AD%98%E5%9C%A8%E6%95%B0%E7%BB%84%E4%B8%AD-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%8C%E8%BF%AD%E4%BB%A3%EF%BC%88%E4%BC%98%E5%8C%96%E7%A9%BA%E9%97%B4%EF%BC%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%8C%E6%89%93%E8%A1%A8%EF%BC%8C%E6%8A%8A%E6%89%80%E6%9C%89%E7%9A%84%E5%80%BC%E9%83%BD%E6%B1%82%E5%87%BA%E6%9D%A5%EF%BC%8C%E9%80%82%E7%94%A8%E4%BA%8E%E5%A4%9A%E6%AC%A1%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%83%85%E5%86%B5%EF%BC%8C%E5%85%A8%E9%83%A8%E5%AD%98%E5%9C%A8%E6%95%B0%E7%BB%84"><span class="toc-text">最优子结构：原问题的最优解包含子问题的最优解子问题重叠：例如：斐波那契数列（非必须）无后效性：比如F(4)不会用到F(6)的值。## 2. 常用动态规划的模板有哪些### 2.1. 背包问题：#### 2.1.1. 01背包#### 2.1.2. 完全背包#### 2.1.3. 多重背包### 2.2. 线性DP#### 2.2.1. 超级楼梯：M级台阶，一次走1或2级，由多少不同走法dp[1] &#x3D; 0dp[2] &#x3D; 1dp[3] &#x3D; 2求解方法：- 递归- 记忆化递归（将结果存在数组里面）- 动态规划，直接将结果存在数组中- 动态规划，迭代（优化空间）- 动态规划，打表，把所有的值都求出来，适用于多次查询的情况，全部存在数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%8C%BA%E9%97%B4DP"><span class="toc-text">2.3. 区间DP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%A0%91%E5%BD%A2DP"><span class="toc-text">2.4. 树形DP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E6%95%B0%E4%BD%8DDP"><span class="toc-text">2.5. 数位DP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9DP"><span class="toc-text">2.6. 状态压缩DP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-%E6%8F%92%E5%A4%B4DP"><span class="toc-text">2.7. 插头DP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%B1%82%E8%A7%A3%E7%9A%84%E7%A7%98%E7%B1%8D"><span class="toc-text">3. 动态规划求解的秘籍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B"><span class="toc-text">3.1.1. 状态转移方程</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -756,28 +760,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <img src="http://gohoy.top/i/2023/08/30/nu8ayl-1.png" title="" alt="" width="1082">
-
-<p><img src="http://gohoy.top/i/2023/08/11/sgwwmc-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sgze26-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sgzotk-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sh8mdv-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sh8ys6-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sh98rx-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sh9n7v-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sha8lv-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/sharvk-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shb4us-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shbf15-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shbwf3-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shcfc7-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shcrz4-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shd14n-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shdyaf-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/she52r-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shein0-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shf1u6-1.png"></p>
-<p><img src="http://gohoy.top/i/2023/08/11/shf6hr-1.png"></p>
+        <h2 id="1-哪些-问题可以用动态规划"><a href="#1-哪些-问题可以用动态规划" class="headerlink" title="1. 哪些 问题可以用动态规划"></a>1. 哪些 问题可以用动态规划</h2><h2 id="最优子结构：原问题的最优解包含子问题的最优解子问题重叠：例如：斐波那契数列（非必须）无后效性：比如F-4-不会用到F-6-的值。-2-常用动态规划的模板有哪些-2-1-背包问题：-2-1-1-01背包-2-1-2-完全背包-2-1-3-多重背包-2-2-线性DP-2-2-1-超级楼梯：M级台阶，一次走1或2级，由多少不同走法dp-1-0dp-2-1dp-3-2求解方法：-递归-记忆化递归（将结果存在数组里面）-动态规划，直接将结果存在数组中-动态规划，迭代（优化空间）-动态规划，打表，把所有的值都求出来，适用于多次查询的情况，全部存在数组"><a href="#最优子结构：原问题的最优解包含子问题的最优解子问题重叠：例如：斐波那契数列（非必须）无后效性：比如F-4-不会用到F-6-的值。-2-常用动态规划的模板有哪些-2-1-背包问题：-2-1-1-01背包-2-1-2-完全背包-2-1-3-多重背包-2-2-线性DP-2-2-1-超级楼梯：M级台阶，一次走1或2级，由多少不同走法dp-1-0dp-2-1dp-3-2求解方法：-递归-记忆化递归（将结果存在数组里面）-动态规划，直接将结果存在数组中-动态规划，迭代（优化空间）-动态规划，打表，把所有的值都求出来，适用于多次查询的情况，全部存在数组" class="headerlink" title="最优子结构：原问题的最优解包含子问题的最优解子问题重叠：例如：斐波那契数列（非必须）无后效性：比如F(4)不会用到F(6)的值。## 2. 常用动态规划的模板有哪些### 2.1. 背包问题：#### 2.1.1. 01背包#### 2.1.2. 完全背包#### 2.1.3. 多重背包### 2.2. 线性DP#### 2.2.1. 超级楼梯：M级台阶，一次走1或2级，由多少不同走法dp[1] &#x3D; 0dp[2] &#x3D; 1dp[3] &#x3D; 2求解方法：- 递归- 记忆化递归（将结果存在数组里面）- 动态规划，直接将结果存在数组中- 动态规划，迭代（优化空间）- 动态规划，打表，把所有的值都求出来，适用于多次查询的情况，全部存在数组"></a>最优子结构：原问题的最优解包含子问题的最优解<br>子问题重叠：例如：斐波那契数列（非必须）<br>无后效性：比如F(4)不会用到F(6)的值。<br>## 2. 常用动态规划的模板有哪些<br>### 2.1. 背包问题：<br>#### 2.1.1. 01背包<br>#### 2.1.2. 完全背包<br>#### 2.1.3. 多重背包<br>### 2.2. 线性DP<br>#### 2.2.1. 超级楼梯：M级台阶，一次走1或2级，由多少不同走法<br>dp[1] &#x3D; 0<br>dp[2] &#x3D; 1<br>dp[3] &#x3D; 2<br>求解方法：<br>- 递归<br>- 记忆化递归（将结果存在数组里面）<br>- 动态规划，直接将结果存在数组中<br>- 动态规划，迭代（优化空间）<br>- 动态规划，打表，把所有的值都求出来，适用于多次查询的情况，全部存在数组</h2><h3 id="2-3-区间DP"><a href="#2-3-区间DP" class="headerlink" title="2.3. 区间DP"></a>2.3. 区间DP</h3><h3 id="2-4-树形DP"><a href="#2-4-树形DP" class="headerlink" title="2.4. 树形DP"></a>2.4. 树形DP</h3><h3 id="2-5-数位DP"><a href="#2-5-数位DP" class="headerlink" title="2.5. 数位DP"></a>2.5. 数位DP</h3><h3 id="2-6-状态压缩DP"><a href="#2-6-状态压缩DP" class="headerlink" title="2.6. 状态压缩DP"></a>2.6. 状态压缩DP</h3><h3 id="2-7-插头DP"><a href="#2-7-插头DP" class="headerlink" title="2.7. 插头DP"></a>2.7. 插头DP</h3><h2 id="3-动态规划求解的秘籍"><a href="#3-动态规划求解的秘籍" class="headerlink" title="3. 动态规划求解的秘籍"></a>3. 动态规划求解的秘籍</h2><p>状态，阶段，决策</p>
+<h4 id="3-1-1-状态转移方程"><a href="#3-1-1-状态转移方程" class="headerlink" title="3.1.1. 状态转移方程"></a>3.1.1. 状态转移方程</h4><ul>
+<li>找目标的上一个状态</li>
+<li>从上一个状态转移到当前状态</li>
+<li>初始化（给初值，比如dp[1] &#x3D; 0）</li>
+<li>求解目标是什么</li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。也可以邮件至 2738430398@qq.com </span>
