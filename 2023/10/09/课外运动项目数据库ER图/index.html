@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>springboot查询数据库字段实践 | Hexo</title>
-  <meta name="keywords" content=" Java , springboot ">
-  <meta name="description" content="springboot查询数据库字段实践 | Hexo">
+  <title>课外运动项目数据库ER图 | Hexo</title>
+  <meta name="keywords" content=" Java ">
+  <meta name="description" content="课外运动项目数据库ER图 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="1. 查看存有值的表 exercise_class：老师班级映射 exercise_class_score：运动项目得分 exercise_class_total_score：计划得分总分表 exercise_faculty_class：行政学院班级表 exercise_motion_class：运动项目 exercise_motion_punchpoint_info：运动记录打卡信息 exerc">
 <meta property="og:type" content="article">
@@ -685,9 +685,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-springboot查询数据库字段实践" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-课外运动项目数据库ER图" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">springboot查询数据库字段实践</h1>
+        <h1 class="article-title">课外运动项目数据库ER图</h1>
     
     <div class="article-meta">
         
@@ -707,19 +707,17 @@
             
             <a class="color5">Java</a>
             
-            <a class="color1">springboot</a>
-            
         </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-09-23 23:48:32'>2023-09-11 23:12</time>
+            Created At : <time class="date" title='Updated At: 2023-10-09 21:42:10'>2023-10-09 20:54</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:873</span>
+        <span>Count:539</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -749,7 +747,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#springboot%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%97%E6%AE%B5%E5%AE%9E%E8%B7%B5"><span class="toc-text">springboot查询数据库字段实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-text">任务描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-text">后端实现步骤：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E9%9C%80%E8%A6%81%E6%9F%A5%E8%AF%A2%E7%9A%84%E8%A1%A8%E7%9A%84%E5%AD%97%E6%AE%B5"><span class="toc-text">查看需要查询的表的字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%87%87%E7%94%A8%E7%9A%84%E6%8A%80%E6%9C%AF%E6%98%AF-jpa"><span class="toc-text">后端采用的技术是 jpa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8service-%E5%92%8C-serviceImpl%E4%B8%AD%E5%AE%9A%E4%B9%89%EF%BC%8C%E6%9C%80%E5%90%8E%E5%9C%A8controller%E4%B8%AD%E5%AE%9E%E7%8E%B0"><span class="toc-text">在service 和 serviceImpl中定义，最后在controller中实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-text">前端实现步骤</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E5%AD%98%E6%9C%89%E5%80%BC%E7%9A%84%E8%A1%A8"><span class="toc-text">1. 查看存有值的表</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -765,172 +763,82 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="springboot查询数据库字段实践"><a href="#springboot查询数据库字段实践" class="headerlink" title="springboot查询数据库字段实践"></a>springboot查询数据库字段实践</h1><h2 id="任务描述："><a href="#任务描述：" class="headerlink" title="任务描述："></a>任务描述：</h2><p><strong>在订单管理中增加购票信息界面、</strong></p>
-<p><strong>查询条件：赛季名称、赛事名称、票种、姓名、身份证号、购买者、区域、座位、票类型</strong></p>
-<p><strong>显示字段：赛季名称、赛事名称、票种、姓名、身份证号、购买者、区域、座位、二维码（限制显示长度20字符）、购票时间、票类型</strong></p>
-<p><strong>可效仿订单管理页。</strong></p>
-<h2 id="后端实现步骤："><a href="#后端实现步骤：" class="headerlink" title="后端实现步骤："></a>后端实现步骤：</h2><h3 id="查看需要查询的表的字段"><a href="#查看需要查询的表的字段" class="headerlink" title="查看需要查询的表的字段"></a>查看需要查询的表的字段</h3><ul>
-<li><p>表名为<code>t_business_member_ticket</code></p>
-</li>
-<li><p>字段分别为：</p>
-<ul>
-<li>赛季名称：通过activeId 查询t_business_activity 表的 season字段</li>
-<li>赛事名称：game_player字段</li>
-<li>票种：ticket_name字段</li>
-<li>姓名：bearer_name字段</li>
-<li>身份证号：bearer_id_num字段</li>
-<li>购买者：通过buyer字段的id 查询 t_business_member 表的name字段</li>
-<li>区域：通过 field_id 字段查询 t_base_venue_structure 表的data_name 字段</li>
-<li>座位：seat_name字段</li>
-<li>二维码：校验码（未定）write_off_code字段</li>
-<li>购票时间：buy_date 字段</li>
-<li>票类型：tickit_type 字段</li>
+        <h2 id="1-查看存有值的表"><a href="#1-查看存有值的表" class="headerlink" title="1. 查看存有值的表"></a>1. 查看存有值的表</h2><ul>
+<li>exercise_class：老师班级映射</li>
+<li>exercise_class_score：运动项目得分</li>
+<li>exercise_class_total_score：计划得分总分表</li>
+<li>exercise_faculty_class：行政学院班级表</li>
+<li>exercise_motion_class：运动项目</li>
+<li>exercise_motion_punchpoint_info：运动记录打卡信息</li>
+<li>exercise_motion_record_abnormal：运动记录异常信息</li>
+<li>exercise_motion_records：运动记录信息</li>
+<li>exercise_motion_records_pause_info：运动暂停记录信息</li>
+<li>exercise_motion_track_info：运动轨迹记录</li>
+<li>exercise_orienteering_info：定向越野表</li>
+<li>exercise_orienteering_punchpoint_info：定向打卡点</li>
+<li>exercise_pace_table：运动记录配速信息</li>
+<li>exercise_plan_config：运动计划关联配置信息表</li>
+<li>exercise_plan_info：运动计划表</li>
+<li>exercise_plan_score：运动计划的成绩配置表（及格线，每次分数等）</li>
+<li>exercise_plan_special_rule：计划第三步中是否有单项达标的要求的信息表</li>
+<li>exercise_record_necessary：运动的配置（打卡，距离，拍照等）</li>
+<li>exercise_running_area_basic_info：跑区基本信息</li>
+<li>exercise_running_area_boundary_info：跑区边界表</li>
+<li>exercise_running_area_path_info：跑区路径表</li>
+<li>exercise_running_area_punchpoint_info：跑区打卡点信息</li>
+<li>exercise_safety_tips：安全tips（存了个图片id）</li>
+<li>exercise_special_attention_rule：特殊关系准则</li>
+<li>exercise_special_attention_student：需要特殊关注的学生</li>
+<li>exercise_special_rule：创建任务的简洁或高级配置</li>
+<li>exercise_standard_configuration：运动类型要求配置表（最少距离，时间等）</li>
+<li>exercise_task_info：运动任务信息</li>
+<li>exercise_term：学期表</li>
+<li>exercise_title_info：看起来是运动相关的问题？</li>
+<li>exercise_year_semester：学年的学期</li>
+<li>qrtz_cron_triggers：存储CronTrigger，包括cron表达式和时区信息</li>
+<li>qrtz_job_details：存放定时任务信息</li>
+<li>qrtz_locks：存储程序的悲观锁信息</li>
+<li>reminder_message：消息提醒</li>
+<li>sys_dict：数据字典</li>
+<li>system_log：系统日志</li>
+<li>t_base_field_gate：</li>
+<li>t_base_field_sport_type：场区和运动类型绑定</li>
+<li>t_base_gateattribute：闸机属性</li>
+<li>t_base_gatemachine：闸机信息</li>
+<li>t_base_humanface：人脸设备信息</li>
+<li>t_base_merchant：公司表</li>
+<li>t_base_merchant_information：商户信息</li>
+<li>t_base_messge：模板信息？</li>
+<li>t_base_operate_salesshop：营业点商户</li>
+<li>t_base_operate_salesshop_field：营业点信息</li>
+<li>t_base_operate_salesshop_management_user：营业点管理者信息</li>
+<li>t_base_place：场地表</li>
+<li>t_base_sport_type：运动类型表</li>
+<li>t_base_system_parameters：系统参数表（没有值）</li>
+<li>t_base_upload_file_history：附件</li>
+<li>t_base_venue_structure：场馆表</li>
+<li>t_business_announcement：公告</li>
+<li>t_business_dw_calendar_i：排期</li>
+<li>t_business_member：会员表</li>
+<li>t_business_member_audit：会员对账表</li>
+<li>t_business_member_temp：临时会员表</li>
+<li>t_business_member_venue_rule：场地使用规则</li>
+<li>t_business_use_venue_rule：场馆使用规则</li>
+<li>t_business_venue_price：场馆价格</li>
+<li>t_business_white_list：白名单</li>
+<li>t_common_data_pool：数据字典</li>
+<li>t_common_region：地区表</li>
+<li>t_data_constant：常量表</li>
+<li>t_management_department：场馆表</li>
+<li>t_management_resource：资源管理</li>
+<li>t_management_role：角色表</li>
+<li>t_management_role_resource：角色和资源映射</li>
+<li>t_management_system_param：系统参数表</li>
+<li>t_management_user：管理员表</li>
+<li>t_management_user_detail：管理员详细信息</li>
+<li>t_management_user_role：用户和role对应</li>
+<li>user_member：会员扩展表</li>
 </ul>
-</li>
-</ul>
-<pre><code class="sql">SELECT t.id, t.ticket_name , t.bearer_id_num , t.bearer_name ,t.write_off_code,t.game_player , t.seat_name ,t.buy_date,t.tickit_type, m.name AS buyer_name , f.data_name AS field_name , a.activity_name AS activity_name 
-FROM ticket.t_business_member_ticket t
-JOIN t_business_member m ON t.buyer=m.id
-JOIN t_base_venue_structure f ON t.field_id=f.id
-JOIN t_business_activity a ON t.activity_id=a.id
-</code></pre>
-<h3 id="后端采用的技术是-jpa"><a href="#后端采用的技术是-jpa" class="headerlink" title="后端采用的技术是 jpa"></a>后端采用的技术是 jpa</h3><ul>
-<li><p>首先，创建需要返回的类 MemberTicketResponse.java</p>
-</li>
-<li><p>使用jpa进行多表联查。需要在repository文件中实现查询</p>
-<ul>
-<li><pre><code class="java">package com.jbrf.service.business.repository.custom;
-
-import com.jbrf.common.model.CustomBaseQuery;
-import com.jbrf.common.model.CustomPage;
-import com.jbrf.entity.basedata.QTBaseVenueStructure;
-import com.jbrf.entity.business.*;
-import com.jbrf.service.business.model.response.MemberTicketResponse;
-import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.types.Projections;
-import com.querydsl.jpa.impl.JPAQuery;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
-
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
-
-@Repository
-public class MemberTicketCustomRepository extends CustomBaseQuery&lt;MemberTicket&gt; &#123;
-    JPAQuery&lt;MemberTicket&gt; query = null;
-    private QMemberTicket qMemberTicket = QMemberTicket.memberTicket;
-    private QActivityInfo qActivityInfo = QActivityInfo.activityInfo;
-    private QTBaseVenueStructure qtBaseVenueStructure = QTBaseVenueStructure.tBaseVenueStructure;
-    private QMember qMember = QMember.member;
-
-    public CustomPage&lt;MemberTicketResponse&gt; getMemberTicketByPage(
-            Pageable pageable,
-            String activityName,
-            String gamePlayer,
-            String ticketName,
-            String bearerName,
-            String bearer_id_num,
-            String fieldName,
-            String seatName,
-            String ticketType,
-            String buyerName
-    ) &#123;
-        CustomPage&lt;MemberTicketResponse&gt; result = new CustomPage&lt;MemberTicketResponse&gt;(pageable);
-
-        query = memberTicketPredict(activityName, gamePlayer, ticketName, bearerName, bearer_id_num,
-                fieldName, seatName, ticketType, buyerName);
-
-        System.out.println(query);
-        Long totalElements = query.select(qMemberTicket.id).fetchCount();
-        if (null == totalElements || totalElements == 0L) &#123;
-            return result;
-        &#125;
-        List&lt;MemberTicketResponse&gt; ticketResponseList = query
-                .orderBy(qMemberTicket.buyDate.desc())
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .select(
-                        Projections.constructor(MemberTicketResponse.class, qMemberTicket.id, qMemberTicket.buyDate, qMemberTicket.seatName, qMember.name, qMemberTicket.ticketType, qMemberTicket.bearerName, qMemberTicket.bearerIdNum, qMemberTicket.gamePlayer, qMemberTicket.ticketName, qtBaseVenueStructure.dataName, qActivityInfo.activityName, qMemberTicket.writeOffCode)
-                )
-                .fetch();
-
-        return result.totalElements(totalElements).content(ticketResponseList);
-    &#125;
-
-
-    private JPAQuery&lt;MemberTicket&gt; memberTicketPredict(String activityName,
-                                                       String gamePlayer,
-                                                       String ticketName,
-                                                       String bearerName,
-                                                       String bearerIdNum,
-                                                       String fieldName,
-                                                       String seatName,
-                                                       String ticketType,
-                                                       String buyerName) &#123;
-        BooleanBuilder predicate = new BooleanBuilder();
-
-        if (isNotBlank(activityName)) &#123;
-            predicate.and(qActivityInfo.activityName.contains(activityName.trim()));
-        &#125;
-        if (isNotBlank(gamePlayer)) &#123;
-            predicate.and(qMemberTicket.gamePlayer.contains(gamePlayer.trim()));
-        &#125;
-        if (isNotBlank(ticketName)) &#123;
-            predicate.and(qMemberTicket.ticketName.contains(ticketName.trim()));
-        &#125;
-        if (isNotBlank(bearerName)) &#123;
-            predicate.and(qMemberTicket.bearerName.contains(bearerName.trim()));
-        &#125;
-        if (isNotBlank(bearerIdNum)) &#123;
-            predicate.and(qMemberTicket.bearerIdNum.eq(bearerIdNum.trim()));
-        &#125;
-        if (isNotBlank(fieldName)) &#123;
-            predicate.and(qtBaseVenueStructure.dataName.contains(fieldName.trim()));
-        &#125;
-        if (isNotBlank(seatName)) &#123;
-            predicate.and(qMemberTicket.seatName.contains(seatName.trim()));
-        &#125;
-        if (isNotBlank(ticketType)) &#123;
-            predicate.and(qMemberTicket.ticketType.in(ticketType.split(&quot;,&quot;)));
-        &#125;
-        if (isNotBlank(buyerName)) &#123;
-            predicate.and(qMember.name.eq(buyerName.trim()));
-        &#125;
-        return query().from(qMemberTicket)
-                .leftJoin(qMember).on(qMemberTicket.buyer.eq(qMember.id))              .leftJoin(qtBaseVenueStructure).on(qMemberTicket.fieldId.eq(qtBaseVenueStructure.id))
-                .leftJoin(qActivityInfo).on(qMemberTicket.activityId.eq(qActivityInfo.id))
-                .where(predicate);
-    &#125;
-&#125;
-</code></pre>
-</li>
-<li><p>这段代码动态创建查询语句，并且将查询结果封装给要返回的类 MemberTicketResponse</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="在service-和-serviceImpl中定义，最后在controller中实现"><a href="#在service-和-serviceImpl中定义，最后在controller中实现" class="headerlink" title="在service 和 serviceImpl中定义，最后在controller中实现"></a>在service 和 serviceImpl中定义，最后在controller中实现</h3><h2 id="前端实现步骤"><a href="#前端实现步骤" class="headerlink" title="前端实现步骤"></a>前端实现步骤</h2><p>前端对api进行了封装，封装到api下的js中</p>
-<pre><code class="js">import request from &#39;@/utils/request&#39;
-
-const MemberTicket = &#123;
-  // 分页查询会员票列表
-  memberTicketList(params) &#123;
-    return request(&#123;
-      url: `http://localhost:51066/memberTicket/page`,
-      method: &#39;get&#39;,
-      params
-    &#125;)
-  &#125;
-&#125;
-export default MemberTicket
-
- //引用
-import MemeberTicket from ./memberTicket.js
-MemberTicker.memberTicketList(data).then(res=&gt;&#123;&#125;)
-
-//其中request是对axios的封装
-</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。也可以邮件至 2738430398@qq.com </span>
